@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="logo">
+        <a href="#"> simple library </a>
+      </h1>
+    </header>
+    <div class="content-wrapper">
+      <aside>
+        <div class="add-book">
+          <button class="btn-main" id="add-book">add book</button>
+          <div class="add-form-wrapper">
+            <form class="add-form">
+              <div>
+                <label for="title">book title:</label>
+                <input required type="text" name="title" id="title" />
+              </div>
+              <div>
+                <label for="author">author:</label>
+                <input required type="text" name="author" id="author" />
+              </div>
+              <div class="book-pages-wrapper">
+                <label for="pages">number of pages:</label>
+                <input
+                  required
+                  type="number"
+                  name="pages"
+                  id="pages"
+                  min="1"
+                  max="9999" />
+              </div>
+              <div class="book-status-wrapper">
+                <label for="status">have you read it?</label>
+                <input type="checkbox" name="status" id="status" />
+              </div>
+              <button type="submit" class="btn-main">add to library</button>
+            </form>
+          </div>
+        </div>
+      </aside>
+      <main>
+        <!-- <section class="book">
+          <h2><a href="#">Title</a></h2>
+          <p><a href="#">Author</a></p>
+          <p><a href="#">pages</a></p>
+          <div class="btns-wrapper">
+            <button class="read-status">Not read</button>
+            <button class="remove-book">Remove Book</button>
+          </div>
+        </section> -->
+      </main>
+    </div>
+    <footer>
+      <p>coded by <a href="https://github.com/AhmedLebda">Ahmed Lebda</a></p>
+    </footer>
+  </body>
+</html>
