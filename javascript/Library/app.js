@@ -1,6 +1,7 @@
-//variabls
+//variables
 
 let myLibrary = [];
+
 const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
@@ -11,23 +12,26 @@ const addBookInputs = document.querySelectorAll(".add-form input");
 const addBookForm = document.querySelector(".add-form");
 const mainContent = document.querySelector("main");
 
-// Functions
+class Book {
+  constructor(title, author, pages, bookStatus) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.bookStatus = bookStatus;
+  }
 
-function Book(title, author, pages, bookStatus) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.bookStatus = bookStatus;
-}
-Book.prototype.changeReadStatus = function () {
-  this.bookStatus ? (this.bookStatus = false) : (this.bookStatus = true);
-};
+  static addBookToLibrary() {
+    myLibrary.push(
+      new Book(title.value, author.value, pages.value, bookStatus.checked)
+    );
+  }
 
-function addBookToLibrary() {
-  myLibrary.push(
-    new Book(title.value, author.value, pages.value, bookStatus.checked)
-  );
+  changeReadStatus() {
+    this.bookStatus ? (this.bookStatus = false) : (this.bookStatus = true);
+  }
 }
+
+// Function: Display books in library
 
 function displayBooks(library) {
   while (mainContent.firstChild) {
@@ -52,7 +56,7 @@ function displayBooks(library) {
   }
 }
 
-// Event Listeners
+// -----> Event Listeners
 
 addBookBtn.addEventListener("click", () => {
   formWrapper.classList.toggle("show");
@@ -60,7 +64,7 @@ addBookBtn.addEventListener("click", () => {
   // Focusing the first field
   title.focus();
 
-  // Clearing fields everytime user adds a book
+  // Clearing fields every time user adds a book
   addBookInputs.forEach((input) => {
     if (input.type === "checkbox") {
       input.checked = false;
@@ -69,14 +73,21 @@ addBookBtn.addEventListener("click", () => {
     }
   });
 });
+
+// Adding books to library
+
 addBookForm.addEventListener("submit", (e) => {
   // Prevent form from submitting and closing the form
   e.preventDefault();
   formWrapper.classList.remove("show");
 
-  addBookToLibrary();
+  Book.addBookToLibrary();
   displayBooks(myLibrary);
 });
+
+
+// Changing read status and removing books from library
+
 mainContent.addEventListener("click", (e) => {
   if (e.target.classList.contains("read-status")) {
     myLibrary[e.target.parentNode.parentNode.dataset.order].changeReadStatus();
