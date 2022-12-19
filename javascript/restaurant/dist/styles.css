@@ -22,16 +22,15 @@ a {
 }
 body {
 	min-height: 100vh;
-	/* background: linear-gradient(rgba(24, 24, 24, 0.15), rgba(0, 0, 0, 0.344)),
-		url(../images/background.jpg) center center/cover no-repeat; */
+	background-color: whitesmoke;
 }
 .content {
 	width: min(100% - 15px, 840px);
 	margin-inline: auto;
+	min-height: 100vh;
 }
 
 /* Navbar styles */
-
 nav {
 	padding: 2rem;
 }
@@ -48,14 +47,11 @@ nav ul {
 	transition: 0.25s;
 	border: 2px solid var(--heading-color);
 	padding: 10px 20px;
-	cursor: pointer;
 }
 .nav__item:hover {
 	color: #fff;
 	background-color: var(--heading-hover-color);
 }
-
-/* Home Page styles */
 
 .home__page {
 	display: flex;
