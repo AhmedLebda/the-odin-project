@@ -1,0 +1,131 @@
+:root {
+	--heading-color: #0e1a1f;
+	--heading-hover-color: #124c65;
+	--paragraph-color: #1c313a;
+	font-family: sans-serif;
+}
+
+/* General Styles */
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style-type: none;
+}
+a {
+	text-decoration: none;
+}
+body {
+	min-height: 100vh;
+}
+.content {
+	width: min(100% - 15px, 840px);
+	margin-inline: auto;
+}
+section {
+	min-height: 69vh;
+}
+
+/* Navbar styles */
+
+nav {
+	padding: 2rem;
+	margin-bottom: 3rem;
+}
+nav ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4rem;
+}
+.nav__item {
+	color: var(--heading-color);
+	font-weight: bold;
+	font-size: 2rem;
+	transition: 0.25s;
+	border: 2px solid var(--heading-color);
+	padding: 10px 20px;
+	cursor: pointer;
+}
+.nav__item:hover {
+	color: #fff;
+	background-color: var(--heading-hover-color);
+}
+
+/* Home Page styles */
+
+.home__page {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 3px;
+	margin-bottom: 1rem;
+}
+
+.home__page h1 {
+	font-size: 7rem;
+	color: var(--heading-hover-color);
+	margin-bottom: 2rem;
+}
+.home__page p {
+	color: var(--paragraph-color);
+	line-height: 1.6;
+	text-align: center;
+}
+
+/* Menu Content */
+.menu {
+	margin-bottom: 1rem;
+}
+.menu > h2 {
+	text-align: center;
+	font-size: 3rem;
+	text-transform: capitalize;
+}
+.menu__content {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 3rem;
+	margin-top: 3rem;
+}
+.menu__content > .item {
+	padding: 3rem 1rem;
+	border: 1px solid black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2rem;
+	cursor: pointer;
+	transition: 0.25s;
+}
+.menu__content > .item:hover {
+	background: linear-gradient(120deg, #1c92d28b, #f2fcfe);
+	transform: scale(1.1);
+}
+
+/* Contact */
+
+.contact {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 3rem;
+	margin-bottom: 1rem;
+}
+.contact > h2 {
+	font-size: 3rem;
+}
+
+/* Footer */
+footer {
+	text-align: center;
+	padding: 1rem;
+	background-color: #35333314;
+}
