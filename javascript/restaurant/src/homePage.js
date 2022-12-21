@@ -2,6 +2,7 @@ export default function renderHomePage() {
 	const content = document.querySelector("#content");
 	const homePage = document.createElement("section");
 	homePage.classList.add("home__page");
+	homePage.id = "home";
 	const h1 = document.createElement("h1");
 	h1.textContent = "Cafe Rosa";
 	const p = document.createElement("p");

@@ -7,6 +7,7 @@ export default function renderNavbar() {
 
 	for (let link of navLinks) {
 		const li = document.createElement("li");
+		li.dataset.targetSection = `${link.toLocaleLowerCase()}`;
 		const a = document.createElement("a");
 		a.classList.add("nav__item");
 		a.textContent = link;
