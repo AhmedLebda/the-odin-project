@@ -1,21 +1,20 @@
 export default class Controls {
-  #titles;
-  #dis;
-  constructor(title, discription) {
-    this.#titles = title;
-    this.#dis = discription;
+  constructor(title, description) {
+    this.title = title;
+    this.description = description;
   }
 
   getTitle() {
-    return console.log(this.#titles);
+    console.log(this.title);
   }
-  setTitle(title) {
-    this.#titles = title;
+  getDescription() {
+    console.log(this.description);
   }
-  getDis() {
-    return console.log(this.#dis);
+
+  setTitle(newTitle) {
+    this.title = newTitle;
   }
-  setDis(discription) {
-    this.#dis = discription;
+  setDescription(newDescription) {
+    this.description = newDescription;
   }
 }

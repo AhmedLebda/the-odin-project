@@ -1,23 +1,25 @@
 import Controls from "./controls";
 
 class Task extends Controls {
-  #date;
-  #order;
-  constructor(title, discription, dueDate, priority) {
-    super(title, discription);
-    this.#date = dueDate;
-    this.#order = priority;
+  constructor(title, description, dueDate, priority) {
+    super(title, description);
+    this.dueDate = dueDate;
+    this.priority = priority;
   }
+
   getDueDate() {
-    return console.log(this.#date);
-  }
-  setDueDate(dueDate) {
-    this.#date = dueDate;
+    console.log(this.dueDate);
   }
   getPriority() {
-    return console.log(this.#order);
+    console.log(this.priority);
   }
-  setPriority(pirority) {
-    this.#order = pirority;
+
+  setDueDate(newDueDate) {
+    this.dueDate = newDueDate;
+  }
+  setPriority(newPriority) {
+    this.priority = newPriority;
   }
 }
+
+export default Task;
