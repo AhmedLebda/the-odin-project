@@ -1,0 +1,25 @@
+/* Starter sample CSS */
+body {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	text-align: center;
+	gap: 2rem;
+	border: 1px solid black;
+	min-height: 100vh;
+	width: min(100% - 20px, 840px);
+	margin-inline: auto;
+}
+
+header,
+footer {
+	grid-column: span 2;
+	border: 1px solid black;
+}
+
+aside,
+main {
+	border: 1px solid black;
+}
