@@ -1,20 +1,28 @@
 import "./css/styles.css";
-import Task from "./task";
+import Task from "./task.js";
+import Project from "./project.js";
 
-let taskTest = new Task("test", "this is a test", "30/12/2022", 1);
-taskTest.getTitle();
-taskTest.getDescription();
-taskTest.getDueDate();
-taskTest.getPriority();
+const projectOne = new Project(
+	"Project One",
+	"This is the description for my first project"
+);
 
-taskTest.setTitle("new title");
-taskTest.getTitle();
+const taskOne = new Task("Task one", "Task one description", "1/1/2023", 1);
+const taskTwo = new Task("Task two", "Task two description", "2/12/2023");
+const taskThree = new Task(
+	"Task three",
+	"Task three description",
+	"12/3/2023",
+	3
+);
 
-taskTest.setDescription("new description");
-taskTest.getDescription();
+// Tests
 
-taskTest.setDueDate("29/12/2022");
-taskTest.getDueDate();
-
-taskTest.setPriority(5);
-taskTest.getPriority();
+projectOne.getTasks();
+projectOne.addTask(taskOne);
+projectOne.addTask(taskTwo);
+projectOne.addTask(taskThree);
+projectOne.getTasks();
+projectOne.removeTask("Task one");
+projectOne.removeTask("Task three");
+projectOne.getTasks();
