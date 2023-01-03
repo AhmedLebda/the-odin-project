@@ -1,0 +1,134 @@
+/* global rules */
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  text-align: center;
+
+  border: 1px solid black;
+  min-height: 100vh;
+  width: min(100% - 20px, 840px);
+  margin-inline: auto;
+}
+a {
+  text-decoration: none;
+  color: blue;
+}
+button,
+input {
+  cursor: pointer;
+}
+
+header,
+footer {
+  grid-column: span 2;
+  /* border: 1px solid black; */
+}
+header a {
+  font-size: 4rem;
+  color: rgb(135, 11, 11);
+}
+aside {
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1rem 0rem;
+}
+aside h2 {
+  text-align: start;
+  margin-left: 1rem;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0rem;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.projects__container {
+  display: flex;
+  flex-direction: column;
+}
+.projects__container a {
+  padding: 1rem 2rem;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.projects__container a:hover {
+  padding-right: 0.5rem;
+  background-color: aqua;
+}
+.add {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  border: none;
+  color: white;
+  background: green;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+main .add {
+  align-self: end;
+  margin-right: 1rem;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid black;
+}
+.task:hover {
+  background-color: aqua;
+}
+.task__title {
+  display: inline-flex;
+  flex-basis: calc(100% / 3 - 1rem);
+}
+.task__title input {
+  margin-right: 0.5rem;
+}
+.task__title input:checked {
+  text-decoration: line-through;
+}
+.tasks__continer {
+  display: flex;
+  flex-direction: column;
+}
+.task button {
+  padding: 0.2rem 0.7rem;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+}
+#task_modify {
+  background-color: gold;
+  color: black;
+}
+#task_remove {
+  background-color: rgb(251, 39, 39);
+  color: white;
+}
+.project__info {
+  border-bottom: 1px solid black;
+  text-align: left;
+  padding: 0rem 1rem;
+}
+.author a {
+  color: rgb(135, 11, 11);
+  font-weight: 900;
+}
