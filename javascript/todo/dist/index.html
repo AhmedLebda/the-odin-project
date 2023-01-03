@@ -1,12 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>restaurant</title>
-		<!-- script -->
-		<script src="./index.bundle.js"></script>
-	</head>
-	<body></body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>restaurant</title>
+    <!-- script -->
+    <script src="./index.bundle.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="#" class="logo">Lebda Todo </a>
+      </h1>
+    </header>
+
+    <aside>
+      <h2>Projects</h2>
+      <div class="projects__container">
+        <!-- Example Projects [will be removed]-->
+        <a href="#" class="project__one">Project One</a>
+        <a href="#" class="project__Two">Project Two</a>
+        <a href="#" class="project__Three">Project Three</a>
+      </div>
+
+      <button class="add" id="add-project">Add Project</button>
+    </aside>
+
+    <main>
+      <!-- Project info container -->
+      <div class="project__info">
+        <!-- Example Project info [will be removed] -->
+        <h2 class="project__title" id="project-title">Project One</h2>
+        <p class="project__description" id="project-description">
+          This is a test description for project one
+        </p>
+      </div>
+      <div class="tasks__container" id="tasks-container">
+        <!-- Example tasks [will be removed] -->
+        <div class="task">
+          <div class="task__title">
+            <input type="checkbox" name="generated task title" id="unique-id" />
+            <label for="unique-id">Task one</label>
+          </div>
+          <input type="date" name="due date" id="task-date" />
+          <div class="task__controls">
+            <button class="task__control modify" id="task_modify">
+              Modify
+            </button>
+            <button class="task__control remove" id="task_remove">
+              remove
+            </button>
+          </div>
+        </div>
+
+        <div class="task">
+          <div class="task__title">
+            <input type="checkbox" name="generated task title" id="unique-id" />
+            <label for="unique-id">Task one</label>
+          </div>
+          <input type="date" name="due date" id="task-date" />
+          <div class="task__controls">
+            <button class="task__control" id="task_modify">Modify</button>
+            <button class="task__control" id="task_remove">remove</button>
+          </div>
+        </div>
+
+        <div class="task">
+          <div class="task__title">
+            <input type="checkbox" name="generated task title" id="unique-id" />
+            <label for="unique-id">Task one</label>
+          </div>
+          <input type="date" name="due date" id="task-date" />
+          <div class="task__controls">
+            <button class="task__control" id="task_modify">Modify</button>
+            <button class="task__control" id="task_remove">remove</button>
+          </div>
+        </div>
+      </div>
+
+      <button class="add" id="add-task">Add Task</button>
+    </main>
+
+    <footer>
+      <p class="author">
+        Made by
+        <a href="https://github.com/MohamedLebda">Mohamed Lebda</a>
+        &
+        <a href="https://github.com/AhmedLebda">Ahmed Lebda</a>
+      </p>
+      <p class="copyright">&copy; 2023 Lebda Company Limited&trade;</p>
+    </footer>
+  </body>
 </html>
