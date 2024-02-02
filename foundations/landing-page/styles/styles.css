@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,300&display=swap");
+
+:root {
+  --hero-bg-color: #1f2937;
+  --logo-color: #f9faf8;
+  --hero-main-color: #f9faf8;
+  --hero-secondary-color: #f9faf8;
+  --button-bg-color: #3882f6;
+  --info-header-color: #1f2937;
+  --quote-bg-color: #e5e7eb;
+  --quote-text-color: #1f2937;
+
+  --quote-text-size: 36px;
+  --info-header-size: 36px;
+  --logo-size: 24px;
+  --hero-main-size: 48px;
+  --hero-secondary-size: 18px;
+
+  --main-font: "Roboto", sans-serif;
+}
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
