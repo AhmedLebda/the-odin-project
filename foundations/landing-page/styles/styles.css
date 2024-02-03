@@ -63,6 +63,11 @@ nav {
 	color: var(--logo-color);
 	text-transform: capitalize;
 	margin-right: auto;
+	transition: 0.5s;
+}
+.logo a:hover,
+.main__nav li a:hover {
+	color: #6a96ff;
 }
 
 .main__nav {
@@ -109,9 +114,11 @@ nav {
 	border-radius: 5px;
 	cursor: pointer;
 	text-transform: capitalize;
+	transition: 0.5s;
 }
-.hero__button:hover {
-	background-color: #005def;
+.hero__button:hover,
+.sign__up:hover {
+	background-color: #005cef77;
 }
 
 /* ---------- Info Styles ---------- */
@@ -162,4 +169,51 @@ blockquote cite {
 	font-size: 23px;
 	color: var(--quote-text-color);
 	margin-top: 0.8rem;
+}
+/* ---------- Sign up Styles ---------- */
+.contact {
+	padding: 3rem 0;
+	background-color: var(--button-bg-color);
+	width: 85%;
+	margin: 4rem auto;
+	border-radius: 20px;
+}
+.contact__content {
+	display: flex;
+	flex-wrap: wrap;
+}
+.contact__text {
+	flex: 3;
+}
+.contact__text h3 {
+	color: #fff;
+	font-size: 2rem;
+	margin-bottom: 0.6rem;
+}
+.contact__text p {
+	color: var(--hero-secondary-color);
+	font-size: 1.1rem;
+}
+.sign__up {
+	background-color: var(--button-bg-color);
+	font-size: var(--hero-secondary-size);
+	color: var(--hero-main-color);
+	padding: 0.6rem 2.5rem;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	cursor: pointer;
+	text-transform: capitalize;
+	align-self: center;
+	transition: 0.5s;
+}
+
+/* ---------- Footer Styles ---------- */
+.page__footer {
+	background-color: var(--hero-bg-color);
+	padding: 2rem 0;
+}
+.page__footer p {
+	color: #a4a4a4;
+	font-size: 1.5rem;
+	text-align: center;
 }
