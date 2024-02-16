@@ -1,22 +1,37 @@
 'use strict'
 
-const numberOfRounds = 5;
+// Game Controls
+let userChoice;
+let computerChoice;
+let numberOfRounds = 0;
+let userScore = 0;
+let computerScore = 0;
+const  endRound = 5;
 
-// Getting the user Choice
-function getUserChoice() {
-    let userChoice;
-    do {
-        userChoice = prompt('Please choose rock, paper or scissors?', 'rock').toLowerCase();
-    } while (userChoice !== 'rock' && userChoice !== 'paper' && userChoice !== 'scissors')
-    return userChoice;
+// DOM variables
+const gameOptions = document.querySelector("#game-controls");
+const pickedChoices = document.querySelector("#picked-choices");
+const scores = document.querySelector("#scores");
+const finalResult = document.querySelector("#final-result");
+
+//  Main function to start the game
+function playGame() {
+    // Check for game over after 5 rounds (endRound)
+    if (numberOfRounds >= endRound) {
+        printEndResult(userScore, computerScore);
+        playAgain();
+        return;
+    }
+    updateScores();
+    updateResults();
+    numberOfRounds += 1;
 }
 
 // Getting the computer choice
 function getComputerChoice(){
     const options = ['rock', 'paper', 'scissors'];
     const randomIndex = Math.floor(Math.random() * 3) 
-    const computerChoice = options[randomIndex]
-    return computerChoice;
+    computerChoice = options[randomIndex]
 }
 
 // Play one round and return the result
@@ -32,40 +47,73 @@ function PlayRound(userChoice, computerChoice) {
     } else {
         result = 'You Lost'
     }
-    console.log(`Your choice: ${userChoice} | Computer choice: ${computerChoice}`);
     return result;
 }
 
-// Print the game result the the console
+function updateScores() {
+    let gameResult = PlayRound( userChoice, computerChoice );
+    if (gameResult === 'You Won') {
+        userScore += 1;
+    } else if (gameResult === 'You Lost') {
+        computerScore += 1;
+    } else {
+        userScore += 1;
+        computerScore += 1;
+    }
+}
+
+// Print the game end result in DOM
 function printEndResult(userScore, computerScore) {
     if (userScore > computerScore) {
-        console.log(`=====>> You Won <<=====`);
+        finalResult.textContent = `You Won`;
     } else if (userScore < computerScore) {
-        console.log(`=====>> You Lost <<=====`);
+        finalResult.textContent = `You Lost`;
     } else {
-        console.log(`=====>> You Tie <<=====`);
+        finalResult.textContent = `Tie`;
     }
 }
 
-// Play n number of games (5) and return the final result
-function PlayGame(n) {
-        let userScore = 0;
-        let computerScore = 0;
-
-    for (let i = 0; i < n; i++) {
-        let gameResult = PlayRound( getUserChoice(), getComputerChoice() );
-        if (gameResult === 'You Won') {
-            userScore += 1;
-        } else if (gameResult === 'You Lost') {
-            computerScore += 1;
-        } else {
-            userScore += 1;
-            computerScore += 1;
-        }
-        console.log(`user score: ${userScore} | computer score: ${computerScore}`);
-    }
-
-    printEndResult(userScore, computerScore)
+// Update results in DOM
+function updateResults() {
+    pickedChoices.textContent = `Your choice: ${userChoice} | Computer choice: ${computerChoice}`;
+    scores.textContent = `user score: ${userScore} | computer score: ${computerScore}`;
 }
 
-PlayGame(numberOfRounds)
+
+
+
+// DOM Event Listeners
+
+gameOptions.addEventListener("click", (e) => {  
+    // Checking that user clicked a button
+    if (e.target.name) {
+        userChoice = e.target.name;
+        getComputerChoice();
+    } else {
+        return;
+    }
+    
+    playGame()
+})
+
+// creating a button to play again and resetting all scores and rounds
+function playAgain() {
+    const playAgainButton = document.createElement('button');
+    playAgainButton.id = 'play-again';
+    playAgainButton.textContent = 'play again';
+
+    if ([...gameOptions.children].length <= 3) gameOptions.appendChild(playAgainButton)
+    
+    playAgainButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        numberOfRounds = 0;
+        userScore = 0;
+        computerScore = 0;
+        pickedChoices.textContent = '';
+        scores.textContent = '';
+        finalResult.textContent = '';
+        gameOptions.removeChild(playAgainButton)
+    })
+}
+
+
