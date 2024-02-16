@@ -25,13 +25,6 @@ main {
 	gap: 1rem;
 	justify-content: center;
 }
-.app {
-	flex: 1;
-	min-height: 65vh;
-	max-width: 50%;
-	border: 2px solid black;
-	border-radius: 2px;
-}
 
 .choose__size {
 	outline: none;
@@ -45,4 +38,20 @@ main {
 .choose__size:hover {
 	background-color: #000000b8;
 	color: #ffffffff;
+}
+
+.app {
+	flex: 1;
+	min-height: 65vh;
+	max-width: 50%;
+	border: 1px solid black;
+	border-radius: 2px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.app > div {
+	flex: 1;
+}
+.colored {
+	background-color: #000000;
 }
