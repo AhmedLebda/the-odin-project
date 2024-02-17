@@ -12,10 +12,13 @@ html {
 body {
 	min-height: 100vh;
 }
+button {
+	text-transform: capitalize;
+}
 
 .logo {
 	text-align: center;
-	margin-top: 1rem;
+	padding-top: 1rem;
 	margin-bottom: 4rem;
 	text-decoration: underline;
 }
@@ -25,8 +28,13 @@ main {
 	gap: 1rem;
 	justify-content: center;
 }
+.controls {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
 
-.choose__size {
+.option__btn {
 	outline: none;
 	border: 1px solid black;
 	padding: 0.2rem 0.5rem;
@@ -35,9 +43,17 @@ main {
 	cursor: pointer;
 	transition: 0.3s;
 }
-.choose__size:hover {
+.option__btn:hover {
 	background-color: #000000b8;
 	color: #ffffffff;
+}
+.option__active {
+	background-color: #000000b8;
+	color: #ffffffff;
+}
+
+.pick__color {
+	width: 100%;
 }
 
 .app {
@@ -54,4 +70,7 @@ main {
 }
 .colored {
 	background-color: #000000;
+}
+.show__grid {
+	outline: 0.1px solid #00000068;
 }
