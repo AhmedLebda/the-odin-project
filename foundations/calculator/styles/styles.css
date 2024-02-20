@@ -1,0 +1,98 @@
+*,
+*::after,
+*::before {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-family: sans-serif;
+}
+main {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+button {
+	outline: none;
+	border: none;
+	background-color: transparent;
+	border-radius: 1px;
+	transition: 0.1s;
+}
+
+.calc__wrapper {
+	border: 2px solid #000000;
+	border-radius: 2px;
+	padding: 0.2rem;
+	min-width: 20%;
+	min-height: 50vh;
+}
+
+.calc__wrapper {
+	display: flex;
+	flex-direction: column;
+}
+.result {
+	border-radius: 1px;
+	padding: 0.5rem;
+	margin-bottom: 0.2rem;
+	font-size: 1.5rem;
+}
+.options {
+	display: flex;
+	gap: 0.1rem;
+	flex: 1;
+}
+
+.keypad__operator__wrapper {
+	display: flex;
+	gap: 0.1rem;
+	margin-top: 0.1rem;
+	flex: 4;
+}
+.keypad {
+	flex: 3;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.1rem;
+}
+.keypad > button {
+	min-width: 30%;
+}
+.operators {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 0.1rem;
+}
+
+.options > button,
+.keypad > button,
+.operators > button {
+	flex: 1;
+}
+
+.options > button {
+	background-color: rgba(255, 196, 0, 0.308);
+}
+.options > button:hover {
+	background-color: rgba(255, 196, 0, 0.785);
+}
+.keypad > button {
+	/* background-color: rgba(248, 234, 234, 0.957); */
+	border: 1px solid rgba(0, 0, 0, 0.121);
+}
+.keypad > button:hover {
+	background-color: rgba(1, 8, 0, 0.201);
+}
+.keypad > button:active {
+	background-color: rgba(0, 0, 0, 0.372);
+}
+.operators > button {
+	background-color: rgba(0, 0, 255, 0.158);
+}
+.operators > button:hover {
+	background-color: rgba(0, 0, 255, 0.489);
+}
