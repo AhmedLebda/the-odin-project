@@ -27,13 +27,12 @@ options.forEach((option) => {
 			case "=":
 				if (secondNumber) {
 					operate(firstNumber, secondNumber, operator);
-
+					lastClickedValue = option.value;
 					updateUI.updateEqual();
 				} else {
 					updateUI.updateOperator(option.value);
 				}
 
-				// lastClickedValue = option.value;
 				break;
 
 			// back option: slice the last number from firstNumber or secondNumber depending on isFirstNumber state
