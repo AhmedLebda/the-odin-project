@@ -22,19 +22,28 @@ options.forEach((option) => {
 			case "clear":
 				clearUI();
 				break;
+
 			// equal option: operate only if the the second number is given
 			case "=":
 				if (secondNumber) {
 					operate(firstNumber, secondNumber, operator);
-					// Updating UI (resultDiv)
-					resultDiv.textContent = calcResult;
-				}
-				lastClickedValue = option.value;
 
+					updateUI.updateEqual();
+				} else {
+					updateUI.updateOperator(option.value);
+				}
+
+				// lastClickedValue = option.value;
 				break;
+
 			// back option: slice the last number from firstNumber or secondNumber depending on isFirstNumber state
 			case "back":
-				updateUI(option.value);
+				if (isFirstNumber) {
+					firstNumber = firstNumber.slice(0, firstNumber.length - 1);
+				} else {
+					secondNumber = secondNumber.slice(0, secondNumber.length - 1);
+				}
+				updateUI.backspace(option.value);
 				break;
 		}
 	});
@@ -43,7 +52,7 @@ options.forEach((option) => {
 keypad.forEach((key) => {
 	key.addEventListener("click", () => {
 		// reset the calculator when the user tries to enter another number after the equal operator
-		if (lastClickedValue === "=") {
+		if (resultDiv.textContent.slice(resultDiv.textContent.length - 1) === "=") {
 			clearUI();
 		}
 		lastClickedValue = key.value;
@@ -56,24 +65,24 @@ keypad.forEach((key) => {
 		}
 
 		// Update the UI (resultDiv)
-		resultDiv.textContent += key.value;
+		updateUI.updateKey(key.value);
 	});
 });
 
 operators.forEach((operatorKey) => {
 	operatorKey.addEventListener("click", () => {
-		// Check for the last clicked value and only toggle between first and second number when the last clicked key is a number otherwise just change the
+		// Check for the last clicked value and only toggle between first and second number when the last clicked key is a number
 		if (+lastClickedValue || lastClickedValue === "0") {
 			isFirstNumber = isFirstNumber ? false : true;
 		}
 
-		// Update the UI (resultDiv) depending on the last character in the result div so we don't print several operators in the result div
-		updateUI(operatorKey.value);
+		updateUI.updateOperator(operatorKey.value);
 
 		// Only do calculations when we have first and second numbers
 		if (firstNumber && secondNumber) {
 			operate(firstNumber, secondNumber, operator);
-			resultDiv.textContent = calcResult + operatorKey.value;
+
+			updateUI.updateChainCalc(operatorKey.value);
 		}
 
 		operator = operatorKey.value;
@@ -93,8 +102,13 @@ function operate(num1, num2, opr) {
 			calcResult = +num1 * +num2;
 			break;
 		case "/":
+			if (num2 == "0") {
+				clearUI();
+				alert("Cannot divide by zero");
+				break;
+			}
 			calcResult = +num1 / +num2;
-			calcResult = (+calcResult).toFixed(8);
+			calcResult = Math.floor(+calcResult * 10000) / 10000;
 			break;
 		case "%":
 			calcResult = +num1 % +num2;
@@ -105,28 +119,42 @@ function operate(num1, num2, opr) {
 	isFirstNumber = false;
 }
 
-// Updating UI (ResultDiv) depending on the last character in the result div only delete if the last character is a number
-function updateUI(option) {
-	let resultLastChar = resultDiv.textContent.slice(
-		resultDiv.textContent.length - 1
-	);
-	if (option === "back") {
+const updateUI = {
+	backspace() {
+		let resultLastChar = resultDiv.textContent.slice(
+			resultDiv.textContent.length - 1
+		);
 		if (+resultLastChar || resultLastChar === "0") {
 			resultDiv.textContent = resultDiv.textContent.slice(
 				0,
 				resultDiv.textContent.length - 1
 			);
 		}
-	} else {
+	},
+	updateOperator(opr) {
+		let resultLastChar = resultDiv.textContent.slice(
+			resultDiv.textContent.length - 1
+		);
 		if (+resultLastChar || resultLastChar === "0") {
-			resultDiv.textContent += option;
+			resultDiv.textContent += opr;
 		} else {
 			resultDiv.textContent =
-				resultDiv.textContent.slice(0, resultDiv.textContent.length - 1) +
-				option;
+				resultDiv.textContent.slice(0, resultDiv.textContent.length - 1) + opr;
 		}
-	}
-}
+	},
+
+	updateKey(keyVal) {
+		resultDiv.textContent += keyVal;
+	},
+
+	updateChainCalc(opr) {
+		resultDiv.textContent = calcResult + opr;
+	},
+
+	updateEqual() {
+		resultDiv.textContent = calcResult;
+	},
+};
 
 function clearUI() {
 	firstNumber = "";
