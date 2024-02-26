@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Sign-up Form</title>
+		<!-- styles -->
+		<link rel="stylesheet" href="styles/styles.css" />
+	</head>
+	<body>
+		<header class="header">
+			<div class="logo">
+				<img src="images/odin-lined-logo.png" alt="lined logo of odin" />
+				<h1>odin</h1>
+			</div>
+			<p class="header__footer">
+				Photo by
+				<a href="https://unsplash.com/@haliewestphoto">Halie West </a> on
+				<a href="https://unsplash.com/">Unsplash</a>
+			</p>
+		</header>
+		<main>
+			<section class="info">
+				<h2>
+					This is not a real online service! you know you need something like
+					this is your life to help you realize your deepest dreams. Sign up
+					<em>now</em> to get started.
+				</h2>
+				<p>you <em>know</em> you want to.</p>
+			</section>
+
+			<form action="#" id="form" class="form">
+				<fieldset>
+					<legend>let's do this!</legend>
+					<div class="field__first__name">
+						<label for="first-name">first name *</label>
+						<input
+							type="text"
+							name="first-name"
+							id="first-name"
+							maxlength="35"
+							placeholder="John"
+							required
+						/>
+						<output>error message goes here</output>
+					</div>
+					<div class="field__last__name">
+						<label for="last-name">last name *</label>
+						<input
+							type="text"
+							name="last-name"
+							id="last-name"
+							maxlength="35"
+							placeholder="Doe"
+							required
+						/>
+						<output>error message goes here</output>
+					</div>
+					<div class="field__email">
+						<label for="email">email *</label>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							maxlength="50"
+							placeholder="example@example.com"
+							required
+						/>
+						<output>error message goes here</output>
+					</div>
+					<div class="field__phone">
+						<label for="phone">phone number</label>
+						<input
+							type="tel"
+							name="phone"
+							id="phone"
+							maxlength="9"
+							placeholder="eg: 12-123-1234"
+							pattern="^[^/s]/d{2}/d{3}/d{4}"
+						/>
+						<output>error message goes here</output>
+					</div>
+					<div class="field__password">
+						<label for="password">password *</label>
+						<input
+							type="password"
+							name="password"
+							id="password"
+							maxlength="50"
+							placeholder="password"
+							required
+						/>
+						<output>error message goes here</output>
+					</div>
+					<div class="field__confirtm__password">
+						<label for="password">confirm password *</label>
+						<input
+							type="password"
+							name="confirm-password"
+							id="confirm-password"
+							maxlength="50"
+							placeholder="confirm password"
+							required
+						/>
+						<output>error message goes here</output>
+					</div>
+				</fieldset>
+				<button type="submit">create account</button>
+			</form>
+			<p class="login">Already have an account? <a href="#">log in</a></p>
+		</main>
+	</body>
+</html>

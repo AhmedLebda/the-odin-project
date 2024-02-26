@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Skranji:wght@700&display=swap");
+/* font-weight: 700;
+font-style: normal; */
+
+:root {
+	--logo-font: "Skranji", sans-serif, system-ui;
+	--button-background-color: #596d48;
+	--input-border-color: #e5e7eb;
+}
