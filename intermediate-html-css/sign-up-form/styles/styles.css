@@ -2,8 +2,100 @@
 /* font-weight: 700;
 font-style: normal; */
 
+/* Default Styles */
+
 :root {
 	--logo-font: "Skranji", sans-serif, system-ui;
+	--font-primary-color: #0f0f0f;
+	--font-secondary--color: #ffffff;
 	--button-background-color: #596d48;
 	--input-border-color: #e5e7eb;
+}
+html {
+	font-family: sans-serif;
+}
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	font: inherit;
+}
+img {
+	display: block;
+	max-width: 100%;
+}
+input,
+button {
+	font-size: 100%;
+	font: inherit;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+}
+
+/* header styles */
+.header {
+	background-color: #000000;
+	background-image: url(../images/bg-image.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: min(625px, 100%);
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.logo {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 30%;
+	padding: 1rem;
+
+	background-color: #00000076;
+}
+.logo img {
+	width: min(60px, 100%);
+	min-width: 40px;
+}
+.logo h1 {
+	font-family: var(--logo-font);
+	color: var(--font-secondary--color);
+	text-transform: uppercase;
+	font-size: 2rem;
+}
+
+.header__footer,
+.header__footer a {
+	color: var(--font-secondary--color);
+}
+.header__footer a:hover {
+	color: steelblue;
+}
+.header__footer {
+	margin: 0 auto 5%;
+	font-size: 0.6rem;
+}
+
+main {
+	background-color: #f9fafb;
+	padding-inline: 1.5rem;
+}
+
+/*info section styles*/
+.info {
+	padding: 4rem 0 2rem;
+	color: var(--font-primary-color);
+	font-weight: bold;
+}
+.info h2 {
+	margin-bottom: 1rem;
 }
