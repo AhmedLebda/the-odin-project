@@ -32,82 +32,94 @@
 			<form action="#" id="form" class="form">
 				<fieldset>
 					<legend>let's do this!</legend>
-					<div class="field__first__name">
-						<label for="first-name">first name *</label>
-						<input
-							type="text"
-							name="first-name"
-							id="first-name"
-							maxlength="35"
-							placeholder="John"
-							required
-						/>
-						<output>error message goes here</output>
-					</div>
-					<div class="field__last__name">
-						<label for="last-name">last name *</label>
-						<input
-							type="text"
-							name="last-name"
-							id="last-name"
-							maxlength="35"
-							placeholder="Doe"
-							required
-						/>
-						<output>error message goes here</output>
-					</div>
-					<div class="field__email">
-						<label for="email">email *</label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							maxlength="50"
-							placeholder="example@example.com"
-							required
-						/>
-						<output>error message goes here</output>
-					</div>
-					<div class="field__phone">
-						<label for="phone">phone number</label>
-						<input
-							type="tel"
-							name="phone"
-							id="phone"
-							maxlength="9"
-							placeholder="eg: 12-123-1234"
-							pattern="^[^/s]/d{2}/d{3}/d{4}"
-						/>
-						<output>error message goes here</output>
-					</div>
-					<div class="field__password">
-						<label for="password">password *</label>
-						<input
-							type="password"
-							name="password"
-							id="password"
-							maxlength="50"
-							placeholder="password"
-							required
-						/>
-						<output>error message goes here</output>
-					</div>
-					<div class="field__confirtm__password">
-						<label for="password">confirm password *</label>
-						<input
-							type="password"
-							name="confirm-password"
-							id="confirm-password"
-							maxlength="50"
-							placeholder="confirm password"
-							required
-						/>
-						<output>error message goes here</output>
+					<div class="control__wrapper">
+						<div class="field__first__name">
+							<label for="first-name">first name *</label>
+							<input
+								type="text"
+								name="first-name"
+								id="first-name"
+								minlength="3"
+								maxlength="35"
+								placeholder="John"
+								pattern="^[^0-9]+$"
+								title="can't have a number as a first name or name less than 3 characters"
+								required
+							/>
+							<output>Invalid first name</output>
+						</div>
+						<div class="field__last__name">
+							<label for="last-name">last name *</label>
+							<input
+								type="text"
+								name="last-name"
+								id="last-name"
+								minlength="3"
+								maxlength="35"
+								placeholder="Doe"
+								pattern="^[^0-9]+$"
+								title="can't have a number as a last name or name less than 3 characters"
+								required
+							/>
+							<output>Invalid last name</output>
+						</div>
+						<div class="field__email">
+							<label for="email">email *</label>
+							<input
+								type="email"
+								name="email"
+								id="email"
+								maxlength="50"
+								placeholder="example@example.com"
+								required
+							/>
+							<output>Invalid email</output>
+						</div>
+						<div class="field__phone">
+							<label for="phone">phone number</label>
+							<input
+								type="tel"
+								name="phone"
+								id="phone"
+								maxlength="11"
+								placeholder="e.g.: 12-123-1234"
+								pattern="\d{2}-?\d{3}-?\d{4}"
+								title="e.g. 121231234 or 12-123-1234"
+							/>
+							<output>Invalid phone number</output>
+						</div>
+						<div class="field__password">
+							<label for="password">password *</label>
+							<input
+								type="password"
+								name="password"
+								id="password"
+								minlength="8"
+								maxlength="50"
+								placeholder="password"
+								title="password must be longer than 8 characters"
+								required
+							/>
+							<output>Invalid password</output>
+						</div>
+						<div class="field__confirtm__password">
+							<label for="password">confirm password *</label>
+							<input
+								type="password"
+								name="confirm-password"
+								id="confirm-password"
+								minlength="8"
+								maxlength="50"
+								placeholder="confirm password"
+								required
+							/>
+							<output>invalid password</output>
+						</div>
 					</div>
 				</fieldset>
-				<button type="submit">create account</button>
+				<button type="submit" class="submit">create account</button>
 			</form>
-			<p class="login">Already have an account? <a href="#">log in</a></p>
+			<p class="login">Already have an account? <a href="#">Log in</a></p>
 		</main>
 	</body>
 </html>

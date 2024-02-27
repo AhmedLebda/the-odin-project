@@ -87,15 +87,121 @@ body {
 
 main {
 	background-color: #f9fafb;
-	padding-inline: 1.5rem;
+	/* padding-inline: 1.5rem; */
+	/* width: min(550px, 100%); */
 }
 
 /*info section styles*/
 .info {
-	padding: 4rem 0 2rem;
+	padding: 3rem 1.5rem 2rem;
 	color: var(--font-primary-color);
 	font-weight: bold;
 }
 .info h2 {
 	margin-bottom: 1rem;
+}
+/* form styles */
+.form {
+	background-color: var(--font-secondary--color);
+	padding: 1.5rem 0;
+}
+.form fieldset {
+	padding: 1.5rem;
+	margin-bottom: 1.5rem;
+	outline: none;
+	border: none;
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 15px 20px -20px;
+}
+.control__wrapper {
+	width: min(550px, 100%);
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: space-between;
+	padding: 1rem 0;
+}
+.form fieldset legend {
+	text-transform: capitalize;
+	color: var(--font-primary-color);
+	margin-bottom: 1rem;
+	font-weight: bold;
+}
+div[class^="field"] {
+	display: flex;
+	flex-direction: column;
+	flex-basis: min(250px, 50%);
+	gap: 0.3rem;
+	position: relative;
+
+	text-transform: capitalize;
+}
+div[class^="field"] label {
+	color: var(--font-primary-color);
+	font-size: 0.8rem;
+}
+div[class^="field"] input {
+	padding: 0.3rem;
+	font-size: 0.8rem;
+	border: 1px solid var(--input-border-color);
+	outline: none;
+}
+div[class^="field"]::after {
+	content: "✔";
+	position: absolute;
+	right: 2%;
+	top: 35%;
+	color: green;
+	display: none;
+}
+div[class^="field"] input:not(:placeholder-shown):invalid {
+	border-color: red;
+}
+div[class^="field"] input:not(:placeholder-shown):invalid:not(:focus) + output {
+	scale: 100%;
+	color: red;
+}
+div[class^="field"]:has(input:not(:placeholder-shown):invalid) label {
+	color: red;
+}
+div[class^="field"] input:not(:placeholder-shown):valid {
+	border-color: green;
+}
+div[class^="field"]:has(input:not(:placeholder-shown):valid) label {
+	color: green;
+}
+
+div[class^="field"]:has(input:not(:placeholder-shown):valid)::after {
+	display: block;
+}
+
+div[class^="field"] output {
+	font-size: 0.7rem;
+	scale: 0%;
+	transform-origin: left;
+	transition: 0.1s;
+}
+
+.submit {
+	outline: none;
+	border: none;
+	margin: 0 1.5rem 1rem;
+	color: var(--font-secondary--color);
+	text-transform: capitalize;
+	background-color: var(--button-background-color);
+	padding: 0.5rem 0.8rem;
+	font-size: 0.8rem;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.submit:hover,
+.submit:focus {
+	background-color: #445338;
+}
+.submit:active {
+	background-color: #3f4b35;
+}
+.login {
+	color: var(--font-primary-color);
+	font-size: 0.8rem;
+	padding: 0.5rem 1.5rem;
 }
