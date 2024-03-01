@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Admin Dashboard</title>
+		<!-- Styles -->
+		<link rel="stylesheet" href="styles/styles.css" />
+	</head>
+	<body>
+		<div class="dashboard__container">
+			<!-- Header Section -->
+			<header class="header">
+				<div class="container">
+					<div class="nav__wrapper">
+						<div class="search__wrapper">
+							<label for="search" class="search__icon">
+								<img src="icons/magnify.svg" alt="magnify icon" />
+							</label>
+							<input
+								type="search"
+								name="search"
+								id="site-search"
+								maxlength="55"
+							/>
+						</div>
+						<div class="user__account_wrapper">
+							<img
+								src="icons/bell-outline.svg"
+								alt="bell icon for notifications"
+							/>
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<a href="#" class="user__name">Gaara of the Desert</a>
+						</div>
+					</div>
+					<div class="header__wrapper">
+						<div class="user__info__wrapper">
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<div class="user__info">
+								<p>hi there,</p>
+								<h1 class="username">
+									<a href="#"> Gaara of the Desert (@Kazekage) </a>
+								</h1>
+							</div>
+						</div>
+						<div class="user__controls">
+							<button class="btn__main">new</button>
+							<button class="btn__main">upload</button>
+							<button class="btn__main">share</button>
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<!-- Sidebar Section -->
+			<aside class="sidebar">
+				<div class="sidebar__header">
+					<span>
+						<img src="icons/view-dashboard.svg" alt="view dashboard" />
+					</span>
+					<h2>dashboard</h2>
+				</div>
+				<div class="sidebar__controls">
+					<ul>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">home</a>
+						</li>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">profile</a>
+						</li>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">messages</a>
+						</li>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">history</a>
+						</li>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">tasks</a>
+						</li>
+						<li>
+							<img src="icons/home-outline.svg" alt="home outline icon" />
+							<a href="#">community</a>
+						</li>
+					</ul>
+				</div>
+				<div class="sidebar__footer">
+					<ul>
+						<li>
+							<img src="icons/cog-outline.svg" alt="cog outline icon" />
+							<a href="#">settings</a>
+						</li>
+						<li>
+							<img src="icons/cog-outline.svg" alt="cog outline icon" />
+							<a href="#">support</a>
+						</li>
+						<li>
+							<img src="icons/cog-outline.svg" alt="cog outline icon" />
+							<a href="#">privacy</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+
+			<!-- Dashboard Main content section -->
+			<main class="main__content">
+				<!-- Projects Section -->
+				<section class="projects">
+					<h3 class="section__title">your projects</h3>
+					<div class="projects__content__wrapper">
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">super cool project</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">less cool project</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">impossible app</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">easy peasy app</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">ad blocker</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+
+						<div class="project__card">
+							<div class="project__card__content">
+								<h4 class="project__title">money maker</h4>
+								<p>
+									Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+									ipsam exercitationem sapiente eius quia. Animi adipisci
+									reprehenderit perspiciatis illum corrupti.
+								</p>
+							</div>
+							<div class="project__card__footer">
+								<img
+									src="icons/star-plus-outline.svg"
+									alt="star outline icon "
+								/>
+								<img src="icons/eye-plus-outline.svg" alt="eye outline icon" />
+								<img
+									src="icons/share-variant-outline.svg"
+									alt="share outline icon"
+								/>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Announcements Section -->
+				<section class="announcements">
+					<h3 class="section__title">Announcements</h3>
+					<div class="announcements__content__wrapper">
+						<div class="announcement__card">
+							<h4 class="announcement__title">site maintenance</h4>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Assumenda ullam, dicta dolorem voluptates in animi?
+							</p>
+						</div>
+
+						<div class="announcement__card">
+							<h4 class="announcement__title">community share day</h4>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Assumenda ullam, dicta dolorem voluptates in animi?
+							</p>
+						</div>
+
+						<div class="announcement__card">
+							<h4 class="announcement__title">updated privacy policy</h4>
+							<p>
+								Lorem ipsum dolor sit amet consectetur adipisicing elit.
+								Assumenda ullam, dicta dolorem voluptates in animi?
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<!-- Trending Section -->
+				<section class="trending">
+					<h3 class="section__title">title</h3>
+					<div class="trending__content__wrapper">
+						<div class="trending__card">
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<div class="trending__card__info">
+								<a href="#" class="user__handle">@Kazekage</a>
+								<p>world peace builder</p>
+							</div>
+						</div>
+
+						<div class="trending__card">
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<div class="trending__card__info">
+								<a href="#" class="user__handle">@Kazekage</a>
+								<p>super cool project</p>
+							</div>
+						</div>
+
+						<div class="trending__card">
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<div class="trending__card__info">
+								<a href="#" class="user__handle">@Kazekage</a>
+								<p>life changing app</p>
+							</div>
+						</div>
+
+						<div class="trending__card">
+							<img
+								src="images/user.jpg"
+								alt="anime character in naruto"
+								class="user__image"
+							/>
+							<div class="trending__card__info">
+								<a href="#" class="user__handle">@Kazekage</a>
+								<p>no traffic maker</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+	</body>
+</html>
