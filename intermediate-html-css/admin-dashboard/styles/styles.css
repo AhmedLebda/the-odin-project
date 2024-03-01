@@ -1,12 +1,13 @@
 :root {
 	--header-bg-color: #ffffff;
-	--sidebar-bg-color: #1992d4;
+	--sidebar-bg-color: #0077b7;
 	--main-bg-color: #e2e8f0;
 	--btn-main--color: #1992d4;
 	--primary-font-color: #2d2c2c;
 	--secondary-font-color: #ffffff;
 	--project-box-border-color: #923641;
 	--input-bg-color: #e2e8f0;
+	--text-hover: rgb(245, 45, 45);
 }
 html {
 	font-family: sans-serif;
@@ -86,6 +87,9 @@ body {
 	font-size: 1.1rem;
 	font-weight: bold;
 }
+.user__name:hover {
+	color: var(--text-hover);
+}
 /***** header wrapper *****/
 .header__wrapper {
 	display: grid;
@@ -124,11 +128,51 @@ body {
 .btn__main:hover {
 	background-color: #007cc0;
 }
-/* sidebar styles */
+
+/********** Sidebar Styles **********/
 .sidebar {
 	grid-row: 1/ 3;
 	background-color: var(--sidebar-bg-color);
+	display: flex;
+	flex-direction: column;
+	gap: 3.5rem;
+	padding: 1rem;
 }
+.sidebar__header {
+	padding: 2rem 0;
+}
+.sidebar__header h2 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	color: var(--secondary-font-color);
+	text-transform: capitalize;
+}
+.sidebar__controls > ul,
+.sidebar__footer > ul {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.sidebar__header,
+.sidebar__controls > ul > li,
+.sidebar__footer > ul > li {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
+}
+.sidebar__controls a,
+.sidebar__footer a {
+	text-decoration: none;
+	color: var(--secondary-font-color);
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.sidebar__controls a:hover,
+.sidebar__footer a:hover {
+	color: var(--text-hover);
+}
+
 /********** main Styles **********/
 .main__content {
 	background-color: var(--main-bg-color);
