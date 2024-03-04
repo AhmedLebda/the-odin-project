@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Library</title>
+		<!-- Styles -->
+		<link rel="stylesheet" href="styles/styles.css" />
+		<!-- Scripts -->
+		<script src="scripts/app.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<a href="#" class="page__logo">Online library</a>
+			<div class="search__wrapper">
+				<label for="search-input"> &#x1F50E;&#xFE0E;</label>
+				<input
+					type="search"
+					id="search-input"
+					class="search__input"
+					name="search"
+					maxlength="60"
+				/>
+			</div>
+			<button id="search-btn" class="search btn__main">search</button>
+			<button class="add__book btn__main">add book</button>
+		</header>
+		<main>
+			<h1 class="main__title">my books:</h1>
+			<div class="books__wrapper">
+				<div class="book">
+					<h3 class="book__title">cool book</h3>
+					<p class="book__author">brilliant author</p>
+					<p class="book__pages">100 pages</p>
+					<div class="book__controls">
+						<div class="read__option__wrapper">
+							<label for="read-status">read</label>
+							<div class="read__input__wrapper">
+								<input
+									type="checkbox"
+									class="read__status"
+									name="read-status"
+									id="read-status"
+								/>
+							</div>
+						</div>
+						<button class="delete__book">delete</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>
