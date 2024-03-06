@@ -23,7 +23,7 @@
 				/>
 			</div>
 			<button id="search-btn" class="search btn__main">search</button>
-			<button class="add__book btn__main">add book</button>
+			<button class="add__book btn__main" id="add-book-btn">add book</button>
 		</header>
 		<main>
 			<h1 class="main__title">my books:</h1>
@@ -34,7 +34,7 @@
 					<p class="book__pages">100 pages</p>
 					<div class="book__controls">
 						<div class="read__option__wrapper">
-							<label for="read-status">read</label>
+							<label for="read-status">not read</label>
 							<div class="read__input__wrapper">
 								<input
 									type="checkbox"
@@ -49,5 +49,66 @@
 				</div>
 			</div>
 		</main>
+		<dialog>
+			<form action="#">
+				<div class="book__title__input">
+					<label for="book-title-input">book title:</label>
+					<input
+						type="text"
+						name="book title"
+						id="book-title-input"
+						maxlength="35"
+						minlength="3"
+						autofocus
+						required
+					/>
+				</div>
+				<div class="book__author__input">
+					<label for="book-author-input">author:</label>
+					<input
+						type="text"
+						name="book author"
+						id="book-author-input"
+						maxlength="35"
+						minlength="3"
+						required
+					/>
+				</div>
+				<div class="book__pages__input">
+					<label for="book-pages-input">number of pages:</label>
+					<input
+						type="number"
+						name="book pages"
+						id="book-pages-input"
+						min="1"
+						max="9999"
+						required
+					/>
+				</div>
+				<div class="read__status__input">
+					<label for="read-status-input">I've read this book</label>
+					<div class="read__input__wrapper">
+						<input type="checkbox" name="read status" id="read-status-input" />
+					</div>
+				</div>
+				<div class="dialog__controls">
+					<button
+						value="default"
+						id="dialog-add-btn"
+						class="dialog__btn dialog__add__btn"
+					>
+						Add
+					</button>
+					<button
+						value="cancel"
+						formmethod="dialog"
+						class="dialog__btn dialog__cancel__btn"
+						formnovalidate
+					>
+						Cancel
+					</button>
+				</div>
+			</form>
+		</dialog>
 	</body>
 </html>
