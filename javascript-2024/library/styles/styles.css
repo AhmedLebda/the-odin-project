@@ -151,7 +151,8 @@ main {
 .read__option__wrapper {
 	display: flex;
 	align-items: center;
-	gap: 10px;
+	flex-basis: 58%;
+	justify-content: space-between;
 }
 .read__option__wrapper > label {
 	font-size: 0.8rem;

@@ -21,7 +21,7 @@ function Book(title, author, pages, isRead) {
 	this.isRead = isRead;
 }
 
-function addBookToLibrary(title, author, pages, isRead = false) {
+function addBookToLibrary(title, author, pages, isRead) {
 	myLibrary.push(new Book(title, author, pages, isRead));
 }
 function resetDialogForm() {
@@ -71,27 +71,44 @@ function resetDialogForm() {
 // 	booksWrapper.appendChild(book);
 // }
 
-function createBookElement(title, author, pages, isRead) {
+function createBookElement(id, title, author, pages, isRead) {
 	const book = document.createElement("div");
 	book.classList.add("book");
+	book.dataset.order = `${id}`;
 	book.innerHTML = `<h3 class="book__title">${title}</h3>
 	<p class="book__author">${author}</p>
 	<p class="book__pages">${pages} pages</p>
 	<div class="book__controls">
 		<div class="read__option__wrapper">
-			<label for="read-status">${isRead ? "read" : "not read"}</label>
+			<label for="read-status-${id}">${isRead ? "read" : "not read"}</label>
 			<div class="read__input__wrapper">
 				<input
 					type="checkbox"
 					class="read__status"
 					name="read-status"
-					id="read-status"
+					id="read-status-${id}"
 				/>
 			</div>
 		</div>
 		<button class="delete__book">delete</button>
 	</div>`;
 	booksWrapper.appendChild(book);
+}
+
+function updateUi(booksArr) {
+	while (booksWrapper.firstChild) {
+		booksWrapper.firstChild.remove();
+	}
+
+	booksArr.forEach((book) => {
+		createBookElement(
+			book.id,
+			book.title,
+			book.author,
+			book.pages,
+			book.isRead
+		);
+	});
 }
 
 addBookBtn.addEventListener("click", () => dialog.showModal());
@@ -107,13 +124,32 @@ dialogForm.addEventListener("submit", (e) => {
 	);
 	resetDialogForm();
 	dialog.close();
-
-	const createdBook = myLibrary[myLibrary.length - 1];
-	createBookElement(
-		createdBook.title,
-		createdBook.author,
-		createdBook.pages,
-		createdBook.isRead
-	);
+	updateUi(myLibrary);
 });
 dialogCancelBtn.addEventListener("click", () => dialog.close());
+
+// Add event listener on the books wrapper div
+booksWrapper.addEventListener("click", (e) => {
+	// if the click target is the delete button
+	if (e.target.classList.contains("delete__book")) {
+		let targetBook = e.target.parentElement.parentElement.dataset.order; // get the data order of the book
+		let targetIndex;
+		// get the book index from myLibrary array
+		myLibrary.forEach((book, index) => {
+			if (book.id === +targetBook) {
+				targetIndex = index;
+			}
+		});
+
+		myLibrary.splice(targetIndex, 1); // Delete the book from myLibrary arr
+
+		updateUi(myLibrary);
+	}
+
+	if (e.target.classList.contains("read__status")) {
+		const targetBook =
+			e.target.parentElement.parentElement.parentElement.parentElement;
+		const label = targetBook.querySelector("label");
+		label.textContent = e.target.checked ? "Read" : "Not Read";
+	}
+});
