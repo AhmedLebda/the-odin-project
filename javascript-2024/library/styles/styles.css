@@ -67,6 +67,7 @@ header {
 	display: flex;
 	background-color: #ffffff;
 	position: relative;
+	margin-right: auto;
 }
 .search__wrapper label {
 	padding: 0px 0 0px 10px;
@@ -123,7 +124,11 @@ main {
 	flex-direction: column;
 	gap: 0.5rem;
 	text-transform: capitalize;
-	background-color: #f3f4fb;
+	background-color: #8bc6ec;
+	background: linear-gradient(to right, #2193b02e, #6dd5ed);
+}
+.book:has(input:checked) {
+	background-image: linear-gradient(to right, #41f90030, #52c2348f);
 }
 .book__title {
 	padding-bottom: 0.1rem;
@@ -132,7 +137,6 @@ main {
 .book__title,
 .book__author,
 .book__pages {
-	color: #382f2a;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;

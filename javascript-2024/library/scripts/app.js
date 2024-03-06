@@ -13,6 +13,9 @@ const bookReadStatus = document.querySelector("#read-status-input");
 
 const booksWrapper = document.querySelector(".books__wrapper");
 
+// Book Search variables
+const searchInput = document.querySelector("#search-input");
+
 function Book(title, author, pages, isRead) {
 	this.id = myLibrary.length;
 	this.title = title;
@@ -92,6 +95,8 @@ function createBookElement(id, title, author, pages, isRead) {
 		</div>
 		<button class="delete__book">delete</button>
 	</div>`;
+	const input = book.querySelector("input");
+	input.checked = isRead;
 	booksWrapper.appendChild(book);
 }
 
@@ -151,5 +156,18 @@ booksWrapper.addEventListener("click", (e) => {
 			e.target.parentElement.parentElement.parentElement.parentElement;
 		const label = targetBook.querySelector("label");
 		label.textContent = e.target.checked ? "Read" : "Not Read";
+		myLibrary[targetBook.dataset.order].isRead = e.target.checked;
+	}
+});
+
+// search books by title
+searchInput.addEventListener("input", () => {
+	if (searchInput.value) {
+		let searchResultBooks = myLibrary.filter((book) =>
+			book.title.includes(searchInput.value)
+		);
+		updateUi(searchResultBooks);
+	} else {
+		updateUi(myLibrary);
 	}
 });
