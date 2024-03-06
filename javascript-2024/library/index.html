@@ -52,7 +52,7 @@
 		<dialog>
 			<form action="#">
 				<div class="book__title__input">
-					<label for="book-title-input">book title:</label>
+					<label for="book-title-input">book title: *</label>
 					<input
 						type="text"
 						name="book title"
@@ -64,7 +64,7 @@
 					/>
 				</div>
 				<div class="book__author__input">
-					<label for="book-author-input">author:</label>
+					<label for="book-author-input">author: *</label>
 					<input
 						type="text"
 						name="book author"
@@ -75,7 +75,7 @@
 					/>
 				</div>
 				<div class="book__pages__input">
-					<label for="book-pages-input">number of pages:</label>
+					<label for="book-pages-input">number of pages: *</label>
 					<input
 						type="number"
 						name="book pages"
@@ -100,10 +100,11 @@
 						Add
 					</button>
 					<button
+						type="reset"
 						value="cancel"
 						formmethod="dialog"
 						class="dialog__btn dialog__cancel__btn"
-						formnovalidate
+						id="dialog-cancel"
 					>
 						Cancel
 					</button>
