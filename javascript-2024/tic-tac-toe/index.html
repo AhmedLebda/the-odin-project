@@ -32,6 +32,31 @@
 						<span id="player-two-score">0</span>
 					</div>
 				</section>
+				<!-- Change Names Dialog -->
+				<dialog>
+					<form action="#" method="dialog">
+						<div class="player_name_wrapper">
+							<label for="player-one-name">Player One name:</label>
+							<input
+								type="text"
+								placeholder="Player One"
+								id="player-one-name-input"
+								name="player-one"
+								autofocus
+							/>
+						</div>
+						<div class="player_name_wrapper">
+							<label for="player-two-name">Player two name:</label>
+							<input
+								type="text"
+								placeholder="Player two"
+								id="player-two-name-input"
+								name="player-two"
+							/>
+						</div>
+						<button class="option_btn" id="confirm-names">Confirm</button>
+					</form>
+				</dialog>
 			</aside>
 			<div class="game__wrapper">
 				<h2 class="game_status" id="game-status">Player One Turn</h2>

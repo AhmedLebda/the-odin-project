@@ -142,6 +142,12 @@ const UiControls = (() => {
 	const playerTwoScore = document.querySelector("#player-two-score");
 	const restartBtn = document.querySelector("#restart");
 	const resetScoresBtn = document.querySelector("#reset-scores");
+	const changeNamesBtn = document.querySelector("#change-names");
+	const changeNamesDialog = document.querySelector("dialog");
+	const playerOneNameInput = document.querySelector("#player-one-name-input");
+	const playerTwoNameInput = document.querySelector("#player-two-name-input");
+	const playerOneName = document.querySelector("#player-one-name");
+	const playerTwoName = document.querySelector("#player-two-name");
 
 	const updatePlayerTurn = () => {
 		gameStatus.textContent = `${GameControls.getPlayerTurn()}'s Turn`;
@@ -167,10 +173,16 @@ const UiControls = (() => {
 		});
 
 		restartBtn.addEventListener("click", restartGameHandler);
+
 		resetScoresBtn.addEventListener("click", () => {
 			GameControls.resetScores();
 			updateScores();
 			restartGameHandler();
+		});
+
+		changeNamesBtn.addEventListener("click", () => {
+			changeNamesDialog.showModal();
+			changeNamesDialog.addEventListener("submit", updatePlayerNamesHandler);
 		});
 	};
 
@@ -196,6 +208,20 @@ const UiControls = (() => {
 		GameControls.resetTurn();
 		resetCells();
 		startGame();
+	}
+
+	function updatePlayerNamesHandler() {
+		if (playerOneNameInput.value) {
+			playerOneName.textContent = playerOneNameInput.value;
+			playerOne.setName(playerOneNameInput.value);
+		}
+		if (playerTwoNameInput.value) {
+			playerTwoName.textContent = playerTwoNameInput.value;
+			playerTwo.setName(playerTwoNameInput.value);
+		}
+		updatePlayerTurn();
+		playerOneNameInput.value = "";
+		playerTwoNameInput.value = "";
 	}
 
 	startGame();
