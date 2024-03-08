@@ -54,7 +54,10 @@ const GameControls = (() => {
 	};
 
 	const resetTurn = () => (playerTurn = "playerOne");
-
+	const resetScores = () => {
+		playerOne.resetScore();
+		playerTwo.resetScore();
+	};
 	const isGameOver = () => {
 		const currentBoard = GameBoard.getGameBoard();
 		// Check for diagonal set
@@ -128,7 +131,7 @@ const GameControls = (() => {
 	const getPlayerTurn = () =>
 		playerTurn === "playerOne" ? playerOne.getName() : playerTwo.getName();
 
-	return { playRound, isGameOver, getPlayerTurn, resetTurn };
+	return { playRound, isGameOver, getPlayerTurn, resetTurn, resetScores };
 })();
 
 const UiControls = (() => {
@@ -138,6 +141,7 @@ const UiControls = (() => {
 	const playerOneScore = document.querySelector("#player-one-score");
 	const playerTwoScore = document.querySelector("#player-two-score");
 	const restartBtn = document.querySelector("#restart");
+	const resetScoresBtn = document.querySelector("#reset-scores");
 
 	const updatePlayerTurn = () => {
 		gameStatus.textContent = `${GameControls.getPlayerTurn()}'s Turn`;
@@ -163,6 +167,11 @@ const UiControls = (() => {
 		});
 
 		restartBtn.addEventListener("click", restartGameHandler);
+		resetScoresBtn.addEventListener("click", () => {
+			GameControls.resetScores();
+			updateScores();
+			restartGameHandler();
+		});
 	};
 
 	function clickCellHandler(e) {
@@ -188,5 +197,6 @@ const UiControls = (() => {
 		resetCells();
 		startGame();
 	}
+
 	startGame();
 })();
