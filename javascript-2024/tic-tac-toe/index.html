@@ -10,6 +10,42 @@
 		<script src="scripts/app.js"></script>
 	</head>
 	<body>
-		<h1>Tic Tac Toe</h1>
+		<header>
+			<h1>Tic Tac Toe</h1>
+		</header>
+		<main>
+			<aside>
+				<section class="game__controls">
+					<h3>Controls:</h3>
+					<button id="restart" class="option_btn">Restart</button>
+					<button id="change-names" class="option_btn">Change Names</button>
+				</section>
+				<section class="scores">
+					<h3>scores:</h3>
+					<p class="player_one_score">
+						Player One: <span id="player-one-score"></span>
+					</p>
+					<p class="player_two_score">
+						Player Two: <span id="player-two-score"></span>
+					</p>
+				</section>
+			</aside>
+			<div class="game__wrapper">
+				<h2 class="player__turn" id="player-turn">Player One Turn</h2>
+				<div class="game__board__wrapper">
+					<ul id="game-board" class="game__board">
+						<li data-place="0"></li>
+						<li data-place="1"></li>
+						<li data-place="2"></li>
+						<li data-place="3"></li>
+						<li data-place="4"></li>
+						<li data-place="5"></li>
+						<li data-place="6"></li>
+						<li data-place="7"></li>
+						<li data-place="8"></li>
+					</ul>
+				</div>
+			</div>
+		</main>
 	</body>
 </html>
