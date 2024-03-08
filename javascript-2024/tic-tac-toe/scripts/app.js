@@ -115,7 +115,7 @@ const GameControls = (() => {
 		// Check for full board (Tie)
 		let isFullBoard = !currentBoard.flat().includes(".");
 		if (isFullBoard) {
-			return `It's a Tie`;
+			return `tie`;
 		}
 	};
 
@@ -170,6 +170,8 @@ const UiControls = (() => {
 
 		uiBoard.forEach((cell) => {
 			cell.addEventListener("click", clickCellHandler, { once: true });
+			// Display a Shadow mark on the Cell
+			cell.addEventListener("mouseover", showShadowMark);
 		});
 
 		restartBtn.addEventListener("click", restartGameHandler);
@@ -194,20 +196,32 @@ const UiControls = (() => {
 		updatePlayerTurn();
 
 		// Check for gameOver
-		let winner = GameControls.isGameOver();
-		if (winner) {
+		let gameResult = GameControls.isGameOver();
+		if (gameResult === "tie") {
+			gameStatus.textContent = `It's a Tie`;
+			gameStatus.classList.add("tie");
+		} else if (gameResult) {
 			uiBoard.forEach((cell) => {
 				cell.removeEventListener("click", clickCellHandler);
+
+				// Remove shadow mark classes and the event listener
+				cell.removeEventListener("mouseover", showShadowMark);
+				cell.classList.remove("x_hover");
+				cell.classList.remove("o_hover");
 			});
-			gameStatus.textContent = `${winner.getName()} Won`;
+			gameStatus.textContent = `${gameResult.getName()} Won`;
 			updateScores();
+			gameStatus.classList.add("win");
 		}
 	}
+
 	function restartGameHandler() {
 		GameBoard.resetGameBoard();
 		GameControls.resetTurn();
 		resetCells();
 		startGame();
+		gameStatus.classList.remove("win");
+		gameStatus.classList.remove("tie");
 	}
 
 	function updatePlayerNamesHandler() {
@@ -223,6 +237,16 @@ const UiControls = (() => {
 		playerOneNameInput.value = "";
 		playerTwoNameInput.value = "";
 	}
-
+	function showShadowMark(e) {
+		e.target.classList.remove("x_hover");
+		e.target.classList.remove("o_hover");
+		if (e.target.textContent === "") {
+			if (GameControls.getPlayerTurn() === playerOne.getName()) {
+				e.target.classList.add(`${playerOne.getMark()}_hover`);
+			} else {
+				e.target.classList.add(`${playerTwo.getMark()}_hover`);
+			}
+		}
+	}
 	startGame();
 })();

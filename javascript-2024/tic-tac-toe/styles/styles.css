@@ -36,6 +36,7 @@ main {
 	width: min(900px, 100% - 20px);
 	margin: 0 auto;
 	display: flex;
+	flex-wrap: wrap;
 	border: 1px solid black;
 	border-radius: 10px;
 	overflow: hidden;
@@ -118,12 +119,13 @@ dialog > form {
 	padding: 2rem;
 	gap: 3rem;
 	background-color: #f5f5dc;
-	color: #333333;
+}
+.game_status {
+	transition: 0.5s;
 }
 .game__board__wrapper {
 	width: 360px;
 }
-
 .game__board {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -168,15 +170,28 @@ dialog > form {
 }
 
 /* Show mark on hover test*/
-/* .game__board li {
+.game__board li {
 	position: relative;
 }
-.game__board li:hover::after {
+.game__board li.x_hover:hover::after,
+.game__board li.o_hover:hover::after {
 	content: "x";
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 8rem;
-	color: #504f4f;
-} */
+	color: #504f4fa7;
+}
+.game__board li.o_hover:hover::after {
+	content: "o";
+}
+
+.win {
+	color: green;
+	scale: 2;
+}
+.tie {
+	color: #c02942;
+	scale: 2;
+}
