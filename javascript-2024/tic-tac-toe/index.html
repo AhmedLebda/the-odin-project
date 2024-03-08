@@ -7,7 +7,7 @@
 		<!-- Styles -->
 		<link rel="stylesheet" href="styles/styles.css" />
 		<!-- Scripts -->
-		<script src="scripts/app.js"></script>
+		<script src="scripts/app.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -19,19 +19,22 @@
 					<h3>Controls:</h3>
 					<button id="restart" class="option_btn">Restart</button>
 					<button id="change-names" class="option_btn">Change Names</button>
+					<button id="reset-scores" class="option_btn">Reset Scores</button>
 				</section>
 				<section class="scores">
 					<h3>scores:</h3>
-					<p class="player_one_score">
-						Player One: <span id="player-one-score"></span>
-					</p>
-					<p class="player_two_score">
-						Player Two: <span id="player-two-score"></span>
-					</p>
+					<div class="player_score_wrapper">
+						<p id="player-one-name">player One</p>
+						<span id="player-one-score">0</span>
+					</div>
+					<div class="player_score_wrapper">
+						<p id="player-two-name">player two</p>
+						<span id="player-two-score">0</span>
+					</div>
 				</section>
 			</aside>
 			<div class="game__wrapper">
-				<h2 class="player__turn" id="player-turn">Player One Turn</h2>
+				<h2 class="game_status" id="game-status">Player One Turn</h2>
 				<div class="game__board__wrapper">
 					<ul id="game-board" class="game__board">
 						<li data-place="0"></li>

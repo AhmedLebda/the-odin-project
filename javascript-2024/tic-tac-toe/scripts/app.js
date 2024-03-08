@@ -1,15 +1,17 @@
+"use strict";
+
 const GameBoard = (() => {
 	const gameBoard = [
-		["x", "o", "x"],
-		["o", "x", "o"],
-		["o", "x", "o"],
+		[".", ".", "."],
+		[".", ".", "."],
+		[".", ".", "."],
 	];
 
 	const getGameBoard = () => gameBoard;
 	const addMark = (mark, place) => {
 		if (place <= 2) {
 			gameBoard[0][place] = mark;
-		} else if (2 < place <= 5) {
+		} else if (place > 2 && place <= 5) {
 			gameBoard[1][place - 3] = mark;
 		} else {
 			gameBoard[2][place - 6] = mark;
@@ -20,16 +22,21 @@ const GameBoard = (() => {
 })();
 
 const playerFactory = (name, mark) => {
+	let score = 0;
 	const getName = () => name;
+	const setName = (newName) => (name = newName);
 	const getMark = () => mark;
-	return { getName, getMark };
+	const getScore = () => score;
+	const updateScore = () => score++;
+	const resetScore = () => (score = 0);
+	return { getName, getMark, getScore, updateScore, resetScore, setName };
 };
+
+const playerOne = playerFactory("Player One", "x");
+const playerTwo = playerFactory("Player Two", "o");
 
 const GameControls = (() => {
 	let playerTurn = "playerOne";
-
-	const playerOne = playerFactory("Ahmed", "x");
-	const playerTwo = playerFactory("Mohamed", "o");
 
 	const switchTurn = () => {
 		if (playerTurn === "playerOne") {
@@ -39,7 +46,7 @@ const GameControls = (() => {
 		}
 	};
 
-	const isGameOver = (firstPlayer, secondPlayer) => {
+	const isGameOver = () => {
 		const currentBoard = GameBoard.getGameBoard();
 		// Check for diagonal set
 		if (
@@ -50,7 +57,8 @@ const GameControls = (() => {
 				currentBoard[1][1] === "x" &&
 				currentBoard[2][0] === "x")
 		) {
-			return `${firstPlayer.getName()} Won`;
+			playerOne.updateScore();
+			return playerOne;
 		}
 		if (
 			(currentBoard[0][0] === "o" &&
@@ -60,7 +68,8 @@ const GameControls = (() => {
 				currentBoard[1][1] === "o" &&
 				currentBoard[2][0] === "o")
 		) {
-			return `${secondPlayer.getName()} Won`;
+			playerTwo.updateScore();
+			return playerTwo;
 		}
 
 		// Check For Full Row
@@ -68,9 +77,11 @@ const GameControls = (() => {
 			let playerOneFullRow = row.every((mark) => mark === "x");
 			let PlayerTwoFullRow = row.every((mark) => mark === "o");
 			if (playerOneFullRow) {
-				return `${firstPlayer.getName()} Won`;
+				playerOne.updateScore();
+				return playerOne;
 			} else if (PlayerTwoFullRow) {
-				return `${secondPlayer.getName()} Won`;
+				playerTwo.updateScore();
+				return playerTwo;
 			}
 		}
 
@@ -81,16 +92,18 @@ const GameControls = (() => {
 			let playerOneFullColumn = column.every((mark) => mark === "x");
 			let playerTwoFullColumn = column.every((mark) => mark === "o");
 			if (playerOneFullColumn) {
-				return `${firstPlayer.getName()} Won`;
+				playerOne.updateScore();
+				return playerOne;
 			} else if (playerTwoFullColumn) {
-				return `${secondPlayer.getName()} Won`;
+				playerTwo.updateScore();
+				return playerTwo;
 			}
 		}
 
 		// Check for full board (Tie)
 		let isFullBoard = !currentBoard.flat().includes(".");
 		if (isFullBoard) {
-			return `Tie`;
+			return `It's a Tie`;
 		}
 	};
 
@@ -100,14 +113,59 @@ const GameControls = (() => {
 		} else {
 			GameBoard.addMark(playerTwo.getMark(), place);
 		}
-		isGameOver(playerOne, playerTwo);
 		switchTurn();
 	};
 
 	const getPlayerTurn = () =>
 		playerTurn === "playerOne" ? playerOne.getName() : playerTwo.getName();
 
-	return { playRound, getPlayerTurn };
+	return { playRound, isGameOver, getPlayerTurn };
 })();
 
-// feat: Hover with the sign effect
+const UiControls = (() => {
+	// UI Variables
+	const uiBoard = document.querySelectorAll("#game-board > *");
+	const gameStatus = document.querySelector("#game-status");
+	const playerOneScore = document.querySelector("#player-one-score");
+	const playerTwoScore = document.querySelector("#player-two-score");
+
+	const updatePlayerTurn = () => {
+		gameStatus.textContent = `${GameControls.getPlayerTurn()}'s Turn`;
+	};
+	const updateBoxMark = (e) => {
+		let targetPlace = +e.target.dataset.place;
+		e.target.textContent = GameBoard.getGameBoard().flat()[targetPlace];
+	};
+	const updateScores = () => {
+		playerOneScore.textContent = playerOne.getScore();
+		playerTwoScore.textContent = playerTwo.getScore();
+	};
+
+	const startGame = () => {
+		updatePlayerTurn();
+
+		uiBoard.forEach((box) => {
+			box.addEventListener("click", handleBoxClick, { once: true });
+		});
+	};
+
+	function handleBoxClick(e) {
+		let clickedBox = +e.target.dataset.place;
+
+		GameControls.playRound(clickedBox);
+		updateBoxMark(e);
+		updatePlayerTurn();
+
+		// Check for gameOver
+		let winner = GameControls.isGameOver();
+		if (winner) {
+			uiBoard.forEach((box) => {
+				box.removeEventListener("click", handleBoxClick);
+			});
+			gameStatus.textContent = `${winner.getName()} Won`;
+			updateScores();
+		}
+	}
+
+	startGame();
+})();

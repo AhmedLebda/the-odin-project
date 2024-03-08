@@ -65,6 +65,11 @@ aside h3 {
 	border-bottom: 2px solid white;
 	padding-bottom: 1rem;
 }
+.player_score_wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
 .option_btn {
 	padding: 1rem;
 	font-size: 1rem;
@@ -88,7 +93,7 @@ aside h3 {
 	color: #333333;
 }
 .game__board__wrapper {
-	width: min(360px, 100%);
+	width: 360px;
 }
 
 .game__board {
@@ -98,6 +103,12 @@ aside h3 {
 }
 .game__board > * {
 	border: 3px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 8rem;
+	cursor: pointer;
+	user-select: none;
 }
 .game__board li[data-place="0"] {
 	border-top: none;
