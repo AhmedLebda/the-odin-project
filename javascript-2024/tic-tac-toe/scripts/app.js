@@ -2,12 +2,19 @@
 
 const GameBoard = (() => {
 	const gameBoard = [
-		[".", ".", "."],
-		[".", ".", "."],
-		[".", ".", "."],
+		[".", "x", "."],
+		["o", ".", "."],
+		[".", "x", "."],
 	];
 
 	const getGameBoard = () => gameBoard;
+	const resetGameBoard = () => {
+		gameBoard.forEach((row, rowIndex) => {
+			row.forEach((cell, cellIndex) => {
+				gameBoard[rowIndex][cellIndex] = ".";
+			});
+		});
+	};
 	const addMark = (mark, place) => {
 		if (place <= 2) {
 			gameBoard[0][place] = mark;
@@ -18,7 +25,7 @@ const GameBoard = (() => {
 		}
 	};
 
-	return { getGameBoard, addMark };
+	return { getGameBoard, addMark, resetGameBoard };
 })();
 
 const playerFactory = (name, mark) => {
@@ -45,6 +52,8 @@ const GameControls = (() => {
 			playerTurn = "playerOne";
 		}
 	};
+
+	const resetTurn = () => (playerTurn = "playerOne");
 
 	const isGameOver = () => {
 		const currentBoard = GameBoard.getGameBoard();
@@ -119,7 +128,7 @@ const GameControls = (() => {
 	const getPlayerTurn = () =>
 		playerTurn === "playerOne" ? playerOne.getName() : playerTwo.getName();
 
-	return { playRound, isGameOver, getPlayerTurn };
+	return { playRound, isGameOver, getPlayerTurn, resetTurn };
 })();
 
 const UiControls = (() => {
@@ -128,14 +137,19 @@ const UiControls = (() => {
 	const gameStatus = document.querySelector("#game-status");
 	const playerOneScore = document.querySelector("#player-one-score");
 	const playerTwoScore = document.querySelector("#player-two-score");
+	const restartBtn = document.querySelector("#restart");
 
 	const updatePlayerTurn = () => {
 		gameStatus.textContent = `${GameControls.getPlayerTurn()}'s Turn`;
 	};
-	const updateBoxMark = (e) => {
+	const updateCellMark = (e) => {
 		let targetPlace = +e.target.dataset.place;
 		e.target.textContent = GameBoard.getGameBoard().flat()[targetPlace];
 	};
+	const resetCells = () => {
+		uiBoard.forEach((cell) => (cell.textContent = ""));
+	};
+
 	const updateScores = () => {
 		playerOneScore.textContent = playerOne.getScore();
 		playerTwoScore.textContent = playerTwo.getScore();
@@ -144,28 +158,35 @@ const UiControls = (() => {
 	const startGame = () => {
 		updatePlayerTurn();
 
-		uiBoard.forEach((box) => {
-			box.addEventListener("click", handleBoxClick, { once: true });
+		uiBoard.forEach((cell) => {
+			cell.addEventListener("click", clickCellHandler, { once: true });
 		});
+
+		restartBtn.addEventListener("click", restartGameHandler);
 	};
 
-	function handleBoxClick(e) {
-		let clickedBox = +e.target.dataset.place;
+	function clickCellHandler(e) {
+		let clickedCell = +e.target.dataset.place;
 
-		GameControls.playRound(clickedBox);
-		updateBoxMark(e);
+		GameControls.playRound(clickedCell);
+		updateCellMark(e);
 		updatePlayerTurn();
 
 		// Check for gameOver
 		let winner = GameControls.isGameOver();
 		if (winner) {
-			uiBoard.forEach((box) => {
-				box.removeEventListener("click", handleBoxClick);
+			uiBoard.forEach((cell) => {
+				cell.removeEventListener("click", clickCellHandler);
 			});
 			gameStatus.textContent = `${winner.getName()} Won`;
 			updateScores();
 		}
 	}
-
+	function restartGameHandler() {
+		GameBoard.resetGameBoard();
+		GameControls.resetTurn();
+		resetCells();
+		startGame();
+	}
 	startGame();
 })();
