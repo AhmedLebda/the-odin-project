@@ -1,0 +1,26 @@
+.menu_page {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 2rem;
+	padding: 2rem;
+}
+.menu_item {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	align-items: center;
+	width: min(280px, 100%);
+}
+.item_title {
+	color: brown;
+}
+.item_img_wrapper {
+	border-radius: 10px;
+	overflow: hidden;
+	max-height: 180px;
+}
+.item_info {
+	color: #ac0606;
+	font-style: italic;
+}

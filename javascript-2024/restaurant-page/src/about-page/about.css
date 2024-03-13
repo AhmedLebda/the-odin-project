@@ -1,0 +1,19 @@
+.about_page {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	padding: 2rem;
+	align-items: center;
+}
+
+.title {
+	color: brown;
+	font-size: 3rem;
+}
+.info {
+	color: #dc5959;
+	font-style: italic;
+	font-size: 1.5rem;
+	text-align: center;
+	line-height: 2rem;
+}

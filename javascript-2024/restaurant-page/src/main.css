@@ -1,0 +1,55 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+button {
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+body {
+	font-family: sans-serif;
+	min-height: 100vh;
+	display: grid;
+	place-content: center;
+}
+
+img {
+	max-width: 100%;
+}
+.content {
+	margin: 0 auto;
+	min-height: 480px;
+	background-color: beige;
+	border-radius: 10px;
+	max-width: 800px;
+	height: 500px;
+	overflow: auto;
+}
+
+/* Header Styles */
+header {
+	padding: 1rem;
+	margin-bottom: 1rem;
+}
+header > nav {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+.nav_btn {
+	padding: 1rem 2rem;
+	background-color: tan;
+	border: none;
+	font-weight: bold;
+	font-size: 1rem;
+	border-radius: 10px;
+}
+.nav-btn:hover {
+	background-color: rgb(212, 175, 125);
+}
