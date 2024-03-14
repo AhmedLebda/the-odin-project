@@ -23,7 +23,7 @@
 				</div>
 				<div class="projects_wrapper">
 					<h2 class="aside_section_title">projects</h2>
-					<div class="projects">
+					<div class="projects" id="projects-container">
 						<div class="project_item">
 							<h3 class="project_name" id="project-name">Work</h3>
 							<div class="project_options">
@@ -70,7 +70,7 @@
 		</div>
 
 		<!-- Dialog box To Add Project -->
-		<dialog class="add_project_dialog">
+		<dialog class="add_project_dialog" id="add-project-dialog">
 			<form action="#" method="dialog">
 				<label for="project-title-input">project title :</label>
 				<input
@@ -78,15 +78,15 @@
 					name="project-title-input"
 					id="project-title-input"
 					minlength="3"
-					maxlength="50"
+					maxlength="25"
 					autofocus
 					required
 				/>
+				<div class="dialog_options">
+					<button type="submit">add</button>
+					<button type="reset" id="cancel-project-modal">cancel</button>
+				</div>
 			</form>
-			<div class="dialog_options">
-				<button type="submit">add</button>
-				<button type="reset">cancel</button>
-			</div>
 		</dialog>
 		<dialog class="add_task_dialog">
 			<form action="#" method="dialog">
