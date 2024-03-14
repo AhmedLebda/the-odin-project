@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ToDo App</title>
+	</head>
+	<body>
+		<header>
+			<h1 class="logo">ToDo App</h1>
+		</header>
+		<div class="content_wrapper">
+			<aside>
+				<div class="home_wrapper">
+					<h2 class="aside_section_title">home</h2>
+					<div class="home_options_wrapper">
+						<button class="home_option active" id="all-tasks-option">
+							all tasks
+						</button>
+						<button class="home_option" id="today-option">today</button>
+						<button class="home_option" id="important-option">important</button>
+					</div>
+				</div>
+				<div class="projects_wrapper">
+					<h2 class="aside_section_title">projects</h2>
+					<div class="projects">
+						<div class="project_item">
+							<h3 class="project_name" id="project-name">Work</h3>
+							<div class="project_options">
+								<button class="project_option" id="project-rename-option">
+									rename
+								</button>
+								<button
+									class="project_option delete"
+									id="project-delete-option"
+								>
+									delete
+								</button>
+							</div>
+						</div>
+					</div>
+					<button class="add" id="add-project">add project</button>
+				</div>
+			</aside>
+			<main>
+				<h2 class="title">all tasks</h2>
+				<div class="tasks_wrapper" id="task-wrapper">
+					<div class="task">
+						<div class="task_info">
+							<input type="checkbox" name="task-0" id="task-0" />
+							<div class="task_info__wrapper">
+								<label for="task-0" class="task_title" id="task-title"
+									>task title</label
+								>
+								<p class="task_details" id="task-details">
+									this is dummy text about this task details
+								</p>
+							</div>
+						</div>
+						<div class="task_options">
+							<p class="due_date" id="due-date">14-3-2024</p>
+							<button class="task_btn fav">favorite</button>
+							<button class="task_btn edit">edit</button>
+							<button class="task_btn delete">delete</button>
+						</div>
+					</div>
+				</div>
+				<button class="add">add Task</button>
+			</main>
+		</div>
+
+		<!-- Dialog box To Add Project -->
+		<dialog class="add_project_dialog">
+			<form action="#" method="dialog">
+				<label for="project-title-input">project title :</label>
+				<input
+					type="text"
+					name="project-title-input"
+					id="project-title-input"
+					minlength="3"
+					maxlength="50"
+					autofocus
+					required
+				/>
+			</form>
+			<div class="dialog_options">
+				<button type="submit">add</button>
+				<button type="reset">cancel</button>
+			</div>
+		</dialog>
+		<dialog class="add_task_dialog">
+			<form action="#" method="dialog">
+				<div class="tite_input_wrapper">
+					<label for="task-title-input">task title * :</label>
+					<input
+						type="text"
+						name="task-title-input"
+						id="task-title-input"
+						maxlength="50"
+						minlength="3"
+						autofocus
+						required
+					/>
+				</div>
+				<div class="details_input_wrapper">
+					<label for="task-details-input">task details (optional):</label>
+					<input
+						type="text"
+						name="task-details-input"
+						id="task-details-input"
+						maxlength="50"
+						minlength="3"
+					/>
+				</div>
+				<div class="date_input_wrapper">
+					<label for="task-date-input">due date :</label>
+					<input
+						type="date"
+						name="task-date-input"
+						id="task-date-input"
+						required
+					/>
+				</div>
+			</form>
+			<div class="dialog_options">
+				<button type="submit">add</button>
+				<button type="reset">cancel</button>
+			</div>
+		</dialog>
+	</body>
+</html>
