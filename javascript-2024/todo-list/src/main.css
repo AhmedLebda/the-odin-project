@@ -135,7 +135,7 @@ aside {
 
 /* Main Styles */
 main {
-	flex: 4;
+	flex: 3;
 	padding: 1rem;
 }
 .title {
@@ -148,7 +148,9 @@ main {
 }
 .tasks_wrapper {
 	background-color: beige;
-	/* min-height: 67vh; */
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 	overflow: auto;
 	margin-top: 1rem;
 	border-radius: 5px;
@@ -166,16 +168,14 @@ main {
 	display: flex;
 	gap: 1rem;
 }
-.task_info > input {
+.task_checkbox {
 	width: 20px;
-	border-radius: 10px;
-	overflow: hidden;
-	appearance: none;
-	align-self: center;
 	height: 20px;
+	border-radius: 10px;
+	align-self: center;
 	background-color: white;
 }
-.task_info > input:checked {
+.active_checkbox {
 	background-color: green;
 }
 .task_info__wrapper {
