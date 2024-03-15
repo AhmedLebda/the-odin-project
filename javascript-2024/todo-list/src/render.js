@@ -1,4 +1,5 @@
 import createProjectElement from "./createProjectElement";
+import createTaskElement from "./createTaskElement";
 import ProjectsStorage from "./ProjectsStorage";
 
 // ** Function to render all projects inside the projects storage:
@@ -21,6 +22,21 @@ function renderProjects() {
 	});
 }
 
+// Renders all tasks inside a selected project array
+function renderSelectedTasks(selectedProjectObj) {
+	const tasksContainer = document.querySelector("#tasks-wrapper");
+	clearContainerElement(tasksContainer);
+	selectedProjectObj.tasks.forEach((task) => {
+		const createdTaskElement = createTaskElement(
+			task.title,
+			task.details,
+			task.date
+		);
+		createdTaskElement.dataset.key = task.getId();
+		tasksContainer.appendChild(createdTaskElement);
+	});
+}
+
 // util function: clear all children of a container element
 function clearContainerElement(containerElement) {
 	while (containerElement.firstChild) {
@@ -28,4 +44,4 @@ function clearContainerElement(containerElement) {
 	}
 }
 
-export { renderProjects };
+export { renderProjects, renderSelectedTasks };
