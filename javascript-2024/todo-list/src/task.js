@@ -7,6 +7,7 @@ export default class Task {
 		this.date = date;
 		this.favorite = false;
 		this._id = uniqid();
+		this.isComplete = false;
 	}
 
 	setTitle(newTitle) {

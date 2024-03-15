@@ -22,4 +22,3 @@ export default class Project {
 		}
 	}
 }
-// Add method to add to project tasks

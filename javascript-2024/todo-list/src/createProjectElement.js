@@ -12,11 +12,13 @@ export default function createProjectElement(title) {
 	const renameBtn = document.createElement("button");
 	renameBtn.classList.add("project_option");
 	renameBtn.textContent = "rename";
+	renameBtn.dataset.action = "rename-project";
 
 	const deleteBtn = document.createElement("button");
 	deleteBtn.classList.add("project_option");
 	deleteBtn.classList.add("delete");
 	deleteBtn.textContent = "delete";
+	deleteBtn.dataset.action = "delete-project";
 
 	optionsWrapper.appendChild(renameBtn);
 	optionsWrapper.appendChild(deleteBtn);

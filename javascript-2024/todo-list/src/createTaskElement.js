@@ -5,12 +5,6 @@ export default function createTaskElement(title, details, date) {
 	const taskInfoContainer = document.createElement("div");
 	taskInfoContainer.classList.add("task_info");
 
-	const taskCheckbox = document.createElement("div");
-	taskCheckbox.classList.add("task_checkbox");
-	taskCheckbox.addEventListener("click", () =>
-		taskCheckbox.classList.toggle("active_checkbox")
-	);
-
 	const taskInfoWrapper = document.createElement("div");
 	taskInfoWrapper.classList.add("task_info__wrapper");
 
@@ -21,6 +15,14 @@ export default function createTaskElement(title, details, date) {
 	const taskDetails = document.createElement("p");
 	taskDetails.classList.add("task_details");
 	taskDetails.textContent = details;
+
+	const taskCheckbox = document.createElement("div");
+	taskCheckbox.classList.add("task_checkbox");
+	taskCheckbox.addEventListener("click", () => {
+		taskCheckbox.classList.toggle("active_checkbox");
+		taskTitle.classList.toggle("line_through");
+		taskDetails.classList.toggle("line_through");
+	});
 
 	taskInfoWrapper.appendChild(taskTitle);
 	taskInfoWrapper.appendChild(taskDetails);

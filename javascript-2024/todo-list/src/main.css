@@ -27,7 +27,7 @@ label {
 /* Header Styles */
 
 header {
-	padding: 2rem 0;
+	padding: 1rem 0;
 	background-color: #fff;
 	display: flex;
 	justify-content: center;
@@ -69,7 +69,7 @@ aside {
 .home_options_wrapper {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	/* align-items: flex-start; */
 }
 .home_option {
 	background-color: transparent;
@@ -78,10 +78,11 @@ aside {
 	font-size: 1rem;
 	font-weight: bold;
 	text-transform: capitalize;
+	text-align: left;
 }
 .active {
-	color: slateblue;
-	padding-left: 1rem;
+	border-radius: 5px;
+	border: 2px solid steelblue;
 }
 .project_item {
 	display: flex;
@@ -174,6 +175,7 @@ main {
 	border-radius: 10px;
 	align-self: center;
 	background-color: white;
+	cursor: pointer;
 }
 .active_checkbox {
 	background-color: green;
@@ -225,6 +227,9 @@ main {
 .edit:hover {
 	background-color: #005b00;
 }
+.line_through {
+	text-decoration: line-through;
+}
 
 /* Dialog Styles */
 dialog {
@@ -232,6 +237,10 @@ dialog {
 	border-radius: 5px;
 	padding: 1rem;
 	width: min(350px, 100%);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 dialog > form {
 	display: flex;
@@ -248,7 +257,7 @@ dialog > form {
 	flex: 1;
 }
 
-.add_task_dialog form > div {
+.add_task_dialog form > div:not(:last-child) {
 	display: flex;
 	flex-direction: column;
 	gap: 0.2rem;

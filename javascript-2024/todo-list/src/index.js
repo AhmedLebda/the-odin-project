@@ -1,48 +1,36 @@
 import "./main.css";
-import Project from "./project";
-import createProjectElement from "./createProjectElement";
 import createTaskElement from "./createTaskElement";
+import projectsController from "./ProjectsController";
 
-const projects = [];
-projectController();
+projectsController();
 taskController();
-
-function projectController() {
-	const addProjectBtn = document.querySelector("#add-project");
-	const projectDialog = document.querySelector("#add-project-dialog");
-	const projectDialogForm = document.querySelector("#add-project-dialog form");
-	const projectTitleInput = document.querySelector("#project-title-input");
-	const projectDialogCancel = document.querySelector("#cancel-project-modal");
-	const projectsContainer = document.querySelector("#projects-container");
-
-	addProjectBtn.addEventListener("click", () => {
-		projectDialog.showModal();
-	});
-	projectDialogCancel.addEventListener("click", () => projectDialog.close());
-
-	projectDialogForm.addEventListener("submit", () => {
-		let projectTitle = projectTitleInput.value;
-		let projectElement = createProjectElement(projectTitle);
-		projectsContainer.appendChild(projectElement);
-		projectTitleInput.value = "";
-
-		// Add the new Project to the Projects array
-		projects.push(new Project(projectTitle));
-	});
-
-	// Default Projects
-	projectsContainer.appendChild(createProjectElement("Project one"));
-	projectsContainer.appendChild(createProjectElement("Project two"));
-}
 
 function taskController() {
 	const tasksContainer = document.querySelector("#tasks-wrapper");
+	const addTaskBtn = document.querySelector("#add-task-btn");
+	const taskDialog = document.querySelector("#add-task-dialog");
+	const taskDialogForm = document.querySelector("#add-task-dialog form");
+	const taskCancelBtn = document.querySelector("#cancel-task-modal");
+	const taskTitleInput = document.querySelector("#task-title-input");
+	const taskDetailsInput = document.querySelector("#task-details-input");
+	const taskDueDateInput = document.querySelector("#task-date-input");
+
+	addTaskBtn.addEventListener("click", () => taskDialog.showModal());
+	taskCancelBtn.addEventListener("click", () => taskDialog.close());
+	taskDialogForm.addEventListener("submit", () => {
+		const taskTitle = taskTitleInput.value;
+		const taskDetails = taskDetailsInput.value;
+		const taskDueDate = taskDueDateInput.value;
+		console.log(taskDueDate);
+		const taskElement = createTaskElement(taskTitle, taskDetails, taskDueDate);
+		tasksContainer.appendChild(taskElement);
+	});
 
 	// Default Tasks
 	tasksContainer.appendChild(
-		createTaskElement("Task one", "Dummy text for task one", "22/1/2022")
+		createTaskElement("Task one", "Dummy text for task one", "2024-05-22")
 	);
 	tasksContainer.appendChild(
-		createTaskElement("Task Two", "Dummy text for task two", "14/12/2020")
+		createTaskElement("Task Two", "Dummy text for task two", "2024-07-12")
 	);
 }

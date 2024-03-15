@@ -63,7 +63,7 @@
 						</div>
 					</div> -->
 				</div>
-				<button class="add">add Task</button>
+				<button class="add" id="add-task-btn">add Task</button>
 			</main>
 		</div>
 
@@ -82,11 +82,32 @@
 				/>
 				<div class="dialog_options">
 					<button type="submit">add</button>
-					<button type="reset" id="cancel-project-modal">cancel</button>
+					<button type="reset" data-action="cancel-project-add">cancel</button>
 				</div>
 			</form>
 		</dialog>
-		<dialog class="add_task_dialog">
+		<dialog class="add_project_dialog" id="rename-project-dialog">
+			<form action="#" method="dialog">
+				<label for="project-rename-input">New title :</label>
+				<input
+					type="text"
+					name="project-rename-input"
+					id="project-rename-input"
+					minlength="3"
+					maxlength="25"
+					autofocus
+					required
+				/>
+				<div class="dialog_options">
+					<button type="submit">add</button>
+					<button type="reset" data-action="cancel-project-rename">
+						cancel
+					</button>
+				</div>
+			</form>
+		</dialog>
+
+		<dialog class="add_task_dialog" id="add-task-dialog">
 			<form action="#" method="dialog">
 				<div class="tite_input_wrapper">
 					<label for="task-title-input">task title * :</label>
@@ -119,11 +140,11 @@
 						required
 					/>
 				</div>
+				<div class="dialog_options">
+					<button type="submit">add</button>
+					<button type="reset" id="cancel-task-modal">cancel</button>
+				</div>
 			</form>
-			<div class="dialog_options">
-				<button type="submit">add</button>
-				<button type="reset">cancel</button>
-			</div>
 		</dialog>
 	</body>
 </html>
