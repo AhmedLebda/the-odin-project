@@ -28,7 +28,9 @@ export default function UiController() {
 		renderAllTasks();
 	});
 
-	// projectsContainer.addEventListener("click", handleProjectSelection(e));
+	allTasks.classList.add("active");
+	addTaskBtn.style.display = "none";
+	renderAllTasks();
 }
 
 // Util function: handle project Selection
@@ -36,6 +38,7 @@ export function handleProjectSelection(e) {
 	const projectsContainer = document.querySelector("#projects-container");
 	const renderOptionsContainer = document.querySelector("#render-options");
 	const projectTitleDisplay = document.querySelector("#project-title-display");
+	const addTaskBtn = document.querySelector("#add-task-btn");
 	const projectElement = e.currentTarget;
 	const projects = ProjectsStorage.getProjects();
 	const project = projects.map((proj) => {
@@ -52,6 +55,7 @@ export function handleProjectSelection(e) {
 	[...renderOptionsContainer.children].forEach((element) =>
 		element.classList.remove("active")
 	);
+	addTaskBtn.style.display = "block";
 	e.currentTarget.classList.add("active");
 	projectTitleDisplay.textContent = selectedProject.getTitle();
 	renderSelectedTasks(selectedProject);

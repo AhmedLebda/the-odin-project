@@ -1,6 +1,6 @@
 import Project from "./project";
 import ProjectsStorage from "./ProjectsStorage";
-import { renderProjects } from "./render";
+import { renderProjects, renderAllTasks } from "./render";
 
 export default function projectsController() {
 	const addProjectBtn = document.querySelector("#add-project");
@@ -66,16 +66,24 @@ function createDefaultProject(title) {
 // -----> check the projects storage for an object with the same key and delete that obj
 // -----> run render projects functions
 function handleProjectDelete(e) {
+	const projectTitleDisplay = document.querySelector("#project-title-display");
+	const addTaskBtn = document.querySelector("#add-task-btn");
+	const allTasks = document.querySelector("#all-tasks-option");
 	const parentKey = e.target.parentElement.parentElement.dataset.key;
 	const projects = ProjectsStorage.getProjects();
 	ProjectsStorage.setProjects(
 		projects.filter((project) => project.getId() !== parentKey)
 	);
 	renderProjects();
+	projectTitleDisplay.textContent = "All Tasks";
+	allTasks.classList.add("active");
+	addTaskBtn.style.display = "none";
+	renderAllTasks();
 }
 
 // util Function: handle project rename:
 function handleProjectRename(e) {
+	const projectTitleDisplay = document.querySelector("#project-title-display");
 	const projectRenameModal = document.querySelector("#rename-project-dialog");
 	const projectRenameForm = document.querySelector(
 		"#rename-project-dialog form"
@@ -84,10 +92,10 @@ function handleProjectRename(e) {
 		"[data-action='cancel-project-rename']"
 	);
 	const projectRenameInput = document.querySelector("#project-rename-input");
-	const parentKey = e.target.parentElement.parentElement.dataset.key;
+	const elementContainer = e.target.parentElement.parentElement;
 	const projects = ProjectsStorage.getProjects();
 	const targetProject = projects.find(
-		(project) => project.getId() === parentKey
+		(project) => project.getId() === elementContainer.dataset.key
 	);
 
 	projectRenameModal.showModal();
@@ -97,7 +105,9 @@ function handleProjectRename(e) {
 	projectRenameForm.addEventListener("submit", () => {
 		let newTitle = projectRenameInput.value;
 		targetProject.setTitle(newTitle);
-		renderProjects();
+		const projectTitle = elementContainer.querySelector("h3");
+		projectTitle.textContent = newTitle;
+		projectTitleDisplay.textContent = newTitle;
 	});
 	projectRenameInput.value = null;
 }
