@@ -40,16 +40,19 @@ export default function createTaskElement(title, details, date) {
 	taskFavoriteBtn.classList.add("task_btn");
 	taskFavoriteBtn.classList.add("fav");
 	taskFavoriteBtn.textContent = "Favorite";
+	taskFavoriteBtn.dataset.action = "favorite-task";
 
 	const taskEditBtn = document.createElement("button");
 	taskEditBtn.classList.add("task_btn");
 	taskEditBtn.classList.add("edit");
 	taskEditBtn.textContent = "Edit";
+	taskEditBtn.dataset.action = "edit-task";
 
 	const taskDeleteBtn = document.createElement("button");
 	taskDeleteBtn.classList.add("task_btn");
 	taskDeleteBtn.classList.add("delete");
 	taskDeleteBtn.textContent = "Delete";
+	taskDeleteBtn.dataset.action = "delete-task";
 
 	taskOptionsWrapper.appendChild(taskDueDate);
 	taskOptionsWrapper.appendChild(taskFavoriteBtn);

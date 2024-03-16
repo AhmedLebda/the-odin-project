@@ -33,6 +33,7 @@ function renderSelectedTasks(selectedProjectObj) {
 			task.date
 		);
 		createdTaskElement.dataset.key = task.getId();
+		createdTaskElement.dataset.project = selectedProjectObj.getTitle();
 		tasksContainer.appendChild(createdTaskElement);
 	});
 }

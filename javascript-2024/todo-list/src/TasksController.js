@@ -35,6 +35,20 @@ export default function tasksController() {
 		renderSelectedTasks(selectedProject);
 	});
 
+	// Task container Event listener
+	tasksContainer.addEventListener("click", (e) => {
+		const targetButtonData = e.target.dataset.action;
+		if (targetButtonData === "favorite-task") {
+			handleTaskFavorite(e);
+		}
+		if (targetButtonData === "delete-task") {
+			handleTaskDelete(e);
+		}
+		if (targetButtonData === "edit-task") {
+			handleTaskEdit(e);
+		}
+	});
+
 	// Create default tasks
 	createDefaultTask("Task one", "some details about task one", "2024-3-15");
 	createDefaultTask("Task two", "some details about task two", "2024-3-20");
@@ -48,4 +62,38 @@ function createDefaultTask(title, details, date) {
 	const taskObj = new Task(title, details, date);
 	const project = ProjectsStorage.getProjects()[0];
 	project.tasks.push(taskObj);
+}
+
+// util: handles task favorite
+// -----> store the task container data project in a var
+// -----> get all projects from projects storage
+// -----> find the project obj with the same name as the stored data project
+// -----> loop through the proj obj tasks and find the selected task
+// -----> toggle it's favorite prop
+// -----> toggle active fav class on the favorite button
+function handleTaskFavorite(e) {
+	const taskElement = e.target.parentElement.parentElement.dataset;
+	const projects = ProjectsStorage.getProjects();
+	const parentProject = projects.find(
+		(project) => project.getTitle() === taskElement.project
+	);
+	const taskObj = parentProject.tasks.find(
+		(task) => task.getId() === taskElement.key
+	);
+	taskObj.toggleFavorite();
+	console.log(taskObj);
+
+	e.target.classList.toggle("active_fav");
+}
+
+// util: deletes tasks
+function handleTaskDelete(e) {
+	const taskElement = e.target.parentElement.parentElement.dataset;
+	const projects = ProjectsStorage.getProjects();
+	const parentProject = projects.find(
+		(project) => project.getTitle() === taskElement.project
+	);
+	parentProject.tasks = parentProject.tasks.filter(
+		(task) => task.getId() !== taskElement.key
+	);
 }
