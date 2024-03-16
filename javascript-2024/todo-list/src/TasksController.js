@@ -101,3 +101,52 @@ function handleTaskDelete(e) {
 	const selectedProject = projects.find((project) => project.isSelected);
 	selectedProject ? renderSelectedTasks(selectedProject) : renderAllTasks();
 }
+
+// Edits tasks
+function handleTaskEdit(e) {
+	const editModal = document.querySelector("[data-action='rename-task-modal'");
+	const editModalForm = editModal.querySelector("form");
+	const editedTitleInput = document.querySelector(
+		"[data-action='task-new-name-input'"
+	);
+	const editedDetailsInput = document.querySelector(
+		"[data-action='task-new-details-input'"
+	);
+	const editedDateInput = document.querySelector(
+		"[data-action='task-new-date-input'"
+	);
+	const cancelEditTaskBtn = document.querySelector(
+		"[data-action='cancel-task-edit'"
+	);
+	const taskContainer = e.target.parentElement.parentElement;
+	const taskTitleElement = taskContainer.querySelector(".task_title");
+	const taskDetailsElement = taskContainer.querySelector(".task_details");
+	const taskDateElement = taskContainer.querySelector(".due_date");
+	const projects = ProjectsStorage.getProjects();
+	const parentProject = projects.find(
+		(project) => project.getTitle() === taskContainer.dataset.project
+	);
+	const taskObj = parentProject.tasks.find(
+		(task) => task.getId() === taskContainer.dataset.key
+	);
+
+	editModal.showModal();
+	cancelEditTaskBtn.addEventListener("click", () => editModal.close());
+
+	editModalForm.addEventListener("submit", () => {
+		// Updates task object inside it's project array
+		taskObj.setTitle(editedTitleInput.value);
+		taskObj.setDetails(editedDetailsInput.value);
+		taskObj.setDate(editedDateInput.value);
+
+		// Updates task UI
+		taskTitleElement.textContent = editedTitleInput.value;
+		taskDetailsElement.textContent = editedDetailsInput.value;
+		taskDateElement.textContent = editedDateInput.value;
+	});
+
+	// Resets edit task modal inputs
+	editedTitleInput.value = null;
+	editedDetailsInput.value = null;
+	editedDateInput.value = null;
+}

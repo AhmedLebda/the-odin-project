@@ -21,51 +21,18 @@
 				</div>
 				<div class="projects_wrapper">
 					<h2 class="aside_section_title">projects</h2>
-					<div class="projects" id="projects-container">
-						<!-- <div class="project_item">
-							<h3 class="project_name" id="project-name">Work</h3>
-							<div class="project_options">
-								<button class="project_option" id="project-rename-option">
-									rename
-								</button>
-								<button
-									class="project_option delete"
-									id="project-delete-option"
-								>
-									delete
-								</button>
-							</div>
-						</div> -->
-					</div>
+					<div class="projects" id="projects-container"></div>
 					<button class="add" id="add-project">add project</button>
 				</div>
 			</aside>
 			<main>
 				<h2 class="title" id="project-title-display">all tasks</h2>
-				<div class="tasks_wrapper" id="tasks-wrapper">
-					<!-- <div class="task">
-						<div class="task_info">
-							<div class="task_checkbox"></div>
-							<div class="task_info__wrapper">
-								<h3 class="task_title">task title</h3>
-								<p class="task_details">
-									this is dummy text about this task details
-								</p>
-							</div>
-						</div>
-						<div class="task_options">
-							<p class="due_date">14-3-2024</p>
-							<button class="task_btn fav">favorite</button>
-							<button class="task_btn edit">edit</button>
-							<button class="task_btn delete">delete</button>
-						</div>
-					</div> -->
-				</div>
+				<div class="tasks_wrapper" id="tasks-wrapper"></div>
 				<button class="add" id="add-task-btn">add Task</button>
 			</main>
 		</div>
 
-		<!-- Dialog box To Add Project -->
+		<!-- Add project modal -->
 		<dialog class="add_project_dialog" id="add-project-dialog">
 			<form action="#" method="dialog">
 				<label for="project-title-input">project title :</label>
@@ -84,6 +51,8 @@
 				</div>
 			</form>
 		</dialog>
+
+		<!-- Rename project modal -->
 		<dialog class="add_project_dialog" id="rename-project-dialog">
 			<form action="#" method="dialog">
 				<label for="project-rename-input">New title :</label>
@@ -105,6 +74,7 @@
 			</form>
 		</dialog>
 
+		<!-- Add task Modal -->
 		<dialog class="add_task_dialog" id="add-task-dialog">
 			<form action="#" method="dialog">
 				<div class="tite_input_wrapper">
@@ -141,6 +111,50 @@
 				<div class="dialog_options">
 					<button type="submit">add</button>
 					<button type="reset" id="cancel-task-modal">cancel</button>
+				</div>
+			</form>
+		</dialog>
+
+		<!-- Rename task Modal -->
+		<dialog class="add_task_dialog" data-action="rename-task-modal">
+			<form action="#" method="dialog">
+				<div class="tite_input_wrapper">
+					<label for="task-new-name-input">task title * :</label>
+					<input
+						type="text"
+						name="task-new-name-input"
+						id="task-new-name-input"
+						maxlength="50"
+						minlength="3"
+						data-action="task-new-name-input"
+						autofocus
+						required
+					/>
+				</div>
+				<div class="details_input_wrapper">
+					<label for="task-new-details-input">task details (optional):</label>
+					<input
+						type="text"
+						name="task-new-details-input"
+						id="task-new-details-input"
+						data-action="task-new-details-input"
+						maxlength="50"
+						minlength="3"
+					/>
+				</div>
+				<div class="date_input_wrapper">
+					<label for="task-new-date-input">due date :</label>
+					<input
+						type="date"
+						name="task-new-date-input"
+						id="task-new-date-input"
+						data-action="task-new-date-input"
+						required
+					/>
+				</div>
+				<div class="dialog_options">
+					<button type="submit">add</button>
+					<button type="reset" data-action="cancel-task-edit">cancel</button>
 				</div>
 			</form>
 		</dialog>
