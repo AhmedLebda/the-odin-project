@@ -45,9 +45,6 @@ export default function projectsController() {
 		if (clickedElement === "rename-project") {
 			handleProjectRename(e);
 		}
-		if (e.target.classList.contains("project_name")) {
-			handleProjectSelection(e);
-		}
 	});
 
 	// Create Two default project when page loads for the first time
@@ -103,16 +100,4 @@ function handleProjectRename(e) {
 		renderProjects();
 	});
 	projectRenameInput.value = null;
-}
-
-// Util function: handle project Selection
-function handleProjectSelection(e) {
-	const projectElement = e.target.parentElement;
-	const projects = ProjectsStorage.getProjects();
-	const project = projects.map((proj) => {
-		proj.getId() === projectElement.dataset.key
-			? (proj.isSelected = true)
-			: (proj.isSelected = false);
-	});
-	renderProjects();
 }

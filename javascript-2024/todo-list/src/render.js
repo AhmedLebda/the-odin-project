@@ -1,6 +1,7 @@
 import createProjectElement from "./createProjectElement";
 import createTaskElement from "./createTaskElement";
 import ProjectsStorage from "./ProjectsStorage";
+import { handleProjectSelection } from "./UiController";
 
 // ** Function to render all projects inside the projects storage:
 // -----> clear the projects container div
@@ -15,9 +16,10 @@ function renderProjects() {
 	projects.forEach((project) => {
 		const createdProjectElement = createProjectElement(project.getTitle());
 		createdProjectElement.dataset.key = project.getId();
-		if (project.isSelected) {
-			createdProjectElement.classList.add("active");
-		}
+		// if (project.isSelected) {
+		// 	createdProjectElement.classList.add("active");
+		// }
+		createdProjectElement.addEventListener("click", handleProjectSelection);
 		projectsContainer.appendChild(createdProjectElement);
 	});
 }

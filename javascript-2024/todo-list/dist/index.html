@@ -13,10 +13,8 @@
 			<aside>
 				<div class="home_wrapper">
 					<h2 class="aside_section_title">home</h2>
-					<div class="home_options_wrapper">
-						<button class="home_option active" id="all-tasks-option">
-							all tasks
-						</button>
+					<div class="home_options_wrapper" id="render-options">
+						<button class="home_option" id="all-tasks-option">all tasks</button>
 						<button class="home_option" id="today-option">today</button>
 						<button class="home_option" id="important-option">important</button>
 					</div>
@@ -43,7 +41,7 @@
 				</div>
 			</aside>
 			<main>
-				<h2 class="title">all tasks</h2>
+				<h2 class="title" id="project-title-display">all tasks</h2>
 				<div class="tasks_wrapper" id="tasks-wrapper">
 					<!-- <div class="task">
 						<div class="task_info">
