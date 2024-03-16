@@ -3,13 +3,11 @@ import {
 	renderAllTasks,
 	renderSelectedTasks,
 	renderFavoriteTasks,
+	renderTodayTasks,
 } from "./render";
 
 export default function UiController() {
 	const addTaskBtn = document.querySelector("#add-task-btn");
-	// let isRenderAll = true;
-	// let isRenderToday = false;
-	// let isRenderFavorite = false;
 	const allTasks = document.querySelector("#all-tasks-option");
 	const toDay = document.querySelector("#today-option");
 	const favorite = document.querySelector("#favorite-option");
@@ -18,10 +16,6 @@ export default function UiController() {
 	const projectsContainer = document.querySelector("#projects-container");
 
 	allTasks.addEventListener("click", () => {
-		// isRenderAll = true;
-		// isRenderToday = false;
-		// isRenderFavorite = false;
-
 		resetSelectionStyles();
 		allTasks.classList.add("active");
 		projectTitleDisplay.textContent = "All Tasks";
@@ -35,6 +29,14 @@ export default function UiController() {
 		projectTitleDisplay.textContent = "Favorites";
 		ProjectsStorage.deselectAllProjects();
 		renderFavoriteTasks();
+	});
+
+	toDay.addEventListener("click", () => {
+		resetSelectionStyles();
+		toDay.classList.add("active");
+		projectTitleDisplay.textContent = "Today's Tasks";
+		ProjectsStorage.deselectAllProjects();
+		renderTodayTasks();
 	});
 
 	// All tasks render as a default when page first loads
@@ -54,7 +56,7 @@ export default function UiController() {
 	}
 }
 
-// Util function: handle project Selection
+// handle project Selection
 export function handleProjectSelection(e) {
 	const projectsContainer = document.querySelector("#projects-container");
 	const renderOptionsContainer = document.querySelector("#render-options");

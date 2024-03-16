@@ -82,6 +82,30 @@ function renderFavoriteTasks() {
 	});
 }
 
+function renderTodayTasks() {
+	const tasksContainer = document.querySelector("#tasks-wrapper");
+	clearContainerElement(tasksContainer);
+	const projects = ProjectsStorage.getProjects();
+	const today = new Date().toLocaleDateString();
+
+	projects.forEach((project) => {
+		project.tasks.forEach((task) => {
+			const taskDueDate = new Date(task.date).toLocaleDateString();
+			if (taskDueDate === today) {
+				const createdTaskElement = createTaskElement(
+					task.title,
+					task.details,
+					task.date,
+					task.favorite
+				);
+				createdTaskElement.dataset.key = task.getId();
+				createdTaskElement.dataset.project = project.getTitle();
+				tasksContainer.appendChild(createdTaskElement);
+			}
+		});
+	});
+}
+
 // util function: clear all children of a container element
 function clearContainerElement(containerElement) {
 	while (containerElement.firstChild) {
@@ -94,4 +118,5 @@ export {
 	renderSelectedTasks,
 	renderAllTasks,
 	renderFavoriteTasks,
+	renderTodayTasks,
 };
