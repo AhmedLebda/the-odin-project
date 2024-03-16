@@ -21,4 +21,8 @@ export default class Project {
 			this.tasks.push(task);
 		}
 	}
+
+	deleteTask(taskKey) {
+		this.tasks = this.tasks.filter((task) => task.getId() !== taskKey);
+	}
 }
