@@ -10,4 +10,7 @@ export default class ProjectsStorage {
 	static setProjects(projectsArr) {
 		this.projects = projectsArr;
 	}
+	static deselectAllProjects() {
+		this.projects.map((project) => (project.isSelected = false));
+	}
 }

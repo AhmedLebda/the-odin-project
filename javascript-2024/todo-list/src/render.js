@@ -38,6 +38,25 @@ function renderSelectedTasks(selectedProjectObj) {
 	});
 }
 
+// Renders all tasks inside all projects
+function renderAllTasks() {
+	const tasksContainer = document.querySelector("#tasks-wrapper");
+	clearContainerElement(tasksContainer);
+	const projects = ProjectsStorage.getProjects();
+	projects.forEach((project) => {
+		project.tasks.forEach((task) => {
+			const createdTaskElement = createTaskElement(
+				task.title,
+				task.details,
+				task.date
+			);
+			createdTaskElement.dataset.key = task.getId();
+			createdTaskElement.dataset.project = project.getTitle();
+			tasksContainer.appendChild(createdTaskElement);
+		});
+	});
+}
+
 // util function: clear all children of a container element
 function clearContainerElement(containerElement) {
 	while (containerElement.firstChild) {
@@ -45,4 +64,4 @@ function clearContainerElement(containerElement) {
 	}
 }
 
-export { renderProjects, renderSelectedTasks };
+export { renderProjects, renderSelectedTasks, renderAllTasks };

@@ -1,6 +1,6 @@
 import ProjectsStorage from "./ProjectsStorage";
 import Task from "./task";
-import { renderSelectedTasks } from "./render";
+import { renderAllTasks, renderProjects, renderSelectedTasks } from "./render";
 
 export default function tasksController() {
 	const tasksContainer = document.querySelector("#tasks-wrapper");
@@ -96,4 +96,8 @@ function handleTaskDelete(e) {
 	parentProject.tasks = parentProject.tasks.filter(
 		(task) => task.getId() !== taskElement.key
 	);
+
+	// Initial rendering on deletion functionality <<-----
+	const selectedProject = projects.find((project) => project.isSelected);
+	selectedProject ? renderSelectedTasks(selectedProject) : renderAllTasks();
 }
