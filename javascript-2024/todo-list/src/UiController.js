@@ -1,36 +1,57 @@
 import ProjectsStorage from "./ProjectsStorage";
-import { renderAllTasks, renderProjects, renderSelectedTasks } from "./render";
+import {
+	renderAllTasks,
+	renderSelectedTasks,
+	renderFavoriteTasks,
+} from "./render";
 
 export default function UiController() {
 	const addTaskBtn = document.querySelector("#add-task-btn");
-	let isRenderAll = true;
-	let isRenderToday = false;
-	let isRenderFavorite = false;
+	// let isRenderAll = true;
+	// let isRenderToday = false;
+	// let isRenderFavorite = false;
 	const allTasks = document.querySelector("#all-tasks-option");
 	const toDay = document.querySelector("#today-option");
-	const favorite = document.querySelector("important-option");
+	const favorite = document.querySelector("#favorite-option");
 	const renderOptionsContainer = document.querySelector("#render-options");
 	const projectTitleDisplay = document.querySelector("#project-title-display");
+	const projectsContainer = document.querySelector("#projects-container");
 
 	allTasks.addEventListener("click", () => {
-		isRenderAll = true;
-		isRenderToday = false;
-		isRenderFavorite = false;
+		// isRenderAll = true;
+		// isRenderToday = false;
+		// isRenderFavorite = false;
 
+		resetSelectionStyles();
+		allTasks.classList.add("active");
+		projectTitleDisplay.textContent = "All Tasks";
+		ProjectsStorage.deselectAllProjects();
+		renderAllTasks();
+	});
+
+	favorite.addEventListener("click", () => {
+		resetSelectionStyles();
+		favorite.classList.add("active");
+		projectTitleDisplay.textContent = "Favorites";
+		ProjectsStorage.deselectAllProjects();
+		renderFavoriteTasks();
+	});
+
+	// All tasks render as a default when page first loads
+	allTasks.classList.add("active");
+	addTaskBtn.style.display = "none";
+	renderAllTasks();
+
+	// util: resets selections styles
+	function resetSelectionStyles() {
 		addTaskBtn.style.display = "none";
 		[...renderOptionsContainer.children].forEach((element) =>
 			element.classList.remove("active")
 		);
-		allTasks.classList.add("active");
-		projectTitleDisplay.textContent = "All Tasks";
-		ProjectsStorage.deselectAllProjects();
-		renderProjects();
-		renderAllTasks();
-	});
-
-	allTasks.classList.add("active");
-	addTaskBtn.style.display = "none";
-	renderAllTasks();
+		[...projectsContainer.children].forEach((project) =>
+			project.classList.remove("active")
+		);
+	}
 }
 
 // Util function: handle project Selection

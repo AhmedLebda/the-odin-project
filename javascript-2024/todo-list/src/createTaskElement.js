@@ -1,4 +1,4 @@
-export default function createTaskElement(title, details, date) {
+export default function createTaskElement(title, details, date, favorite) {
 	const taskWrapper = document.createElement("div");
 	taskWrapper.classList.add("task");
 
@@ -41,6 +41,9 @@ export default function createTaskElement(title, details, date) {
 	taskFavoriteBtn.classList.add("fav");
 	taskFavoriteBtn.textContent = "Favorite";
 	taskFavoriteBtn.dataset.action = "favorite-task";
+	favorite
+		? taskFavoriteBtn.classList.add("active_fav")
+		: taskFavoriteBtn.classList.remove("active_fav");
 
 	const taskEditBtn = document.createElement("button");
 	taskEditBtn.classList.add("task_btn");

@@ -32,7 +32,8 @@ function renderSelectedTasks(selectedProjectObj) {
 		const createdTaskElement = createTaskElement(
 			task.title,
 			task.details,
-			task.date
+			task.date,
+			task.favorite
 		);
 		createdTaskElement.dataset.key = task.getId();
 		createdTaskElement.dataset.project = selectedProjectObj.getTitle();
@@ -50,11 +51,33 @@ function renderAllTasks() {
 			const createdTaskElement = createTaskElement(
 				task.title,
 				task.details,
-				task.date
+				task.date,
+				task.favorite
 			);
 			createdTaskElement.dataset.key = task.getId();
 			createdTaskElement.dataset.project = project.getTitle();
 			tasksContainer.appendChild(createdTaskElement);
+		});
+	});
+}
+// renders favorite tasks
+function renderFavoriteTasks() {
+	const tasksContainer = document.querySelector("#tasks-wrapper");
+	clearContainerElement(tasksContainer);
+	const projects = ProjectsStorage.getProjects();
+	projects.forEach((project) => {
+		project.tasks.forEach((task) => {
+			if (task.favorite) {
+				const createdTaskElement = createTaskElement(
+					task.title,
+					task.details,
+					task.date,
+					task.favorite
+				);
+				createdTaskElement.dataset.key = task.getId();
+				createdTaskElement.dataset.project = project.getTitle();
+				tasksContainer.appendChild(createdTaskElement);
+			}
 		});
 	});
 }
@@ -66,4 +89,9 @@ function clearContainerElement(containerElement) {
 	}
 }
 
-export { renderProjects, renderSelectedTasks, renderAllTasks };
+export {
+	renderProjects,
+	renderSelectedTasks,
+	renderAllTasks,
+	renderFavoriteTasks,
+};
