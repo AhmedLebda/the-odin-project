@@ -1,7 +1,7 @@
 import ProjectsStorage from "./ProjectsStorage";
 import {
 	renderAllTasks,
-	renderSelectedTasks,
+	renderProjectTasks,
 	renderFavoriteTasks,
 	renderTodayTasks,
 } from "./render";
@@ -81,5 +81,5 @@ export function handleProjectSelection(e) {
 	addTaskBtn.style.display = "block";
 	e.currentTarget.classList.add("active");
 	projectTitleDisplay.textContent = selectedProject.getTitle();
-	renderSelectedTasks(selectedProject);
+	renderProjectTasks(selectedProject);
 }

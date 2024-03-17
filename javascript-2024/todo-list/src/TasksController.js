@@ -1,6 +1,6 @@
 import ProjectsStorage from "./ProjectsStorage";
 import Task from "./task";
-import { renderAllTasks, renderProjects, renderSelectedTasks } from "./render";
+import { renderAllTasks, renderProjectTasks } from "./render";
 
 export default function tasksController() {
 	const tasksContainer = document.querySelector("#tasks-wrapper");
@@ -33,7 +33,7 @@ export default function tasksController() {
 		const projects = ProjectsStorage.getProjects();
 		const selectedProject = projects.find((project) => project.isSelected);
 		selectedProject.addTask(taskObj);
-		renderSelectedTasks(selectedProject);
+		renderProjectTasks(selectedProject);
 	});
 	// Add events to task's Favorite, Delete and Edit buttons
 	tasksContainer.addEventListener("click", (e) => {
@@ -54,8 +54,8 @@ export default function tasksController() {
 	createDefaultTask("Task one", "some details about task one", "2024-3-15");
 	createDefaultTask("Task two", "some details about task two", "2024-3-20");
 
-	// Render tasks (default) for project one (default) when page loads for the first time
-	renderSelectedTasks(ProjectsStorage.getProjects()[0]);
+	// default: render all tasks
+	renderAllTasks();
 }
 
 // util: creates default tasks inside the first project (default);
@@ -82,11 +82,10 @@ function TaskOptionsEventHandling(e) {
 		e.target.classList.toggle("active_fav");
 	}
 
-	// util: filters the task parent obj tasks array from the selected task -> render tasks depending on the tasks render option
+	// util: Deletes task obj from parent project arr and deletes the task element
 	function handleTaskDelete() {
 		parentProject.deleteTask(taskContainer.dataset.key);
-		const selectedProject = projects.find((project) => project.isSelected);
-		selectedProject ? renderSelectedTasks(selectedProject) : renderAllTasks();
+		taskContainer.remove();
 	}
 
 	// Edits tasks

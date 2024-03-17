@@ -25,7 +25,7 @@ function renderProjects() {
 }
 
 // Renders all tasks inside a selected project array
-function renderSelectedTasks(selectedProjectObj) {
+function renderProjectTasks(selectedProjectObj) {
 	const tasksContainer = document.querySelector("#tasks-wrapper");
 	clearContainerElement(tasksContainer);
 	selectedProjectObj.tasks.forEach((task) => {
@@ -115,7 +115,7 @@ function clearContainerElement(containerElement) {
 
 export {
 	renderProjects,
-	renderSelectedTasks,
+	renderProjectTasks,
 	renderAllTasks,
 	renderFavoriteTasks,
 	renderTodayTasks,
