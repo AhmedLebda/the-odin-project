@@ -22,6 +22,9 @@ export default class Task {
 	toggleFavorite() {
 		this.favorite = this.favorite ? false : true;
 	}
+	toggleIsComplete() {
+		this.isComplete = this.isComplete ? false : true;
+	}
 	getId() {
 		return this._id;
 	}

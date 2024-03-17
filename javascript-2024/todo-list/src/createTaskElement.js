@@ -1,4 +1,10 @@
-export default function createTaskElement(title, details, date, favorite) {
+export default function createTaskElement(
+	title,
+	details,
+	date,
+	favorite,
+	isComplete
+) {
 	const taskWrapper = document.createElement("div");
 	taskWrapper.classList.add("task");
 
@@ -11,18 +17,23 @@ export default function createTaskElement(title, details, date, favorite) {
 	const taskTitle = document.createElement("h3");
 	taskTitle.classList.add("task_title");
 	taskTitle.textContent = title;
+	isComplete
+		? taskTitle.classList.add("line_through")
+		: taskTitle.classList.remove("line_through");
 
 	const taskDetails = document.createElement("p");
 	taskDetails.classList.add("task_details");
 	taskDetails.textContent = details;
+	isComplete
+		? taskDetails.classList.add("line_through")
+		: taskDetails.classList.remove("line_through");
 
 	const taskCheckbox = document.createElement("div");
 	taskCheckbox.classList.add("task_checkbox");
-	taskCheckbox.addEventListener("click", () => {
-		taskCheckbox.classList.toggle("active_checkbox");
-		taskTitle.classList.toggle("line_through");
-		taskDetails.classList.toggle("line_through");
-	});
+	taskCheckbox.dataset.action = "toggle-task-complete";
+	isComplete
+		? taskCheckbox.classList.add("active_checkbox")
+		: taskCheckbox.classList.remove("active_checkbox");
 
 	taskInfoWrapper.appendChild(taskTitle);
 	taskInfoWrapper.appendChild(taskDetails);

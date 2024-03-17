@@ -35,15 +35,18 @@ export default function tasksController() {
 	});
 	// Add events to task's Favorite, Delete and Edit buttons
 	tasksContainer.addEventListener("click", (e) => {
-		const targetButtonData = e.target.dataset.action;
-		if (targetButtonData === "favorite-task") {
+		const clickedTargetData = e.target.dataset.action;
+		if (clickedTargetData === "favorite-task") {
 			TaskOptionsEventHandling(e).handleTaskFavorite();
 		}
-		if (targetButtonData === "delete-task") {
+		if (clickedTargetData === "delete-task") {
 			TaskOptionsEventHandling(e).handleTaskDelete();
 		}
-		if (targetButtonData === "edit-task") {
+		if (clickedTargetData === "edit-task") {
 			TaskOptionsEventHandling(e).handleTaskEdit();
+		}
+		if (clickedTargetData === "toggle-task-complete") {
+			TaskOptionsEventHandling(e).handleTaskComplete();
 		}
 	});
 
@@ -128,5 +131,19 @@ function TaskOptionsEventHandling(e) {
 		editedDateInput.value = null;
 	}
 
-	return { handleTaskFavorite, handleTaskDelete, handleTaskEdit };
+	function handleTaskComplete() {
+		taskObj.toggleIsComplete();
+		const taskTitle = taskContainer.querySelector(".task_title");
+		const taskDetails = taskContainer.querySelector(".task_details");
+		e.target.classList.toggle("active_checkbox");
+		taskTitle.classList.toggle("line_through");
+		taskDetails.classList.toggle("line_through");
+	}
+
+	return {
+		handleTaskFavorite,
+		handleTaskDelete,
+		handleTaskEdit,
+		handleTaskComplete,
+	};
 }

@@ -29,7 +29,8 @@ function renderProjectTasks(selectedProjectObj) {
 			task.title,
 			task.details,
 			task.date,
-			task.favorite
+			task.favorite,
+			task.isComplete
 		);
 		createdTaskElement.dataset.key = task.getId();
 		createdTaskElement.dataset.project = selectedProjectObj.getTitle();
@@ -48,7 +49,8 @@ function renderAllTasks() {
 				task.title,
 				task.details,
 				task.date,
-				task.favorite
+				task.favorite,
+				task.isComplete
 			);
 			createdTaskElement.dataset.key = task.getId();
 			createdTaskElement.dataset.project = project.getTitle();
@@ -68,7 +70,8 @@ function renderFavoriteTasks() {
 					task.title,
 					task.details,
 					task.date,
-					task.favorite
+					task.favorite,
+					task.isComplete
 				);
 				createdTaskElement.dataset.key = task.getId();
 				createdTaskElement.dataset.project = project.getTitle();
@@ -92,7 +95,8 @@ function renderTodayTasks() {
 					task.title,
 					task.details,
 					task.date,
-					task.favorite
+					task.favorite,
+					task.isComplete
 				);
 				createdTaskElement.dataset.key = task.getId();
 				createdTaskElement.dataset.project = project.getTitle();
