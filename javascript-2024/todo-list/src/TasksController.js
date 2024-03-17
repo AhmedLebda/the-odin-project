@@ -30,23 +30,20 @@ export default function tasksController() {
 		const taskDetails = taskDetailsInput.value;
 		const taskDueDate = taskDueDateInput.value;
 		const taskObj = new Task(taskTitle, taskDetails, taskDueDate);
-		const projects = ProjectsStorage.getProjects();
-		const selectedProject = projects.find((project) => project.isSelected);
-		selectedProject.addTask(taskObj);
-		renderProjectTasks(selectedProject);
+		ProjectsStorage.addTaskToProject(taskObj);
+		renderProjectTasks(ProjectsStorage.getSelectedProject());
 	});
 	// Add events to task's Favorite, Delete and Edit buttons
 	tasksContainer.addEventListener("click", (e) => {
 		const targetButtonData = e.target.dataset.action;
-		const eventHandler = TaskOptionsEventHandling(e);
 		if (targetButtonData === "favorite-task") {
-			eventHandler.handleTaskFavorite();
+			TaskOptionsEventHandling(e).handleTaskFavorite();
 		}
 		if (targetButtonData === "delete-task") {
-			eventHandler.handleTaskDelete();
+			TaskOptionsEventHandling(e).handleTaskDelete();
 		}
 		if (targetButtonData === "edit-task") {
-			eventHandler.handleTaskEdit();
+			TaskOptionsEventHandling(e).handleTaskEdit();
 		}
 	});
 

@@ -1,6 +1,9 @@
-export default function createProjectElement(title) {
+export default function createProjectElement(title, isSelected) {
 	const projectWrapper = document.createElement("div");
 	projectWrapper.classList.add("project_item");
+	isSelected
+		? projectWrapper.classList.add("active")
+		: projectWrapper.classList.remove("active");
 
 	const projectTitle = document.createElement("h3");
 	projectTitle.classList.add("project_name");

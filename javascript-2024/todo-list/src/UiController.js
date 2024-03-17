@@ -63,15 +63,10 @@ export function handleProjectSelection(e) {
 	const projectTitleDisplay = document.querySelector("#project-title-display");
 	const addTaskBtn = document.querySelector("#add-task-btn");
 	const projectElement = e.currentTarget;
-	const projects = ProjectsStorage.getProjects();
-	const project = projects.map((proj) => {
-		proj.getId() === projectElement.dataset.key
-			? (proj.isSelected = true)
-			: (proj.isSelected = false);
-	});
-	const selectedProject = projects.find(
-		(proj) => proj.getId() === projectElement.dataset.key
-	);
+
+	ProjectsStorage.selectProject(projectElement.dataset.key);
+	const selectedProject = ProjectsStorage.getSelectedProject();
+
 	[...projectsContainer.children].forEach((project) =>
 		project.classList.remove("active")
 	);
