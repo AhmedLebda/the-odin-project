@@ -12,31 +12,24 @@ export default function projectsController() {
 	);
 	const projectsContainer = document.querySelector("#projects-container");
 
-	// Show the add project modal when (add project) button is clicked
+	// Show modal to add a new project and resets the form
 	addProjectBtn.addEventListener("click", () => {
 		projectDialog.showModal();
+		projectTitleInput.value = null;
 	});
 
-	// Cancel the add project modal when (cancel) button is clicked =
+	// Close add new project modal
 	projectDialogCancel.addEventListener("click", () => projectDialog.close());
 
-	// ** When add project modal form is submitted:
-	//-----> create a new project object
-	//-----> add this new project object to the projects storage
-	//-----> run a function to render all projects inside the projects storage
-	//-----> clear the add project modal input value
+	// creates a new project obj and add it to projects storage then renders all projects
 	projectDialogForm.addEventListener("submit", () => {
 		const projectTitle = projectTitleInput.value;
 		const projectObj = new Project(projectTitle);
 		ProjectsStorage.addProject(projectObj);
 		renderProjects();
-		projectTitleInput.value = null;
 	});
 
-	// ** when projects container div is clicked:
-	// -----> check the id of the target
-	// -----> if (delete) >> run the handle delete function
-	// -----> if (rename) >> run the handle rename function
+	// Add events to project's Delete and Edit buttons
 	projectsContainer.addEventListener("click", (e) => {
 		const clickedElement = e.target.dataset.action;
 		if (clickedElement === "delete-project") {
@@ -55,33 +48,30 @@ export default function projectsController() {
 	renderProjects();
 }
 
-// util function: create default projects
+// util: creates default projects
 function createDefaultProject(title) {
 	const projOne = new Project(title);
 	ProjectsStorage.addProject(projOne);
 }
 
-// util function: handle project delete:
-// -----> get the parent node key
-// -----> check the projects storage for an object with the same key and delete that obj
-// -----> run render projects functions
+// util: handle project delete:
 function handleProjectDelete(e) {
 	const projectTitleDisplay = document.querySelector("#project-title-display");
 	const addTaskBtn = document.querySelector("#add-task-btn");
 	const allTasks = document.querySelector("#all-tasks-option");
-	const parentKey = e.target.parentElement.parentElement.dataset.key;
-	const projects = ProjectsStorage.getProjects();
-	ProjectsStorage.setProjects(
-		projects.filter((project) => project.getId() !== parentKey)
-	);
-	renderProjects();
+	const projectElementContainer = e.target.parentElement.parentElement;
+
+	// Delete the project from storage and delete the project Element
+	ProjectsStorage.deleteProject(projectElementContainer.dataset.key);
+	projectElementContainer.remove();
+
 	projectTitleDisplay.textContent = "All Tasks";
 	allTasks.classList.add("active");
 	addTaskBtn.style.display = "none";
 	renderAllTasks();
 }
 
-// util Function: handle project rename:
+// util: handle project rename:
 function handleProjectRename(e) {
 	const projectTitleDisplay = document.querySelector("#project-title-display");
 	const projectRenameModal = document.querySelector("#rename-project-dialog");
@@ -92,22 +82,24 @@ function handleProjectRename(e) {
 		"[data-action='cancel-project-rename']"
 	);
 	const projectRenameInput = document.querySelector("#project-rename-input");
-	const elementContainer = e.target.parentElement.parentElement;
-	const projects = ProjectsStorage.getProjects();
-	const targetProject = projects.find(
-		(project) => project.getId() === elementContainer.dataset.key
-	);
+	const projectElementContainer = e.target.parentElement.parentElement;
+	const projectTitle = projectElementContainer.querySelector("h3");
 
 	projectRenameModal.showModal();
+	projectRenameInput.value = null;
+
 	projectRenameCancel.addEventListener("click", () =>
 		projectRenameModal.close()
 	);
+
 	projectRenameForm.addEventListener("submit", () => {
 		let newTitle = projectRenameInput.value;
-		targetProject.setTitle(newTitle);
-		const projectTitle = elementContainer.querySelector("h3");
+		ProjectsStorage.renameProject(
+			projectElementContainer.dataset.key,
+			newTitle
+		);
+
 		projectTitle.textContent = newTitle;
 		projectTitleDisplay.textContent = newTitle;
 	});
-	projectRenameInput.value = null;
 }
