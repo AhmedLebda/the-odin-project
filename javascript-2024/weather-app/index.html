@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Weather App</title>
+		<!-- Styles  -->
+		<link rel="stylesheet" href="styles.css" />
+		<!-- Script -->
+		<script src="app.js"></script>
+	</head>
+	<body>
+		<main class="app">
+			<!-- Search section -->
+			<div class="search-container">
+				<form action="#" data-action="search">
+					<input
+						type="search"
+						maxlength="20"
+						minlength="2"
+						name="search-weather-data"
+						id="search-weather-data"
+						data-action="search-input"
+						placeholder="Search City"
+						aria-label="search weather data"
+					/>
+				</form>
+			</div>
+
+			<!-- Current data section -->
+			<div class="current-data-container">
+				<div class="current-data">
+					<p class="current-temp">20</p>
+					<p class="condition">sunny</p>
+					<p class="last-updated">2024-03-21 21:30</p>
+				</div>
+				<div class="extra-current-data">
+					<div class="feels-like">
+						<h3 class="section-title">feels like</h3>
+						<p class="feels-like-value">30</p>
+					</div>
+					<div class="precipitation">
+						<h3 class="section-title">precipitation</h3>
+						<p class="precipitation-value">2.3</p>
+					</div>
+					<div class="visibility">
+						<h3 class="section-title">visibility</h3>
+						<p class="visibility-value">6 mi</p>
+					</div>
+					<div class="humidity">
+						<h3 class="section-title">humidity</h3>
+						<p class="humidity-value">82%</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Hourly forecast section -->
+			<div class="hourly-forecast-container">
+				<h3 class="section-title">hourly forecast</h3>
+				<div class="hourly-data-container">
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="time">12:00</p>
+						<p class="data-box-temp">20</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+				</div>
+			</div>
+
+			<!-- Future forecast section (3-day) -->
+			<div class="future-forecast-container">
+				<h3 class="section-title">3-Day Forecast</h3>
+				<div class="future-data-container">
+					<div class="data-box">
+						<p class="day">today</p>
+						<p class="min-max-temp">
+							<span class="min-temp">5</span>/<span class="max-temp"></span>20
+						</p>
+						<p class="data-box-avg-temp">15</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="day">today</p>
+						<p class="min-max-temp">
+							<span class="min-temp">5</span>/<span class="max-temp"></span>20
+						</p>
+						<p class="data-box-avg-temp">15</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+					<div class="data-box">
+						<p class="day">today</p>
+						<p class="min-max-temp">
+							<span class="min-temp">5</span>/<span class="max-temp"></span>20
+						</p>
+						<p class="data-box-avg-temp">15</p>
+						<img src="#" alt="icon" class="data-box-icon" />
+					</div>
+				</div>
+			</div>
+
+			<!-- Extra data section -->
+			<div class="extra-data-container">
+				<div class="uv-data-container">
+					<h3 class="section-title">uv index</h3>
+					<p class="uv-">5</p>
+				</div>
+				<div class="wind-data-container">
+					<h3 class="section-title">wind</h3>
+					<p class="wind-value">
+						3 <span data-title="wind-measurement">km/h</span>
+					</p>
+				</div>
+			</div>
+		</main>
+	</body>
+</html>

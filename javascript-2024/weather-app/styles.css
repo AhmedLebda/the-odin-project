@@ -1,0 +1,63 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+:root {
+	--primary-color: #fff;
+	--default-border-radius: 10px;
+	--default-padding: 0.8rem;
+
+	--app-dark-bg-color: #090a0dd2;
+	--section-dark-bg-color: #00000070;
+}
+
+body {
+	min-height: 100vh;
+	font-family: sans-serif;
+	background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+div {
+	border-radius: var(--default-border-radius);
+	min-height: 90px;
+}
+
+/* App container styles */
+.app {
+	width: min(600px, 100% - 1rem);
+	margin: 2rem auto;
+	background-color: var(--app-dark-bg-color);
+	border-radius: var(--default-border-radius);
+	padding: var(--default-padding);
+
+	display: grid;
+	grid-template-areas:
+		"search hourly" "current hourly" "current future"
+		"current future" "current extra" "current extra";
+	gap: var(--default-padding);
+	color: var(--primary-color);
+}
+
+.search-container {
+	grid-area: search;
+	background-color: var(--section-dark-bg-color);
+}
+.current-data-container {
+	grid-area: current;
+	background-color: var(--section-dark-bg-color);
+}
+.hourly-forecast-container {
+	grid-area: hourly;
+	background-color: var(--section-dark-bg-color);
+}
+.future-forecast-container {
+	grid-area: future;
+	background-color: var(--section-dark-bg-color);
+}
+.extra-data-container {
+	grid-area: extra;
+	background-color: var(--section-dark-bg-color);
+}
