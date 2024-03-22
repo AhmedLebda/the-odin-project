@@ -81,6 +81,10 @@ div {
 	justify-content: center;
 	align-items: center;
 	gap: var(--default-padding);
+	padding: var(--default-padding);
+}
+.current-location {
+	font-size: var(--font-xl);
 }
 .current-temp {
 	font-size: var(--font-xxl);
@@ -121,12 +125,18 @@ div {
 	background-color: var(--section-dark-bg-color);
 	padding: var(--default-padding);
 }
+.hourly-forecast-container {
+	min-height: 217px;
+}
+.future-forecast-container {
+	min-height: 230px;
+}
 .hourly-data-container,
 .future-data-container {
 	overflow-x: auto;
 	display: flex;
 	gap: var(--default-padding);
-	padding-block: var(--default-padding);
+	padding-top: var(--default-padding);
 	border-top: 1px solid var(--secondary-color);
 	border-radius: 0;
 
@@ -157,6 +167,9 @@ div {
 .data-box-temp,
 .data-box-avg-temp {
 	font-size: var(--font-l);
+}
+.data-box-icon {
+	margin-top: -15px;
 }
 .future-forecast-container {
 	grid-area: future;
