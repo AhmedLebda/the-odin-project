@@ -7,33 +7,41 @@
 }
 :root {
 	--primary-color: #fff;
-	--default-border-radius: 10px;
-	--default-padding: 0.8rem;
-
+	--secondary-color: #607384;
 	--app-dark-bg-color: #090a0dd2;
 	--section-dark-bg-color: #00000070;
+	--body-bg-image: linear-gradient(to top, #092659cf 0%, #537895 100%);
+	--default-border-radius: 10px;
+	--default-padding: 0.9rem;
+	--font-xxl: 5rem;
+	--font-xl: 2rem;
+	--font-l: 1.5rem;
+	--font-default: 1rem;
+	--font-s: 0.8rem;
+	--font-xs: 0.7rem;
 }
 
 body {
 	min-height: 100vh;
+	overflow: hidden;
 	font-family: sans-serif;
-	background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+	background: var(--body-bg-image);
 }
 
 div {
 	border-radius: var(--default-border-radius);
-	min-height: 90px;
 }
 
-/* App container styles */
+/* -----> App container styles */
 .app {
-	width: min(600px, 100% - 1rem);
-	margin: 2rem auto;
+	width: min(800px, 100% - 1rem);
+	margin: 3rem auto;
 	background-color: var(--app-dark-bg-color);
 	border-radius: var(--default-border-radius);
 	padding: var(--default-padding);
 
 	display: grid;
+	grid-template-columns: 300px calc(500px - 2.7rem);
 	grid-template-areas:
 		"search hourly" "current hourly" "current future"
 		"current future" "current extra" "current extra";
@@ -41,23 +49,140 @@ div {
 	color: var(--primary-color);
 }
 
+/* -----> Search Styles */
 .search-container {
 	grid-area: search;
 	background-color: var(--section-dark-bg-color);
+	overflow: none;
 }
+.search-input {
+	width: 100%;
+	border: none;
+	border-radius: var(--default-border-radius);
+	color: var(--primary-color);
+	background-color: transparent;
+	padding: 0.3rem 0.5rem;
+}
+
+/* -----> Current Styles */
 .current-data-container {
 	grid-area: current;
-	background-color: var(--section-dark-bg-color);
+	display: flex;
+	flex-direction: column;
+	background: var(--body-bg-image);
 }
-.hourly-forecast-container {
+.current-data,
+.extra-current-data {
+	flex: 1;
+}
+.current-data {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: var(--default-padding);
+}
+.current-temp {
+	font-size: var(--font-xxl);
+}
+.condition {
+	font-size: var(--font-l);
+	font-weight: lighter;
+}
+.last-updated {
+	font-size: var(--font-s);
+}
+.extra-current-data {
+	display: grid;
+	grid-template-columns: repeat(2, 40%);
+	place-content: center;
+	gap: var(--default-padding);
+}
+.extra-current-data > div {
+	background-color: var(--section-dark-bg-color);
+	padding: var(--default-padding);
+}
+.section-title {
+	color: var(--secondary-color);
+	font-size: var(--font-s);
+	font-weight: normal;
+	text-transform: uppercase;
+	margin-bottom: var(--default-padding);
+}
+.extra-current-data-value {
+	font-size: var(--font-xl);
+}
+
+/* -----> Hourly Styles */
+/* -----> Future Styles */
+.hourly-forecast-container,
+.future-forecast-container {
 	grid-area: hourly;
 	background-color: var(--section-dark-bg-color);
+	padding: var(--default-padding);
+}
+.hourly-data-container,
+.future-data-container {
+	overflow-x: auto;
+	display: flex;
+	gap: var(--default-padding);
+	padding-block: var(--default-padding);
+	border-top: 1px solid var(--secondary-color);
+	border-radius: 0;
+
+	scrollbar-width: thin;
+	scrollbar-color: var(--secondary-color) var(--app-dark-bg-color);
+}
+/* .hourly-data-container::-webkit-scrollbar {
+	width: 3px;
+}
+.hourly-data-container::-webkit-scrollbar-track {
+	background: #000000;
+}
+.hourly-data-container::-webkit-scrollbar-thumb {
+	background: #000000;
+} */
+.data-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	padding: var(--default-padding);
+	/* outline: 1px solid red; */
+}
+.time,
+.data-box-day {
+	font-size: var(--font-s);
+}
+.data-box-temp,
+.data-box-avg-temp {
+	font-size: var(--font-l);
 }
 .future-forecast-container {
 	grid-area: future;
-	background-color: var(--section-dark-bg-color);
 }
+.future-data-container {
+	padding-bottom: 0;
+}
+.future-data-container > div {
+	flex: 1;
+}
+.min-max-temp {
+	font-size: var(--font-xs);
+}
+.data-box-day {
+	text-transform: capitalize;
+}
+/* -----> Extra Styles */
 .extra-data-container {
 	grid-area: extra;
+	display: flex;
+	gap: var(--default-padding);
+}
+.extra-data-container > div {
 	background-color: var(--section-dark-bg-color);
+	padding: var(--default-padding);
+	flex: 1;
+	padding-block: var(--default-padding);
+	margin-bottom: 3rem;
 }
