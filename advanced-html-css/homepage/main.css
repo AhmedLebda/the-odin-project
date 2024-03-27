@@ -1,0 +1,99 @@
+:root {
+	--main-font: sans-serif;
+	--secondary-font: serif;
+	--section-padding: 3rem;
+	--header-bg: rgba(0, 0, 255, 0.235);
+	--gap-default: 1rem;
+	--gap-s: 0.7rem;
+	--white-bg: #fff;
+	--font-xl: 2rem;
+}
+
+/* --> General Styles */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+body {
+	min-height: 100vh;
+	font-family: var(--main-font);
+}
+a {
+	text-decoration: none;
+}
+img {
+	display: block;
+}
+.social-icon {
+	border-radius: 50%;
+}
+.content-container {
+	width: min(900px, 100%);
+	margin: 0 auto;
+}
+.section-title {
+	text-transform: capitalize;
+	font-size: var(--font-xl);
+	font-family: var(--secondary-font);
+}
+
+/* --> Main Header Styles */
+.main-header {
+	padding-block: var(--section-padding);
+	background-color: var(--header-bg);
+}
+.header-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.personal-photo {
+	position: relative;
+}
+.my-name {
+	position: absolute;
+	bottom: var(--gap-default);
+	width: 100%;
+	text-align: center;
+}
+.about-me {
+	flex: 1;
+	background-color: var(--white-bg);
+	padding: var(--gap-default);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-default);
+}
+
+.about-info {
+	line-height: 1.3rem;
+	padding-block: var(--gap-default);
+}
+.social-wrapper {
+	align-self: flex-end;
+
+	display: flex;
+	gap: var(--gap-s);
+}
+/* ----> Main Header Mobile and Tablet Styles */
+@media (max-width: 800px) {
+	.main-header {
+		padding: 0;
+	}
+	.header-content {
+		flex-direction: column;
+		gap: var(--gap-default);
+	}
+	.personal-photo {
+		padding-top: var(--gap-default);
+	}
+	.about-me {
+		align-items: center;
+	}
+	.social-wrapper {
+		align-self: center;
+	}
+}
