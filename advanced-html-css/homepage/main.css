@@ -2,7 +2,7 @@
 	--main-font: sans-serif;
 	--secondary-font: serif;
 	--section-padding: 3rem;
-	--header-bg: rgba(0, 0, 100, 0.83);
+	--header-bg: #0891b2;
 	--gap-xl: 2rem;
 	--gap-l: 1.5rem;
 	--gap-default: 1rem;
@@ -36,7 +36,15 @@ img {
 .content-container {
 	width: min(900px, 100%);
 	margin: 0 auto;
+	padding-inline: var(--gap-xl);
 }
+
+@media (max-width: 300px) {
+	.content-container {
+		padding-inline: var(--gap-s);
+	}
+}
+
 .section-title {
 	text-transform: capitalize;
 	font-size: var(--font-xl);
@@ -104,7 +112,6 @@ img {
 /* --> Main content Styles */
 .main-content {
 	padding-block: var(--section-padding);
-	padding-inline: var(--gap-xl);
 }
 
 .projects-container {
@@ -138,8 +145,32 @@ img {
 	padding: var(--gap-s) var(--gap-default);
 }
 
-@media (max-width: 300px) {
-	.main-content {
-		padding-inline: var(--gap-s);
+/* --> Footer Styles */
+footer {
+	background-color: var(--header-bg);
+	padding-block: var(--section-padding);
+}
+.footer-content {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	color: white;
+	justify-content: center;
+	gap: var(--gap-l);
+}
+.footer-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap-default);
+}
+.footer-info > * {
+	display: flex;
+	gap: var(--gap-s);
+	align-items: center;
+}
+@media (max-width: 745px) {
+	.footer-img {
+		display: none;
 	}
 }
