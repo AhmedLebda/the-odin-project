@@ -1,15 +1,6 @@
-import { useState } from "react";
 import DetailInput from "./DetailInput";
-const Personal = () => {
-	const [personalDetails, setPersonalDetails] = useState({
-		fullName: "",
-		email: "",
-		phoneNumber: "",
-		address: "",
-	});
-
-	const handleChange = (e) =>
-		setPersonalDetails({ ...personalDetails, [e.target.name]: e.target.value });
+const Personal = ({ personalDetails, onPersonalChange }) => {
+	const { fullName, email, phoneNumber, address } = personalDetails;
 
 	return (
 		<section className=" flex flex-col gap-2 p-4 self-start rounded-md shadow-lg bg-white w-full">
@@ -22,8 +13,8 @@ const Personal = () => {
 				id="fullName"
 				name="fullName"
 				placeholder="First and last name"
-				value={personalDetails.fullName}
-				onChange={handleChange}
+				value={fullName}
+				onChange={onPersonalChange}
 				label="Full name"
 			/>
 
@@ -32,8 +23,8 @@ const Personal = () => {
 				id="email"
 				name="email"
 				placeholder="example@example.com"
-				value={personalDetails.email}
-				onChange={handleChange}
+				value={email}
+				onChange={onPersonalChange}
 				label="E-mail"
 			/>
 
@@ -42,8 +33,8 @@ const Personal = () => {
 				id="phoneNumber"
 				name="phoneNumber"
 				placeholder="Enter phone number"
-				value={personalDetails.phoneNumber}
-				onChange={handleChange}
+				value={phoneNumber}
+				onChange={onPersonalChange}
 				label="Phone Number"
 			/>
 
@@ -52,8 +43,8 @@ const Personal = () => {
 				id="address"
 				name="address"
 				placeholder="city, Country"
-				value={personalDetails.address}
-				onChange={handleChange}
+				value={address}
+				onChange={onPersonalChange}
 				label="Address"
 			/>
 		</section>
