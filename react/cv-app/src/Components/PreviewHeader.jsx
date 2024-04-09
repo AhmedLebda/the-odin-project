@@ -1,6 +1,7 @@
-const ResumeHeader = ({ fullName, email, phoneNumber, address }) => {
+const PreviewHeader = ({ personalData }) => {
+	const { fullName, email, phoneNumber, address } = personalData;
 	return (
-		<header className="bg-sky-900 text-white text-center p-6 min-h-[136px]">
+		<header className="bg-blue-900 text-white text-center p-6 min-h-[136px]">
 			{fullName && (
 				<h1 className="font-bold text-4xl mb-6 capitalize">{fullName}</h1>
 			)}
@@ -20,4 +21,4 @@ const ResumeHeader = ({ fullName, email, phoneNumber, address }) => {
 	);
 };
 
-export default ResumeHeader;
+export default PreviewHeader;

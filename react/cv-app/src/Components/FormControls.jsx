@@ -1,10 +1,10 @@
-const SectionControls = ({ onSave, onCancel, onDelete, id }) => {
+const FormControls = ({ onSave, onCancel, onDelete }) => {
 	return (
 		<div className="flex gap-4 py-4 justify-around">
 			<button
 				className="rounded-md px-4 py-1 font-semibold 
 				bg-red-600 hover:bg-red-700 text-white"
-				onClick={() => onDelete(id)}
+				onClick={onDelete}
 			>
 				Delete
 			</button>
@@ -28,4 +28,4 @@ const SectionControls = ({ onSave, onCancel, onDelete, id }) => {
 	);
 };
 
-export default SectionControls;
+export default FormControls;
