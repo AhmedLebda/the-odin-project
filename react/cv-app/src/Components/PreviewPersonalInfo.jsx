@@ -1,3 +1,10 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	faEnvelope,
+	faPhone,
+	faLocationDot,
+} from "@fortawesome/free-solid-svg-icons";
+
 const PreviewPersonalInfo = ({ personalData }) => {
 	const { fullName, email, phoneNumber, address } = personalData;
 	return (
@@ -11,11 +18,28 @@ const PreviewPersonalInfo = ({ personalData }) => {
 						href="#"
 						className=" underline underline-offset-4 hover:text-slate-200"
 					>
+						<span className="mr-2">
+							<FontAwesomeIcon icon={faEnvelope} />
+						</span>
 						{email}
 					</a>
 				)}
-				{phoneNumber && <p>{phoneNumber}</p>}
-				{address && <p className="capitalize">{address}</p>}
+				{phoneNumber && (
+					<p>
+						<span className="mr-2">
+							<FontAwesomeIcon icon={faPhone} />
+						</span>
+						{phoneNumber}
+					</p>
+				)}
+				{address && (
+					<p className="capitalize">
+						<span className="mr-2">
+							<FontAwesomeIcon icon={faLocationDot} />
+						</span>
+						{address}
+					</p>
+				)}
 			</div>
 		</header>
 	);

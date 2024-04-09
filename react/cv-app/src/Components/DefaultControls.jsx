@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const DefaultControls = ({
 	defaultPersonalData,
 	setPersonalData,
@@ -28,6 +31,9 @@ const DefaultControls = ({
 				className="font-semibold text-red-700 capitalize border rounded-md px-4 py-1 hover:bg-red-50"
 				onClick={clearAllData}
 			>
+				<span className="mr-2">
+					<FontAwesomeIcon icon={faTrash} />
+				</span>
 				clear resume
 			</button>
 			<button

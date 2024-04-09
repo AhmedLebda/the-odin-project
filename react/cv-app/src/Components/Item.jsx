@@ -1,6 +1,7 @@
 import Form from "./Form";
 import FormControls from "./FormControls";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 const Item = ({
 	itemStateData,
 	setData,
@@ -60,10 +61,13 @@ const Item = ({
 				</>
 			) : (
 				<button
-					className="text-left border-2 p-2 rounded-md w-full"
+					className="flex justify-between border-2 p-2 rounded-md w-full"
 					onClick={() => setActive(itemStateData.id)}
 				>
 					{ItemTitle}
+					<span>
+						<FontAwesomeIcon icon={faPenToSquare} />
+					</span>
 				</button>
 			)}
 		</div>

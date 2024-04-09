@@ -16,11 +16,7 @@ const PersonalDetails = ({
 	};
 	return (
 		<div className="flex flex-col gap-2 p-4 self-start rounded-md shadow-lg bg-white w-full">
-			<OptionHeader
-				title="Personal Details"
-				onOpen={onSectionOpen}
-				isOpen={isOpen}
-			/>
+			<OptionHeader title="Personal" onOpen={onSectionOpen} isOpen={isOpen} />
 			{isOpen && (
 				<Form
 					inputData={personalInputsData}
