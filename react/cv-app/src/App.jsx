@@ -9,9 +9,6 @@ function App() {
 		phoneNumber: "",
 		address: "",
 	});
-	const onPersonalDataChange = (e) => {
-		setPersonalData({ ...personalData, [e.target.name]: e.target.value });
-	};
 	const [educationData, setEducationData] = useState([]);
 	const [prevEducationData, setPrevEducationData] = useState([]);
 	const [experienceData, setExperienceData] = useState([]);
@@ -21,7 +18,7 @@ function App() {
 		<main className="flex gap-8 min-h-screen bg-gray-100 p-4 justify-center">
 			<Options
 				personalData={personalData}
-				onPersonalDataChange={onPersonalDataChange}
+				setPersonalData={setPersonalData}
 				educationData={educationData}
 				setEducationData={setEducationData}
 				prevEducationData={prevEducationData}

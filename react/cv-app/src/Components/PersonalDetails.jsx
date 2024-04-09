@@ -4,14 +4,16 @@ import { useState } from "react";
 
 const PersonalDetails = ({
 	personalData,
-	onPersonalDataChange,
+	setPersonalData,
 	personalInputsData,
 }) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(true);
 	const onSectionOpen = () => {
 		setIsOpen(!isOpen);
 	};
-
+	const onPersonalDataChange = (e) => {
+		setPersonalData({ ...personalData, [e.target.name]: e.target.value });
+	};
 	return (
 		<div className="flex flex-col gap-2 p-4 self-start rounded-md shadow-lg bg-white w-full">
 			<OptionHeader

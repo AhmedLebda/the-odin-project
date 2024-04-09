@@ -1,7 +1,7 @@
 const PreviewOptionInfo = ({ data, title }) => {
 	const { startDate, endDate, location } = data;
 	return (
-		<div className="flex gap-8 ">
+		<div className="flex gap-8 mb-6">
 			<div className="text-sm">
 				<p>
 					{startDate} - {endDate}

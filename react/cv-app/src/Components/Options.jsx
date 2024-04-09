@@ -2,10 +2,11 @@ import PersonalDetails from "./PersonalDetails";
 import ExtraOption from "./ExtraOption";
 import inputData from "../utils/inputData";
 import dataTemplate from "../utils/dataTemplate";
+import DefaultControls from "./DefaultControls";
 
 const Options = ({
 	personalData,
-	onPersonalDataChange,
+	setPersonalData,
 	educationData,
 	setEducationData,
 	prevEducationData,
@@ -17,9 +18,17 @@ const Options = ({
 }) => {
 	return (
 		<aside className=" flex flex-col gap-8 items-center rounded-md basis-1/3 max-w-md">
+			<DefaultControls
+				setPersonalData={setPersonalData}
+				defaultPersonalData={dataTemplate.examplePersonalData}
+				setEducationData={setEducationData}
+				defaultEducationData={dataTemplate.exampleEducationData}
+				setExperienceData={setExperienceData}
+				defaultExperienceData={dataTemplate.exampleExperienceData}
+			/>
 			<PersonalDetails
 				personalData={personalData}
-				onPersonalDataChange={onPersonalDataChange}
+				setPersonalData={setPersonalData}
 				personalInputsData={inputData.personalInputsData}
 			/>
 			<ExtraOption
