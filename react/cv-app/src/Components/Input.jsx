@@ -4,15 +4,26 @@ const Input = ({ type, id, name, placeholder, value, onChange, label }) => {
 			<label htmlFor={id} className="text-slate-800 font-semibold capitalize">
 				{label}
 			</label>
-			<input
-				type={type}
-				id={id}
-				name={name}
-				placeholder={placeholder}
-				value={value}
-				onChange={onChange}
-				className="border ps-2 rounded-md"
-			/>
+			{type === "textarea" ? (
+				<textarea
+					id={id}
+					name={name}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					className="border ps-2 rounded-md"
+				></textarea>
+			) : (
+				<input
+					type={type}
+					id={id}
+					name={name}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+					className="border ps-2 rounded-md"
+				/>
+			)}
 		</div>
 	);
 };

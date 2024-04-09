@@ -22,8 +22,10 @@ const Options = ({
 				setPersonalData={setPersonalData}
 				defaultPersonalData={dataTemplate.examplePersonalData}
 				setEducationData={setEducationData}
+				setPrevEducationData={setPrevEducationData}
 				defaultEducationData={dataTemplate.exampleEducationData}
 				setExperienceData={setExperienceData}
+				setPrevExperienceData={setPrevExperienceData}
 				defaultExperienceData={dataTemplate.exampleExperienceData}
 			/>
 			<PersonalDetails

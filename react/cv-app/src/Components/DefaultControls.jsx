@@ -5,16 +5,22 @@ const DefaultControls = ({
 	setEducationData,
 	defaultExperienceData,
 	setExperienceData,
+	setPrevEducationData,
+	setPrevExperienceData,
 }) => {
 	const loadExample = () => {
 		setPersonalData({ ...defaultPersonalData });
 		setEducationData([...defaultEducationData]);
+		setPrevEducationData([...defaultEducationData]);
 		setExperienceData([...defaultExperienceData]);
+		setPrevExperienceData([...defaultExperienceData]);
 	};
 	const clearAllData = () => {
 		setPersonalData({ fullName: "", email: "", phoneNumber: "", address: "" });
 		setEducationData([]);
+		setPrevEducationData([]);
 		setExperienceData([]);
+		setPrevExperienceData([]);
 	};
 	return (
 		<div className="flex justify-around gap-2 p-4 self-start rounded-md shadow-lg bg-white w-full">
