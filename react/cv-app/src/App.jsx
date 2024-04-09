@@ -31,7 +31,11 @@ function App() {
 				prevExperienceData={prevExperienceData}
 				setPrevExperienceData={setPrevExperienceData}
 			/>
-			<Preview personalData={personalData} />
+			<Preview
+				personalData={personalData}
+				educationData={educationData}
+				experienceData={experienceData}
+			/>
 		</main>
 	);
 }
