@@ -81,9 +81,14 @@ function App() {
     };
 
     return (
-        <div className="grid  gap-4 grid-rows-main  min-h-screen p-4 justify-center">
+        <div className="mx-auto sm:max-w-[50rem] grid grid-cols-1  gap-4 grid-rows-layout  min-h-screen p-4 justify-center border-4">
             <Header />
-            <main className="w-[50rem] grid grid-cols-main  gap-4">
+            <main className=" grid grid-rows-layout  sm:grid-cols-main sm:grid-rows-1 gap-4">
+                <Score
+                    currentScore={currentScore}
+                    highScore={highScore}
+                    round={round}
+                />
                 {status === "loading" ? (
                     <div className="capitalize grid place-items-center text-5xl font-extrabold text-slate-900 bg-slate-200 rounded-lg">
                         Loading...
@@ -91,11 +96,6 @@ function App() {
                 ) : (
                     <MainContent data={images} onImageClick={onImageClick} />
                 )}
-                <Score
-                    currentScore={currentScore}
-                    highScore={highScore}
-                    round={round}
-                />
             </main>
         </div>
     );

@@ -4,10 +4,10 @@ export default {
     theme: {
         extend: {
             gridTemplateColumns: {
-                main: "1fr 200px",
+                main: "200px 1fr",
             },
             gridTemplateRows: {
-                main: "100px 1fr",
+                layout: "min-content 1fr",
             },
         },
     },
