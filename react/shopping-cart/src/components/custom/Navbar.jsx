@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import NavCart from "./NavCart";
 
 const navActiveStyles = ({ isActive }) =>
-    isActive ? "border-b-2 border-yellow-400" : "";
+    isActive ? "border-b-2 border-blue-900" : "";
 
 const Navbar = () => {
     return (
@@ -13,7 +13,7 @@ const Navbar = () => {
             >
                 <Link to="/">
                     Osiris
-                    <span className=" text-yellow-400"> Outlet</span>
+                    <span className=" text-blue-900"> Outlet</span>
                 </Link>
             </div>
             <div className="flex items-center gap-4 text-lg font-semibold">
@@ -24,7 +24,7 @@ const Navbar = () => {
                     Shop
                 </NavLink>
                 <NavLink to="About" className={navActiveStyles}>
-                    About
+                    About Us
                 </NavLink>
                 <NavCart />
             </div>
