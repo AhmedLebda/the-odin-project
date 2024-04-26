@@ -1,10 +1,11 @@
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Shop from "./pages/Shop";
+import ShopLayout from "./pages/shop/ShopLayout";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
+
 const routes = [
     {
         path: "/",
@@ -21,7 +22,7 @@ const routes = [
             },
             {
                 path: "shop",
-                element: <Shop />,
+                element: <ShopLayout />,
             },
             {
                 path: "shop/:id",
