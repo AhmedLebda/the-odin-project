@@ -48,7 +48,7 @@ const Home = () => {
                     </div>
                 </div>
             </header>
-            <footer className="bg-black p-4 mt-auto hidden sm:flex justify-between items-center gap-4">
+            <footer className="bg-black p-4 mt-auto hidden sm:flex justify-around items-center gap-4">
                 <img src={versaceLogo} alt="versace logo" className="w-20" />
                 <img src={zaraLogo} alt="zara logo" className="w-16" />
                 <img src={gucciLogo} alt="gucci logo" className="w-20" />

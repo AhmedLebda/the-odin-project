@@ -11,17 +11,37 @@ const NavDropdown = () => {
         <DropdownMenu>
             <DropdownMenuTrigger>Shop</DropdownMenuTrigger>
             <DropdownMenuContent>
-                <DropdownMenuItem className="py-4">
-                    <NavLink to="shop?category=men">
-                        men&apos;s clothing
-                    </NavLink>
-                </DropdownMenuItem>
+                <NavLink to="shop" className="py-2 capitalize font-bold">
+                    <DropdownMenuItem>all products</DropdownMenuItem>
+                </NavLink>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="py-4">
-                    <NavLink to="shop?category=women">
-                        women&apos;s clothing
-                    </NavLink>
-                </DropdownMenuItem>
+                <NavLink
+                    to="shop?category=men's clothing"
+                    className="py-2 capitalize font-bold"
+                >
+                    <DropdownMenuItem>men&apos;s clothing</DropdownMenuItem>
+                </NavLink>
+                <DropdownMenuSeparator />
+                <NavLink
+                    to="shop?category=women's clothing"
+                    className="py-2 capitalize font-bold"
+                >
+                    <DropdownMenuItem>women&apos;s clothing</DropdownMenuItem>
+                </NavLink>
+                <DropdownMenuSeparator />
+                <NavLink
+                    to="shop?category=electronics"
+                    className="py-2 capitalize font-bold"
+                >
+                    <DropdownMenuItem>electronics</DropdownMenuItem>
+                </NavLink>
+                <DropdownMenuSeparator />
+                <NavLink
+                    to="shop?category=jewelery"
+                    className="py-2 capitalize font-bold"
+                >
+                    <DropdownMenuItem>jewelery</DropdownMenuItem>
+                </NavLink>
             </DropdownMenuContent>
         </DropdownMenu>
     );

@@ -7,7 +7,6 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 const ProductCard = ({ data }) => {
-    console.log(data.id);
     return (
         <Card sx={{ maxWidth: 245 }} elevation={0}>
             <CardActionArea component={Link} to={`${data.id}`}>
