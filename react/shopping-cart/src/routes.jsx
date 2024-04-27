@@ -1,7 +1,8 @@
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import ShopLayout from "./pages/shop/ShopLayout";
+import Shop from "./pages/shop/Shop";
+import { loader as shopLoader } from "./pages/shop/Shop.loader";
 import Product from "./pages/Product";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
@@ -22,12 +23,14 @@ const routes = [
             },
             {
                 path: "shop",
-                element: <ShopLayout />,
+                element: <Shop />,
+                loader: shopLoader,
             },
             {
                 path: "shop/:id",
                 element: <Product />,
             },
+
             {
                 path: "checkout",
                 element: <Checkout />,
