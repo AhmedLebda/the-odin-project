@@ -3,7 +3,8 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Shop from "./pages/shop/Shop";
 import { loader as shopLoader } from "./pages/shop/Shop.loader";
-import Product from "./pages/Product";
+import ProductOverview from "./pages/ProductOverview";
+import { loader as productOverviewLoader } from "./pages/ProductOverview.loader";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
 
@@ -28,7 +29,8 @@ const routes = [
             },
             {
                 path: "shop/:id",
-                element: <Product />,
+                element: <ProductOverview />,
+                loader: productOverviewLoader,
             },
 
             {

@@ -19,6 +19,7 @@ module.exports = {
         extend: {
             gridTemplateRows: {
                 layout: "auto 1fr auto",
+                "[auto,auto,1fr]": "auto auto 1fr",
             },
             keyframes: {
                 "accordion-down": {
@@ -36,5 +37,8 @@ module.exports = {
             },
         },
     },
-    plugins: [require("tailwindcss-animate")],
+    plugins: [
+        require("tailwindcss-animate"),
+        require("@tailwindcss/aspect-ratio"),
+    ],
 };
