@@ -1,14 +1,7 @@
-export const loader = async ({ request }) => {
-    const category = new URL(request.url).searchParams.get("category");
+import { defer } from "react-router-dom";
+import { getAllProducts } from "../../api";
 
-    if (!category) {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        return { category: null, data };
-    }
-    const response = await fetch(
-        `https://fakestoreapi.com/products/category/${category}`
-    );
-    const data = await response.json();
-    return { category, data };
+export const loader = async () => {
+    const dataPromise = getAllProducts();
+    return defer({ data: dataPromise });
 };

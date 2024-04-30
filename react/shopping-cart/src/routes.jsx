@@ -7,6 +7,8 @@ import ProductOverview from "./pages/ProductOverview";
 import { loader as productOverviewLoader } from "./pages/ProductOverview.loader";
 import Checkout from "./pages/Checkout";
 import Error from "./pages/Error";
+import SubShop from "./pages/shop/SubShop";
+import { loader as subShopLoader } from "./pages/shop/subShop.loader";
 
 const routes = [
     {
@@ -23,12 +25,17 @@ const routes = [
                 element: <About />,
             },
             {
-                path: "shop",
+                path: "shop/all",
                 element: <Shop />,
                 loader: shopLoader,
             },
             {
-                path: "shop/:id",
+                path: "shop/:category",
+                element: <SubShop />,
+                loader: subShopLoader,
+            },
+            {
+                path: "shop/:category/:id",
                 element: <ProductOverview />,
                 loader: productOverviewLoader,
             },

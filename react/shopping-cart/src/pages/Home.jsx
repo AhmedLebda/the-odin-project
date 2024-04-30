@@ -18,7 +18,7 @@ const Home = () => {
                     to your sense of style.
                 </p>
                 <Link
-                    to="shop"
+                    to="shop/all"
                     className={`self-start rounded-2xl px-8 capitalize ${buttonVariants(
                         {
                             variant: "default",

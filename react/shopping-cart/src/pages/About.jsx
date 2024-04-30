@@ -21,7 +21,7 @@ const About = () => {
                 bring our vision to life.
             </p>
             <Link
-                to="../shop"
+                to="../shop/all"
                 className={`rounded-2xl px-12 capitalize ${buttonVariants({
                     variant: "default",
                 })}`}

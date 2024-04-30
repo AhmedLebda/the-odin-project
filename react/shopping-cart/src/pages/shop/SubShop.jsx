@@ -2,12 +2,14 @@ import { useLoaderData, Await } from "react-router-dom";
 import ProductCard from "../../components/custom/ProductCard";
 import { Suspense } from "react";
 import ShopSkeleton from "./ShopSkeleton";
-const Shop = () => {
-    const { data } = useLoaderData();
 
+const SubShop = () => {
+    const { category, data } = useLoaderData();
     return (
         <div className="p-8">
-            <h1 className="text-4xl font-extrabold capitalize">All Products</h1>
+            <h1 className="text-4xl font-extrabold capitalize">
+                {category} collection
+            </h1>
             <Suspense fallback={<ShopSkeleton />} key={Math.random()}>
                 <Await resolve={data}>
                     {(loadedData) => {
@@ -28,4 +30,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default SubShop;

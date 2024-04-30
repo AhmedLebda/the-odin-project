@@ -21,9 +21,7 @@ const Navbar = () => {
                 <NavLink to="/" className={navActiveStyles}>
                     Home
                 </NavLink>
-                {/* <NavLink to="shop" className={navActiveStyles}>
-                    Shop
-                </NavLink> */}
+
                 <NavDropdown />
                 <NavLink to="About" className={navActiveStyles}>
                     About Us
