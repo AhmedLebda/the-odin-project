@@ -15,6 +15,15 @@ export const getProductByCategory = async (category) => {
     return data;
 };
 
+export const getProductById = async (productId) => {
+    const request = await fetch(
+        `https://fakestoreapi.com/products/${productId}`
+    );
+    const data = await request.json();
+
+    return data;
+};
+
 // function sleep(delay) {
 //     return new Promise((resolve) => setTimeout(resolve, delay));
 // }

@@ -1,10 +1,15 @@
 import { RadioGroup } from "@headlessui/react";
+import { useContext } from "react";
+import { productOverviewContext } from "../../../contexts/contexts";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-const ProductSizes = ({ selectedSize, setSelectedSize, sizes }) => {
+const ProductSizes = () => {
+    const { selectedSize, setSelectedSize, sizes } = useContext(
+        productOverviewContext
+    );
     return (
         <div className="mt-10">
             <div className="flex items-center justify-between">

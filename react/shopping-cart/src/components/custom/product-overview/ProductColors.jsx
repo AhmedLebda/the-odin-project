@@ -1,10 +1,15 @@
 import { RadioGroup } from "@headlessui/react";
+import { useContext } from "react";
+import { productOverviewContext } from "../../../contexts/contexts";
 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
 
-const ProductColors = ({ selectedColor, setSelectedColor, colors }) => {
+const ProductColors = () => {
+    const { selectedColor, setSelectedColor, colors } = useContext(
+        productOverviewContext
+    );
     return (
         <div>
             <h3 className="text-sm font-medium text-gray-900">Color</h3>
