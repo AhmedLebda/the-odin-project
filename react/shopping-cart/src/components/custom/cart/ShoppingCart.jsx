@@ -3,13 +3,12 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "lucide-react";
 import { ShoppingCart as CartIcon } from "lucide-react";
 import { useContext } from "react";
-import { cartContext } from "../../contexts/contexts";
-import CartProduct from "./cart/CartProduct";
+import { cartContext } from "../../../contexts/contexts";
+import CartProduct from "./CartProduct";
 import { Link } from "react-router-dom";
 
 export default function ShoppingCart() {
     const { cartItems, getTotalPrice } = useContext(cartContext);
-    console.log(getTotalPrice(cartItems));
     const [open, setOpen] = useState(false);
 
     return (

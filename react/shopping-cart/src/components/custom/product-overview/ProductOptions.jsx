@@ -4,9 +4,10 @@ import ProductSizes from "./ProductSizes";
 import { cartContext } from "../../../contexts/contexts";
 import { useContext } from "react";
 import { productOverviewContext } from "../../../contexts/contexts";
+import { Toaster, toast } from "sonner";
 
 const ProductOptions = () => {
-    const { addProductToCart } = useContext(cartContext);
+    const { addProductToCart, removeProductFromCart } = useContext(cartContext);
     const { productData, selectedColor, selectedSize } = useContext(
         productOverviewContext
     );
@@ -37,11 +38,21 @@ const ProductOptions = () => {
 
                 <button
                     type="submit"
-                    onClick={() => addProductToCart(cartProduct)}
+                    onClick={() => {
+                        addProductToCart(cartProduct);
+                        toast.success("Item is added to cart", {
+                            action: {
+                                label: "Undo",
+                                onClick: () =>
+                                    removeProductFromCart(productData),
+                            },
+                        });
+                    }}
                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium  bg-stone-900 text-stone-50 hover:bg-stone-900/90 dark:bg-stone-50 dark:text-stone-900 dark:hover:bg-stone-50/90"
                 >
                     Add to cart
                 </button>
+                <Toaster position="top-right" richColors closeButton />
             </div>
         </div>
     );

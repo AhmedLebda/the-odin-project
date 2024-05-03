@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
 import NavDropdown from "./NavDropdown";
-import ShoppingCart from "./ShoppingCart";
+import ShoppingCart from "./cart/ShoppingCart";
 
 const navActiveStyles = ({ isActive }) =>
     isActive ? "border-b-2 border-blue-900" : "";
