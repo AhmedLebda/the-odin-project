@@ -1,6 +1,6 @@
 import { Link, NavLink } from "react-router-dom";
-import NavCart from "./NavCart";
 import NavDropdown from "./NavDropdown";
+import ShoppingCart from "./ShoppingCart";
 
 const navActiveStyles = ({ isActive }) =>
     isActive ? "border-b-2 border-blue-900" : "";
@@ -26,7 +26,7 @@ const Navbar = () => {
                 <NavLink to="About" className={navActiveStyles}>
                     About Us
                 </NavLink>
-                <NavCart />
+                <ShoppingCart />
             </div>
         </nav>
     );
