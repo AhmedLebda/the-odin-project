@@ -19,7 +19,7 @@ const CartProduct = ({ product, open, setOpen }) => {
                     <img
                         src={product.image}
                         alt={product.title}
-                        className="h-full w-full object-cover object-center"
+                        className="h-full w-full p-2  object-center"
                     />
                 </div>
                 <div className="ml-4 flex flex-1 flex-col">

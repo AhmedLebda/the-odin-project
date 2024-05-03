@@ -60,7 +60,7 @@ const ProductOptions = () => {
             >
                 Add to cart
             </button>
-            <Toaster position="top-right" richColors closeButton />
+            <Toaster position="bottom-left" richColors closeButton />
         </div>
     );
 };
