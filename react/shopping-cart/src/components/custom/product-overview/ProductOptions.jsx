@@ -17,6 +17,20 @@ const ProductOptions = () => {
         color: selectedColor.name,
         size: selectedSize.name,
     };
+    let renderOptions = null;
+
+    if (
+        productData.category === "women's clothing" ||
+        productData.category === "men's clothing"
+    ) {
+        renderOptions = (
+            <div className="mt-10">
+                <ProductColors />
+
+                <ProductSizes />
+            </div>
+        );
+    }
 
     return (
         <div className="mt-4 lg:row-span-3 lg:mt-0">
@@ -29,31 +43,24 @@ const ProductOptions = () => {
             {/* Reviews */}
             <ProductReviews />
 
-            <div className="mt-10">
-                {/* Colors */}
-                <ProductColors />
+            {renderOptions}
 
-                {/* Sizes */}
-                <ProductSizes />
-
-                <button
-                    type="submit"
-                    onClick={() => {
-                        addProductToCart(cartProduct);
-                        toast.success("Item is added to cart", {
-                            action: {
-                                label: "Undo",
-                                onClick: () =>
-                                    removeProductFromCart(productData),
-                            },
-                        });
-                    }}
-                    className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium  bg-stone-900 text-stone-50 hover:bg-stone-900/90 dark:bg-stone-50 dark:text-stone-900 dark:hover:bg-stone-50/90"
-                >
-                    Add to cart
-                </button>
-                <Toaster position="top-right" richColors closeButton />
-            </div>
+            <button
+                type="submit"
+                onClick={() => {
+                    addProductToCart(cartProduct);
+                    toast.success("Item is added to cart", {
+                        action: {
+                            label: "Undo",
+                            onClick: () => removeProductFromCart(productData),
+                        },
+                    });
+                }}
+                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium  bg-stone-900 text-stone-50 hover:bg-stone-900/90 dark:bg-stone-50 dark:text-stone-900 dark:hover:bg-stone-50/90"
+            >
+                Add to cart
+            </button>
+            <Toaster position="top-right" richColors closeButton />
         </div>
     );
 };
