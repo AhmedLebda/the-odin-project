@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./partials/head") %>
+        <title>Messenger | <%= title %></title>
+    </head>
+    <body>
+        <div class="grid grid-rows-layout">
+            <%- include('./partials/header.ejs') %>
+
+            <main class="m-8 overflow-y-auto">
+                <div class="flex gap-8 items-center mb-8">
+                    <h1 class="text-4xl text-slate-900 font-bold">
+                        Messages :
+                    </h1>
+                    <a
+                        href="/new"
+                        class="capitalize font-bold text-blue-700 underline underline-offset-2 italic"
+                        >create message</a
+                    >
+                </div>
+                <div>
+                    <% messages.forEach(message => { %>
+                    <div
+                        class="p-4 my-4 border border-l-4 border-l-blue-800 rounded-md"
+                    >
+                        <h2
+                            class="mb-2 pb-2 border-b-2 text-xl text-slate-900 font-bold capitalize"
+                        >
+                            <%= message.user %> :
+                        </h2>
+                        <div>
+                            <p class="text-slate-800 pl-4 mb-2">
+                                ---&gt; <%= message.text %>
+                            </p>
+                            <p class="text-xs italic text-slate-600 pl-4">
+                                <%= message.added %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }); %>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+</html>
