@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./partials/head") %>
+        <title>Messenger | <%= title %></title>
+    </head>
+    <body>
+        <div class="grid grid-rows-layout">
+            <%- include('./partials/header.ejs') %>
+
+            <main class="m-8 overflow-y-auto">
+                <p class="italic text-lg text-slate-900 mb-8">
+                    Welcome to GameVault, a very basic Express website developed
+                    as project on The Odin Project.
+                </p>
+                <p
+                    class="font-bold text-xl text-slate-900 mb-4 pb-4 border-b-2"
+                >
+                    The library has the following record counts:
+                </p>
+                <p class="text-lg mb-4 font-bold text-blue-800">
+                    Games: <span class="text-slate-900">0</span>
+                </p>
+                <p class="text-lg mb-4 font-bold text-blue-800">
+                    Genres: <span class="text-slate-900">0</span>
+                </p>
+            </main>
+
+            <!-- Footer -->
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+</html>
