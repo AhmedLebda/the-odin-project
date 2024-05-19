@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const gamesRouter = require("./routes/games");
-const genreRouter = require("./routes/genre");
+const categoriesRouter = require("./routes/category");
 
 const PORT = 3000;
 
@@ -14,7 +14,9 @@ const URI =
     "mongodb+srv://ahmed:ahmedtest321@cluster0.kvuglqr.mongodb.net/game_library?retryWrites=true&w=majority&appName=Cluster0";
 mongoose
     .connect(URI)
-    .then(() => console.log("Connected to 'game_library' db"))
+    .then(() =>
+        app.listen(PORT, () => console.log("Connected to 'game_library' db"))
+    )
     .catch((err) => console.log(err));
 
 // Configurations
@@ -31,4 +33,4 @@ app.get("/", (req, res) => {
 
 app.use("/games", gamesRouter);
 
-app.use("/genres", genreRouter);
+app.use("/genres", categoriesRouter);
