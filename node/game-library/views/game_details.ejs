@@ -42,10 +42,32 @@
                 <p class="text-blue-500 mt-4 px-4">
                     $<%= selected_game.price %>
                 </p>
+
+                <button
+                    class="mt-8 px-8 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white"
+                    id="delete-game"
+                    data-id="<%= selected_game._id %>"
+                >
+                    Delete Game
+                </button>
             </main>
 
             <!-- Footer -->
             <%- include("./partials/footer") %>
         </div>
+        <script>
+            const deleteGame = document.querySelector("#delete-game");
+            deleteGame.addEventListener("click", async () => {
+                const res = await fetch(
+                    `/games/${deleteGame.dataset.id}/delete`,
+                    {
+                        method: "DELETE",
+                    }
+                );
+                const data = await res.json();
+                alert(data.deletedGame.name + " has been deleted");
+                window.location.href = data.redirect;
+            });
+        </script>
     </body>
 </html>

@@ -43,3 +43,13 @@ exports.game_detail = async (req, res) => {
         console.log(error);
     }
 };
+
+exports.game_delete = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const response = await Game.findByIdAndDelete({ _id: id });
+        res.json({ redirect: "/games", deletedGame: response });
+    } catch (error) {
+        console.log(error);
+    }
+};
