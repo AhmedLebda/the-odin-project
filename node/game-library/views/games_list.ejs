@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./partials/head") %>
+        <title>GameVault | <%= title %></title>
+    </head>
+    <body>
+        <div class="grid grid-rows-layout">
+            <%- include('./partials/header.ejs') %>
+
+            <main class="m-8 overflow-y-auto">
+                <% if(games_list) { %>
+                <ul class="max-w-screen-sm mx-auto border border-b-0">
+                    <% games_list.forEach(game => {%>
+                    <li
+                        class="flex items-center justify-between px-4 gap-4 py-4 border-b-2"
+                    >
+                        <a
+                            href="<%= game.url %>"
+                            class="font-bold text-xl text-slate-900 hover:text-slate-700"
+                        >
+                            <%= game.name %></a
+                        >
+                        <span class="text-blue-500">$<%= game.price %></span>
+                    </li>
+                    <% }); %>
+                </ul>
+                <% } %>
+            </main>
+
+            <!-- Footer -->
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <%- include("./partials/head") %>
-        <title>Messenger | <%= title %></title>
+        <title>GameVault | <%= title %></title>
     </head>
     <body>
         <div class="grid grid-rows-layout">
@@ -19,10 +19,12 @@
                     The library has the following record counts:
                 </p>
                 <p class="text-lg mb-4 font-bold text-blue-800">
-                    Games: <span class="text-slate-900">0</span>
+                    Games:
+                    <span class="text-slate-900"><%= games_count %></span>
                 </p>
                 <p class="text-lg mb-4 font-bold text-blue-800">
-                    Genres: <span class="text-slate-900">0</span>
+                    Categories:
+                    <span class="text-slate-900"><%= categories_count %></span>
                 </p>
             </main>
 

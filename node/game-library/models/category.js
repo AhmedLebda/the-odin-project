@@ -6,7 +6,7 @@ const categorySchema = new Schema({
 });
 
 categorySchema.virtual("url").get(function () {
-    return `/games/${this._id}`;
+    return `/categories/${this._id}`;
 });
 
 module.exports = mongoose.model("Category", categorySchema);

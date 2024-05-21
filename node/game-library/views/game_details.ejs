@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include("./partials/head") %>
+        <title>GameVault | <%= title %></title>
+    </head>
+    <body>
+        <div class="grid grid-rows-layout">
+            <%- include('./partials/header.ejs') %>
+
+            <main class="m-8 overflow-y-auto">
+                <% if(selected_game) { %>
+                <h1
+                    class="text-4xl text-slate-900 font-bold pb-4 border-b-2 capitalize"
+                >
+                    <%= selected_game.name %>
+                </h1>
+                <h2 class="mt-8 text-2xl font-bold text-slate-900">
+                    Description:
+                </h2>
+                <p class="text-xl italic mt-8">
+                    <%= selected_game.description %>
+                </p>
+                <% if(selected_game.category) { %>
+                <h2 class="mt-8 text-2xl font-bold text-slate-900">
+                    Categories:
+                </h2>
+                <ul class="flex items-center gap-8 mt-4 px-4">
+                    <% selected_game.category.forEach(category => { %>
+                    <li>
+                        <a
+                            href="<%= category.url %>"
+                            class="text-blue-500 capitalize"
+                            ><%= category.name %></a
+                        >
+                    </li>
+
+                    <% }); %>
+                </ul>
+                <% } %> <% } %>
+                <h2 class="mt-8 text-2xl font-bold text-slate-900">Price:</h2>
+                <p class="text-blue-500 mt-4 px-4">
+                    $<%= selected_game.price %>
+                </p>
+            </main>
+
+            <!-- Footer -->
+            <%- include("./partials/footer") %>
+        </div>
+    </body>
+</html>

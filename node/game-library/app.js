@@ -3,6 +3,8 @@ const path = require("path");
 const mongoose = require("mongoose");
 const gamesRouter = require("./routes/games");
 const categoriesRouter = require("./routes/category");
+const Game = require("./models/game");
+const Category = require("./models/category");
 
 const PORT = 3000;
 
@@ -27,10 +29,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.get("/", (req, res) => {
-    res.render("index", { title: "Home" });
+app.get("/", async (req, res) => {
+    const [gamesCount, categoriesCount] = await Promise.all([
+        Game.find().countDocuments(),
+        Category.find().countDocuments(),
+    ]);
+    res.render("index", {
+        title: "Home",
+        games_count: gamesCount,
+        categories_count: categoriesCount,
+    });
 });
 
 app.use("/games", gamesRouter);
 
-app.use("/genres", categoriesRouter);
+app.use("/categories", categoriesRouter);
