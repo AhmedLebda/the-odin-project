@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include("./partials/head") %>
-        <title>GameVault | <%= title %></title>
-    </head>
+    <%- include("./partials/head") %>
+
     <body>
         <div class="grid grid-rows-layout">
             <%- include('./partials/header.ejs') %>
@@ -13,6 +11,8 @@
                     Welcome to GameVault, a very basic Express website developed
                     as project on The Odin Project.
                 </p>
+
+                <% if (username) { %>
                 <p
                     class="font-bold text-xl text-slate-900 mb-4 pb-4 border-b-2"
                 >
@@ -26,6 +26,18 @@
                     Categories:
                     <span class="text-slate-900"><%= categories_count %></span>
                 </p>
+                <% } else {%>
+                <p class="capitalize font-bold text-2xl">
+                    <a href="/users/login" class="text-blue-500 underline"
+                        >login</a
+                    >
+                    to add games to your vault or
+                    <a href="/users/signup" class="text-blue-500 underline"
+                        >signup</a
+                    >
+                    to create an account
+                </p>
+                <%} %>
             </main>
 
             <!-- Footer -->

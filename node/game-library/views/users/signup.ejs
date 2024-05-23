@@ -1,56 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <%- include("./partials/head") %>
-        <title>Messenger | <%= title %></title>
-    </head>
+    <%- include("../partials/head") %>
+
     <body>
         <div class="grid grid-rows-layout">
-            <%- include('./partials/header.ejs') %>
+            <%- include('../partials/header.ejs') %>
 
             <main class="mx-8 my-4">
-                <h1 class="text-4xl text-slate-900 font-bold mb-8">
-                    Create Message:
-                </h1>
                 <form
                     method="post"
-                    action="/new"
-                    class="border p-4 flex flex-col gap-4 shadow-2xl"
+                    action="/users/signup"
+                    class="border p-4 flex flex-col gap-4 shadow-2xl max-w-screen-sm mx-auto my-8"
                 >
+                    <h1 class="text-4xl text-slate-900 font-bold mb-4">
+                        Signup:
+                    </h1>
                     <div class="flex flex-col gap-2">
                         <label for="user" class="capitalize text-lg"
                             >username:
                         </label>
                         <input
+                            required
                             type="text"
-                            name="user"
+                            name="username"
                             id="user"
                             class="border p-2"
                         />
                     </div>
+
                     <div class="flex flex-col gap-2">
-                        <label for="text" class="capitalize text-lg"
-                            >Message:
+                        <label for="password" class="capitalize text-lg"
+                            >password:
                         </label>
-                        <textarea
-                            rows="5"
-                            name="text"
-                            id="text"
+                        <input
+                            required
+                            type="password"
+                            name="password"
+                            id="password"
                             class="border p-2"
-                        ></textarea>
+                        />
                     </div>
 
                     <button
                         type="submit"
                         class="bg-blue-700 text-lg text-white border p-2 rounded-lg w-1/2 mx-auto my-4"
                     >
-                        Send
+                        signup
                     </button>
+
+                    <% if(errors) { %> <% for (error in errors) { %>
+
+                    <p><%= errors[error] %></p>
+                    <% } %> <% } %>
                 </form>
             </main>
 
             <!-- Footer -->
-            <%- include("./partials/footer") %>
+            <%- include("../partials/footer") %>
         </div>
     </body>
 </html>

@@ -3,8 +3,12 @@ const path = require("path");
 const mongoose = require("mongoose");
 const gamesRouter = require("./routes/games");
 const categoriesRouter = require("./routes/category");
+const authRouter = require("./routes/authRoutes");
 const Game = require("./models/game");
 const Category = require("./models/category");
+const cookieParser = require("cookie-parser");
+
+const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
 const PORT = 3000;
 
@@ -27,6 +31,10 @@ app.set("view engine", "ejs");
 // middlewares
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(cookieParser());
+
+app.use(checkUser);
 
 // Routes
 app.get("/", async (req, res) => {
@@ -40,6 +48,10 @@ app.get("/", async (req, res) => {
         categories_count: categoriesCount,
     });
 });
+
+app.use("/users", authRouter);
+
+app.use(requireAuth);
 
 app.use("/games", gamesRouter);
 
