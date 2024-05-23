@@ -3,8 +3,14 @@ const Category = require("../models/category");
 
 exports.games_list = async (req, res) => {
     try {
-        const allGames = await Game.find({}, "name price").sort({ name: 1 });
-        res.render("games_list", { title: "Games List", games_list: allGames });
+        const userGames = await Game.find(
+            { user: res.locals.id },
+            "name price"
+        ).sort({ name: 1 });
+        res.render("games_list", {
+            title: "Games List",
+            games_list: userGames,
+        });
     } catch (error) {
         console.log(error);
     }
@@ -21,7 +27,7 @@ exports.game_create_get = async (req, res) => {
 
 exports.game_create_post = async (req, res) => {
     try {
-        const game = new Game(req.body);
+        const game = new Game({ ...req.body, user: res.locals.id });
         await game.save();
         res.redirect("/games");
     } catch (error) {

@@ -39,7 +39,7 @@ app.use(checkUser);
 // Routes
 app.get("/", async (req, res) => {
     const [gamesCount, categoriesCount] = await Promise.all([
-        Game.find().countDocuments(),
+        Game.find({ user: res.locals.id }).countDocuments(),
         Category.find().countDocuments(),
     ]);
     res.render("index", {

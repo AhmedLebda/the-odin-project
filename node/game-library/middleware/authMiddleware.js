@@ -10,7 +10,6 @@ const requireAuth = (req, res, next) => {
                 console.log(err);
                 res.redirect("/users/login");
             }
-            console.log(decodedToken);
             next();
         });
     } else {
@@ -28,16 +27,19 @@ const checkUser = (req, res, next) => {
             async (err, decodedToken) => {
                 if (err) {
                     res.locals.username = null;
+                    res.locals.id = null;
                     next();
                 } else {
                     const user = await User.findById(decodedToken.id);
                     res.locals.username = user.username;
+                    res.locals.id = user._id;
                     next();
                 }
             }
         );
     } else {
         res.locals.username = null;
+        res.locals.id = null;
         next();
     }
 };
