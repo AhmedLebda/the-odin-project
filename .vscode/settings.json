@@ -1,9 +1,4 @@
 {
-    "cSpell.ignoreWords": [
-        "Gaara",
-        "naruto"
-    ],
-    "cSpell.words": [
-        "uniqid"
-    ]
+    "cSpell.ignoreWords": ["Gaara", "naruto"],
+    "cSpell.words": ["tailwindcss", "uniqid"]
 }
