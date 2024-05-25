@@ -10,18 +10,15 @@ const cookieParser = require("cookie-parser");
 
 const { requireAuth, checkUser } = require("./middleware/authMiddleware");
 
-const PORT = 3000;
-
 // Init express app
 const app = express();
 
-// game_library db
-const URI =
-    "mongodb+srv://ahmed:ahmedtest321@cluster0.kvuglqr.mongodb.net/game_library?retryWrites=true&w=majority&appName=Cluster0";
 mongoose
-    .connect(URI)
+    .connect(process.env.game_library_URI)
     .then(() =>
-        app.listen(PORT, () => console.log("Connected to 'game_library' db"))
+        app.listen(process.env.PORT, () =>
+            console.log("Connected to 'game_library' db")
+        )
     )
     .catch((err) => console.log(err));
 

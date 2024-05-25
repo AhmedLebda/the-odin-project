@@ -26,7 +26,7 @@ const handleErrors = (error) => {
 };
 
 const createToken = (id) => {
-    return jwt.sign({ id }, "my super secret secret", {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: 3 * 24 * 60 * 60,
     });
 };
