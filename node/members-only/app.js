@@ -4,6 +4,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 
 const index_Route = require("./routes/index");
+const posts_Route = require("./routes/posts");
+const user_Route = require("./routes/user");
 
 // Initialize app
 const app = express();
@@ -29,3 +31,5 @@ app.use(cookieParser());
 
 // routes
 app.use("/", index_Route);
+app.use("/posts", posts_Route);
+app.use("/user", user_Route);

@@ -12,16 +12,16 @@
             welcome
             <span class="text-red-600 capitalize"> <%= username %></span>
         </p>
-        <a href="/users/memberStatus" class="underline">Become a member</a>
+        <a href="/user/membership-status" class="underline">Become a member</a>
         <a href="/posts" class="underline">Posts</a>
-        <a href="/users/logout" class="underline">Logout</a>
+        <a href="/user/logout" class="underline">Logout</a>
     </div>
     <%} else {%>
     <div
         class="flex items-center gap-6 underline text-blue-400 text-lg font-bold"
     >
-        <a href="/users/signup">signup</a>
-        <a href="/users/login">login</a>
+        <a href="/user/signup">signup</a>
+        <a href="/user/login">login</a>
     </div>
     <% } %>
 </header>
