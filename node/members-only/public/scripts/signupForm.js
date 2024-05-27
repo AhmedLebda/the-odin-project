@@ -5,6 +5,8 @@ const email = form.email;
 const password = form.password;
 const confirmPassword = form.confirmPassword;
 
+const errorsList = document.querySelector("#errors");
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -26,5 +28,15 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
-    console.log(data);
+    if (data.errors) {
+        data.errors.forEach((error) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = error.msg;
+            errorsList.appendChild(listItem);
+        });
+    }
+
+    if (data.redirect) {
+        location.assign(data.redirect);
+    }
 });

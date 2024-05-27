@@ -1,19 +1,14 @@
 const express = require("express");
 const router = express.Router();
+const userController = require("../controllers/userControllers");
 
-router.get("/login", (req, res) =>
-    res.render("./user/login", { title: "Test", username: null })
-);
+router.get("/login", userController.login_get);
 router.post("/login", (req, res) => res.send("Not Ready Yet"));
 
-router.get("/signup", (req, res) =>
-    res.render("./user/signup", { title: "Test", username: null })
-);
-router.get("/signup", (req, res) => res.send("Not Ready Yet"));
+router.get("/signup", userController.signup_get);
+router.post("/signup", userController.signup_post);
 
-router.get("/membership-status", (req, res) =>
-    res.render("./user/memberStatus", { title: "Test", username: null })
-);
+router.get("/membership-status", userController.membership_status_get);
 router.post("/membership-status", (req, res) => res.send("Not Ready Yet"));
 
 module.exports = router;

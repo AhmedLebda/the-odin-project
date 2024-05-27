@@ -581,6 +581,10 @@ video {
   margin-bottom: 2rem;
 }
 
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -601,12 +605,24 @@ video {
   max-width: 640px;
 }
 
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.list-disc {
+  list-style-type: disc;
+}
+
 .grid-rows-layout {
   grid-template-rows: 1fr 5fr 80px;
 }
 
 .flex-col {
   flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
 }
 
 .items-center {
@@ -680,6 +696,10 @@ video {
   padding-bottom: 1rem;
 }
 
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -707,6 +727,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .font-bold {
