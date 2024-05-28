@@ -11,6 +11,6 @@ router.post("/signup", userController.signup_post);
 router.get("/logout", userController.logout_get);
 
 router.get("/membership-status", userController.membership_status_get);
-router.post("/membership-status", (req, res) => res.send("Not Ready Yet"));
+router.post("/membership-status", userController.membership_status_post);
 
 module.exports = router;

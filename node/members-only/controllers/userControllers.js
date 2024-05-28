@@ -1,8 +1,9 @@
 const { validationResult } = require("express-validator");
 const validateSignup = require("../middlewares/validation/signupValidation");
 const validateLogin = require("../middlewares/validation/loginValidation");
+const validateStatus = require("../middlewares/validation/statusValidation");
 const userModel = require("../models/user_model");
-const { createJWT } = require("./utils");
+const { createJWT, isValidJWT } = require("./utils");
 
 // ### Log-in Controllers ### //
 const login_get = (req, res) => {
@@ -27,7 +28,6 @@ const login_post = [
             });
             res.json({ redirect: "/" });
         } catch (error) {
-            console.log(error);
             res.json({ errors: [{ msg: error.message }] });
         }
     },
@@ -84,6 +84,46 @@ const membership_status_get = (req, res) => {
         title: "Membership Status",
     });
 };
+const membership_status_post = [
+    validateStatus,
+
+    async (req, res) => {
+        const errors = validationResult(req);
+        const { password } = req.body;
+
+        if (!errors.isEmpty()) {
+            res.json({ errors: errors.array() });
+        } else if (password === process.env.MEMBER_PASSWORD) {
+            try {
+                const decoded = isValidJWT(req.cookies.jwt);
+                const user = await userModel.findOneAndUpdate(
+                    { email: decoded.email },
+                    { status: "member" },
+                    { new: true }
+                );
+                const payload = {
+                    fullName: user.fullName,
+                    email: user.email,
+                    status: user.status,
+                };
+                const token = createJWT(payload);
+                res.cookie("jwt", token, {
+                    httpOnly: true,
+                    maxAge: 3 * 24 * 60 * 60 * 1000,
+                });
+                res.json({ redirect: "/" });
+            } catch (error) {
+                res.json({
+                    errors: [{ msg: error.message }],
+                });
+            }
+        } else {
+            res.json({
+                errors: [{ msg: "Incorrect password" }],
+            });
+        }
+    },
+];
 
 module.exports = {
     login_get,
@@ -92,4 +132,5 @@ module.exports = {
     signup_post,
     logout_get,
     membership_status_get,
+    membership_status_post,
 };

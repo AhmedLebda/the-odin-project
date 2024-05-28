@@ -12,7 +12,9 @@
             welcome
             <span class="text-red-600 capitalize"> <%= user.fullName %></span>
         </p>
+        <% if (user.status === 'basic') {%>
         <a href="/user/membership-status" class="underline">Become a member</a>
+        <% } %>
         <a href="/posts" class="underline">Posts</a>
         <a href="/user/logout" class="underline">Logout</a>
     </div>

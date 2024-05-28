@@ -19,8 +19,8 @@
                     <input
                         required
                         type="text"
-                        name="member-password"
-                        id="member-password"
+                        name="memberPassword"
+                        id="memberPassword"
                         class="border p-2"
                         placeholder="password"
                     />
@@ -32,10 +32,15 @@
                         Submit
                     </button>
                 </form>
+                <ul
+                    class="my-8 flex flex-col gap-4 ml-6 text-sm list-disc text-red-500"
+                    id="errors"
+                ></ul>
             </main>
 
             <!-- Footer -->
             <%- include("../partials/footer") %>
         </div>
+        <script src="/scripts/statusForm.js"></script>
     </body>
 </html>

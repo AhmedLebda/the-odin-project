@@ -13,7 +13,7 @@
                     Project.
                 </p>
 
-                <% if (user) { %>
+                <% if (user) { %> <% if (user.status === "basic") { %>
                 <p class="font-bold text-xl mb-8">
                     <a
                         href="/user/membership-status"
@@ -27,8 +27,15 @@
                         >just browse posts without knowing who wrote them</a
                     >
                 </p>
-
-                <% } else {%>
+                <% } else { %>
+                <p class="text-lg mb-4 font-bold">
+                    Welcome
+                    <span class="text-red-600"> <%= user.fullName %></span>
+                    <a href="/posts" class="underline capitalize text-blue-500">
+                        browse posts</a
+                    >
+                </p>
+                <% } %> <% } else {%>
                 <p class="capitalize font-bold text-2xl mb-8">
                     <a href="/user/login" class="text-blue-500 underline"
                         >login</a
