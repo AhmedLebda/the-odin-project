@@ -13,22 +13,29 @@ const login_post = [
     validateLogin,
 
     async (req, res) => {
+        const errors = validationResult(req);
+
         const { email, password } = req.body;
-        try {
-            const user = await userModel.logUser(email, password);
-            const payload = {
-                fullName: user.fullName,
-                email: user.email,
-                status: user.status,
-            };
-            const token = createJWT(payload);
-            res.cookie("jwt", token, {
-                httpOnly: true,
-                maxAge: 3 * 24 * 60 * 60 * 1000,
-            });
-            res.json({ redirect: "/" });
-        } catch (error) {
-            res.json({ errors: [{ msg: error.message }] });
+
+        if (!errors.isEmpty()) {
+            res.json({ errors: errors.array() });
+        } else {
+            try {
+                const user = await userModel.logUser(email, password);
+                const payload = {
+                    fullName: user.fullName,
+                    email: user.email,
+                    status: user.status,
+                };
+                const token = createJWT(payload);
+                res.cookie("jwt", token, {
+                    httpOnly: true,
+                    maxAge: 3 * 24 * 60 * 60 * 1000,
+                });
+                res.json({ redirect: "/" });
+            } catch (error) {
+                res.json({ errors: [{ msg: error.message }] });
+            }
         }
     },
 ];
