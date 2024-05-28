@@ -1,15 +1,41 @@
-const { body, validationResult } = require("express-validator");
+const { validationResult } = require("express-validator");
 const validateSignup = require("../middlewares/validation/signupValidation");
+const validateLogin = require("../middlewares/validation/loginValidation");
 const userModel = require("../models/user_model");
 const { createJWT } = require("./utils");
 
+// ### Log-in Controllers ### //
 const login_get = (req, res) => {
-    res.render("./user/login", { title: "Login", username: null });
+    res.render("./user/login", { title: "Login" });
 };
+const login_post = [
+    validateLogin,
 
-// Sign-up controllers
+    async (req, res) => {
+        const { email, password } = req.body;
+        try {
+            const user = await userModel.logUser(email, password);
+            const payload = {
+                fullName: user.fullName,
+                email: user.email,
+                status: user.status,
+            };
+            const token = createJWT(payload);
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 3 * 24 * 60 * 60 * 1000,
+            });
+            res.json({ redirect: "/" });
+        } catch (error) {
+            console.log(error);
+            res.json({ errors: [{ msg: error.message }] });
+        }
+    },
+];
+
+// ### Sign-up Controllers ### //
 const signup_get = (req, res) => {
-    res.render("./user/signup", { title: "Signup", username: null });
+    res.render("./user/signup", { title: "Signup" });
 };
 const signup_post = [
     validateSignup,
@@ -24,7 +50,12 @@ const signup_post = [
         } else {
             try {
                 await user.save();
-                const token = createJWT(user._id);
+                const payload = {
+                    fullName: user.fullName,
+                    email: user.email,
+                    status: user.status,
+                };
+                const token = createJWT(payload);
                 res.cookie("jwt", token, {
                     httpOnly: true,
                     maxAge: 3 * 24 * 60 * 60 * 1000,
@@ -41,11 +72,24 @@ const signup_post = [
     },
 ];
 
+// ### Log-out Controllers ### //
+const logout_get = (req, res) => {
+    res.cookie("jwt", "", { httpOnly: true, maxAge: 1 });
+    res.redirect("/");
+};
+
+// ### Membership-status Controllers ### //
 const membership_status_get = (req, res) => {
     res.render("./user/memberStatus", {
         title: "Membership Status",
-        username: null,
     });
 };
 
-module.exports = { login_get, signup_get, signup_post, membership_status_get };
+module.exports = {
+    login_get,
+    login_post,
+    signup_get,
+    signup_post,
+    logout_get,
+    membership_status_get,
+};

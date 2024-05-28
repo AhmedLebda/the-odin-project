@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
+const { checkUser } = require("./middlewares/auth/authMiddleware");
+
 const index_Route = require("./routes/index");
 const posts_Route = require("./routes/posts");
 const user_Route = require("./routes/user");
@@ -28,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(checkUser);
 
 // routes
 app.use("/", index_Route);

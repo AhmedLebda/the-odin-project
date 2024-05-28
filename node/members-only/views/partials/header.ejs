@@ -6,11 +6,11 @@
             Members <span class="text-red-600"> Only</span>
         </h1>
     </a>
-    <% if (username) {%>
+    <% if (user) {%>
     <div class="flex items-center gap-6 text-blue-400 text-lg font-bold">
         <p class="no-underline text-white">
             welcome
-            <span class="text-red-600 capitalize"> <%= username %></span>
+            <span class="text-red-600 capitalize"> <%= user.fullName %></span>
         </p>
         <a href="/user/membership-status" class="underline">Become a member</a>
         <a href="/posts" class="underline">Posts</a>

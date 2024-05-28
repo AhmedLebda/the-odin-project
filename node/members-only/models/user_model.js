@@ -40,18 +40,19 @@ const userSchema = new Schema(
 
 // Virtual
 userSchema.virtual("fullName").get(function () {
-    return `${this.firstName} ${This.lastName}`;
+    return `${this.firstName} ${this.lastName}`;
 });
 
 // Encrypt Password before saving to db
 userSchema.pre("save", async function (next) {
     const salt = await bcrypt.genSalt();
-    this.password = bcrypt.hash(this.password, salt);
+    this.password = await bcrypt.hash(this.password, salt);
+    this.confirmPassword = this.password;
     next();
 });
 
 // User Authentication
-userSchema.static.logUser = async function (email, password) {
+userSchema.statics.logUser = async function (email, password) {
     const user = await this.findOne({ email: email });
     if (user) {
         const validPassword = await bcrypt.compare(password, user.password);
