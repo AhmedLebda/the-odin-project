@@ -11,4 +11,14 @@ const checkUser = (req, res, next) => {
     }
 };
 
-module.exports = { checkUser };
+// Protect routes
+const requireAuth = (req, res, next) => {
+    try {
+        isValidJWT(req.cookies.jwt);
+        next();
+    } catch (error) {
+        res.redirect("/user/login");
+    }
+};
+
+module.exports = { checkUser, requireAuth };

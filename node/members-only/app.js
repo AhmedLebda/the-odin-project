@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
-const { checkUser } = require("./middlewares/auth/authMiddleware");
+const { checkUser, requireAuth } = require("./middlewares/auth/authMiddleware");
 
 const index_Route = require("./routes/index");
 const posts_Route = require("./routes/posts");
@@ -34,5 +34,9 @@ app.use(checkUser);
 
 // routes
 app.use("/", index_Route);
-app.use("/posts", posts_Route);
 app.use("/user", user_Route);
+
+//! protected Routes
+app.use(requireAuth);
+
+app.use("/posts", posts_Route);
