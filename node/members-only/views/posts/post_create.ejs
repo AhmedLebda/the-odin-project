@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../partials/head") %>
+
+    <body>
+        <div class="grid grid-rows-layout min-h-screen">
+            <%- include('../partials/header.ejs') %>
+
+            <main class="m-8 overflow-y-auto">
+                <div class="flex flex-wrap">
+                    <form
+                        class="border p-4 flex flex-col gap-4 shadow-2xl max-w-screen-sm mx-auto my-8 flex-1"
+                    >
+                        <h1
+                            class="text-4xl text-red-600 font-bold mb-4 pb-4 text-center border-b-2 border-red-500"
+                        >
+                            Create Post:
+                        </h1>
+                        <div class="flex flex-col gap-2">
+                            <label for="title" class="capitalize text-lg"
+                                >title:
+                            </label>
+                            <input
+                                required
+                                type="text"
+                                name="title"
+                                id="title"
+                                class="border p-2"
+                            />
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="content" class="capitalize text-lg"
+                                >content:
+                            </label>
+                            <textarea
+                                required
+                                name="content"
+                                id="content"
+                                class="border p-2"
+                            ></textarea>
+                        </div>
+                        <button
+                            type="submit"
+                            class="bg-red-600 text-lg text-white border p-2 rounded-lg w-1/2 mx-auto my-4"
+                        >
+                            submit
+                        </button>
+                    </form>
+                    <ul
+                        class="my-8 flex flex-col gap-4 ml-6 text-sm list-disc text-red-500"
+                        id="errors"
+                    ></ul>
+                </div>
+            </main>
+
+            <!-- Footer -->
+            <%- include("../partials/footer") %>
+        </div>
+        <script src="/scripts/loginForm.js"></script>
+    </body>
+</html>
