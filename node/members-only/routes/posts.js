@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const postController = require("../controllers/postControllers");
 
-router.get("/", (req, res) =>
-    res.render("./posts/postsList", { title: "Test", username: null })
-);
+router.get("/", postController.posts_list);
 
-router.get("/create", (req, res) => res.send("Not Ready Yet"));
-router.post("/create", (req, res) => res.send("Not Ready Yet"));
+router.get("/create", postController.post_create_get);
+router.post("/create", postController.post_create_post);
 
 module.exports = router;

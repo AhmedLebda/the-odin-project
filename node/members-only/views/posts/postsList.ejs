@@ -11,6 +11,32 @@
                     Welcome to
                     <span class="text-red-600">Members Only</span> clubhouse
                 </p>
+                <div>
+                    <% postsList.forEach(post => { %>
+                    <div
+                        class="mb-4 p-4 border-l-8 border-red-600 rounded-lg bg-gray-200"
+                    >
+                        <h2
+                            class="text-xl font-bold border-b-2 border-red-600 pb-2 mb-6 capitalize"
+                        >
+                            <%= post.title %>
+                        </h2>
+                        <p class="ml-2"><%= post.content %></p>
+                        <% if (user.status === "member") { %>
+                        <div class="mt-6 flex justify-end gap-6 italic text-sm">
+                            <p>
+                                <span class="text-red-600">Created at:</span>
+                                <%= post.createdAt.toLocaleString() %>
+                            </p>
+                            <p>
+                                <span class="text-red-600">Author:</span> <%=
+                                post.author %>
+                            </p>
+                        </div>
+                        <% } %>
+                    </div>
+                    <% }); %>
+                </div>
             </main>
 
             <!-- Footer -->

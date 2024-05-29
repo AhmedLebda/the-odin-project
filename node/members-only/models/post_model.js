@@ -12,6 +12,10 @@ const postSchema = new Schema(
             type: String,
             required: ["true", "posts must have content"],
         },
+        author: {
+            type: String,
+            required: true,
+        },
     },
     {
         timestamps: true,
