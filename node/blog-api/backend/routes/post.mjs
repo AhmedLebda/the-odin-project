@@ -1,22 +1,17 @@
 import { Router } from "express";
 import { requireAdminStatus } from "../middlewares/auth/authMiddleware.mjs";
+import postController from "../controllers/postControllers.mjs";
 
 const router = Router();
 
-router.get("/", (req, res) => res.json({ content: "All posts" }));
+router.get("/", postController.posts_list);
 
-router.get("/:id", (req, res) =>
-    res.json({ content: `post with id: ${req.params.id}` })
-);
+router.get("/:id", postController.post_detail);
 
 router.use(requireAdminStatus);
 
-router.delete("/:id", (req, res) =>
-    res.json({ content: `post with id: ${req.params.id} is deleted` })
-);
+router.delete("/:id", postController.post_delete);
 
-router.post("/create", (req, res) =>
-    res.json({ content: "you created a new post" })
-);
+router.post("/create", postController.post_create);
 
 export default router;
