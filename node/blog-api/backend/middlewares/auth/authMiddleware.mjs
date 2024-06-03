@@ -21,4 +21,14 @@ const requireAuth = (req, res, next) => {
     }
 };
 
-export { checkUser, requireAuth };
+const requireAdminStatus = (req, res, next) => {
+    try {
+        const decoded = isValidJWT(req.cookies.jwt);
+        if (decoded.status !== "admin") throw new Error("Forbidden");
+        next();
+    } catch (err) {
+        res.json({ error: err.message });
+    }
+};
+
+export { checkUser, requireAuth, requireAdminStatus };
