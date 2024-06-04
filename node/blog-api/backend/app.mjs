@@ -7,7 +7,7 @@ import user_Routes from "./routes/user.mjs";
 import post_Routes from "./routes/post.mjs";
 import comment_Routes from "./routes/comment.mjs";
 
-import { checkUser, requireAuth } from "./middlewares/auth/authMiddleware.mjs";
+import { checkUser } from "./middlewares/auth/authMiddleware.mjs";
 
 // Init express app
 const app = express();

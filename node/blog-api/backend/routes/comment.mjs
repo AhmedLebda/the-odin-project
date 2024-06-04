@@ -1,21 +1,13 @@
 import { Router } from "express";
-
+import commentController from "../controllers/commentControllers.mjs";
 import { requireAuth } from "../middlewares/auth/authMiddleware.mjs";
 
 const router = Router();
 
-router.get("/:id", (req, res) =>
-    res.json({ content: `comment with id: ${req.params.id}` })
-);
-
 router.use(requireAuth);
 
-router.delete("/:id", (req, res) =>
-    res.json({ content: `comment with id: ${req.params.id} is deleted` })
-);
+router.post("/create", commentController.comment_create);
 
-router.post("/create", (req, res) =>
-    res.json({ content: "you created a new comment for a post" })
-);
+router.delete("/:id", commentController.comment_delete);
 
 export default router;
