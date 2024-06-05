@@ -15,24 +15,29 @@ const login_post = [
 
         if (!errors.isEmpty()) {
             res.json({ errors: errors.array() });
-        } else {
-            try {
-                const user = await userModel.logUser(email, password);
-                const payload = {
+            return;
+        }
+
+        try {
+            const user = await userModel.logUser(email, password);
+
+            const token = createJWT({ id: user._id });
+
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 3 * 24 * 60 * 60 * 1000,
+            });
+
+            res.json({
+                user: {
                     id: user._id,
                     fullName: user.fullName,
                     email: user.email,
                     status: user.status,
-                };
-                const token = createJWT(payload);
-                res.cookie("jwt", token, {
-                    httpOnly: true,
-                    maxAge: 3 * 24 * 60 * 60 * 1000,
-                });
-                res.json({ redirect: "/" });
-            } catch (error) {
-                res.json({ errors: [{ msg: error.message }] });
-            }
+                },
+            });
+        } catch (error) {
+            res.json({ errors: [{ msg: error.message }] });
         }
     },
 ];
@@ -46,29 +51,40 @@ const signup_post = [
 
         const user = new userModel(req.body);
 
+        // request validation
         if (!errors.isEmpty()) {
             res.json({ errors: errors.array() });
-        } else {
-            try {
-                await user.save();
-                const payload = {
+            return;
+        }
+
+        try {
+            // save created user to db
+            await user.save();
+
+            // create jwt token
+            const token = createJWT({ id: user._id });
+
+            // send cookie containing jwt token
+            res.cookie("jwt", token, {
+                httpOnly: true,
+                maxAge: 3 * 24 * 60 * 60 * 1000,
+            });
+
+            // respond with user data
+            res.json({
+                user: {
                     id: user._id,
                     fullName: user.fullName,
                     email: user.email,
                     status: user.status,
-                };
-                const token = createJWT(payload);
-                res.cookie("jwt", token, {
-                    httpOnly: true,
-                    maxAge: 3 * 24 * 60 * 60 * 1000,
+                },
+            });
+        } catch (error) {
+            // respond with error if the email already exists in db
+            if (error.code === 11000) {
+                res.json({
+                    errors: [{ msg: "this email already exists" }],
                 });
-                res.json({ redirect: "/" });
-            } catch (error) {
-                if (error.code === 11000) {
-                    res.json({
-                        errors: [{ msg: "this email already exists" }],
-                    });
-                }
             }
         }
     },
