@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 import index_Route from "./routes/index.mjs";
 import user_Routes from "./routes/user.mjs";
@@ -11,6 +12,13 @@ import { checkUser } from "./middlewares/auth/authMiddleware.mjs";
 
 // Init express app
 const app = express();
+
+// Cors options
+const corsOptions = {
+    origin: "http://localhost:5173",
+    optionsSuccessStatus: 200,
+    credentials: true,
+};
 
 //! db connection
 mongoose
@@ -27,6 +35,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors(corsOptions));
 
 // Checks if there is a user logged in by validating the jwt token in cookies
 app.use(checkUser);
