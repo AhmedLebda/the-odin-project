@@ -19,7 +19,11 @@ const refresh_access = async (req, res, next) => {
         });
         res.json({ token: newAccessToken });
     } catch (error) {
-        res.cookie(refreshToken, "", { httpOnly: true, maxAge: 1 });
+        res.cookie(refreshToken, "", {
+            httpOnly: true,
+            maxAge: 0,
+            path: "/api/auth/refresh",
+        });
         res.status(401).json({ error: "Can't refresh your access token" });
     }
 };
@@ -134,7 +138,11 @@ const signup_post = [
 
 // ## Log-out Controllers ## //
 const logout_get = (req, res) => {
-    res.cookie("RefreshToken", "", { httpOnly: true, maxAge: 1 });
+    res.cookie("RefreshToken", "", {
+        httpOnly: true,
+        maxAge: 0,
+        path: "/api/auth/refresh",
+    });
     res.json({ msg: "You logged out" });
 };
 

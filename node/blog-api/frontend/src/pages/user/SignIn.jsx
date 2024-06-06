@@ -4,7 +4,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -12,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import useAuthContext from "../../hooks/useAuthContext";
+import { Link, Navigate } from "react-router-dom";
 
 function Copyright(props) {
     return (
@@ -32,23 +32,24 @@ function Copyright(props) {
 }
 
 export default function SignIn() {
-    const { dispatch } = useAuthContext();
+    const { user, dispatch } = useAuthContext();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
+        const requestBody = {
+            email: formData.get("email"),
+            password: formData.get("password"),
+        };
 
-        const response = await fetch("http://localhost:3000/user/login", {
+        const response = await fetch("http://localhost:3000/api/auth/login", {
             method: "POST",
             mode: "cors",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
-            credentials: "include",
-            body: JSON.stringify({
-                email: formData.get("email"),
-                password: formData.get("password"),
-            }),
+            body: JSON.stringify(requestBody),
         });
         const data = await response.json();
         dispatch({ type: "LOGIN", payload: data });
@@ -56,6 +57,7 @@ export default function SignIn() {
 
     return (
         <Container component="main" maxWidth="xs">
+            {user && <Navigate to="/" replace={true} />}
             <CssBaseline />
             <Box
                 sx={{
@@ -116,8 +118,8 @@ export default function SignIn() {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                            <Link to="/sign-up">
+                                Don&apos;t have an account? Sign Up
                             </Link>
                         </Grid>
                     </Grid>

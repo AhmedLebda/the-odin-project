@@ -10,6 +10,8 @@ const reducer = (state, action) => {
         case "LOGOUT":
             return { user: null };
 
+        case "REFRESH_TOKEN":
+            return { user: { ...state.user, ...action.payload } };
         default:
             return state;
     }
@@ -21,7 +23,7 @@ const AuthContextProvider = ({ children }) => {
     console.log(`Auth context state:`, userState);
 
     return (
-        <AuthContext.Provider value={{ userState, dispatch }}>
+        <AuthContext.Provider value={{ ...userState, dispatch }}>
             {children}
         </AuthContext.Provider>
     );
