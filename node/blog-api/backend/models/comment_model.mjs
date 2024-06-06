@@ -6,9 +6,10 @@ const commentModel = new Schema(
             type: String,
             required: [true, "Your comment can't be empty"],
         },
-        Author: {
+        author: {
             type: Schema.Types.ObjectId,
             ref: "Users",
+            required: [true, "comment must have an author"],
         },
     },
     {

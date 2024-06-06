@@ -24,17 +24,21 @@ const comment_create = [
     async (req, res) => {
         const errors = validationResult(req);
 
-        const { content, author, postId } = req.body;
+        const { content, postId } = req.body;
+        const author = req.user.id;
+
         const comment = new commentModel({ content, author });
 
         if (!errors.isEmpty()) {
             res.status(400).json({ errors: errors.array() });
         } else {
             try {
-                await comment.save();
                 await postModel.findByIdAndUpdate(postId, {
                     $push: { comments: comment },
                 });
+
+                await comment.save();
+
                 res.json({
                     result: `your comment has been added to post: ${postId}`,
                 });

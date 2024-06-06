@@ -3,12 +3,9 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-import index_Route from "./routes/index.mjs";
-import user_Routes from "./routes/user.mjs";
+import auth_Routes from "./routes/auth.mjs";
 import post_Routes from "./routes/post.mjs";
 import comment_Routes from "./routes/comment.mjs";
-
-import { checkUser } from "./middlewares/auth/authMiddleware.mjs";
 
 // Init express app
 const app = express();
@@ -37,11 +34,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
 
-// Checks if there is a user logged in by validating the jwt token in cookies
-app.use(checkUser);
-
 //! Routes
-app.use("/", index_Route);
-app.use("/user", user_Routes);
-app.use("/posts", post_Routes);
-app.use("/comment", comment_Routes);
+
+app.use("/api/auth", auth_Routes);
+app.use("/api/posts", post_Routes);
+app.use("/api/comment", comment_Routes);
